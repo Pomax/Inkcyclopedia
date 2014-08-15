@@ -1,0 +1,11 @@
+{
+  "name": "Inkcyclopedia",
+  "description": "an inkcyclopedia",
+  "version": "0.0.1",
+  "dependencies": {
+    "body-parser": "^1.6.3",
+    "ejs": "^1.0.0",
+    "express": "4.*",
+    "rgbanalyse": "^0.1.9"
+  }
+}

@@ -1,0 +1,1 @@
+this directory exists solely to temporarily store image uploads.

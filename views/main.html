@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <title>Inkcyclopedia</title>
+    <link rel="stylesheet" href="styles/main.css">
+  </head>
+
+  <body>
+    <h1>An inkcyclopedia of sorts...</h1>
+
+    <main>
+      <% inks.forEach(function(ink) { %>
+      <div class="ink">
+        "<%= ink.inkname %>" by <%= ink.company %>
+        <span style="height: 10px; background: rgb(<%= ink.dominant.r %>,<%= ink.dominant.g %>,<%= ink.dominant.b %>)"></span>
+        <br>
+        <a href="<%= ink.imageData %>" target="_blank"><img src="<%= ink.imageData %>" width=200 height=20></a>
+      </div>
+      <% }); %>
+    </main>
+
+    <footer>
+      <a href="submit">click here to submit an ink sample</a>
+    </footer>
+  </body>
+
+  <scripts>
+  </scripts>
+
+</html>

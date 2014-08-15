@@ -1,0 +1,14 @@
+img, span { display: inline-block; vertical-align: middle; }
+span { height: 20px; width: 100%; }
+img { border: 1px solid black; }
+.ink { display: inline-block; min-width: 250px; max-width: 250px; margin: 1em;}
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #333;
+  color: #FEFEF2;
+  font-family: Helvetica, Arial;
+}
+h1 { text-align: center; }
+footer { margin: 1em; }
+a, a:visited { color: #D0D0C4; }
