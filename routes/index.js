@@ -14,6 +14,7 @@ module.exports = {
   },
 
   main: function(req, res) {
+    res.setHeader('Cache-Control', 'no-cache');
     res.render('main.html');
   },
 
