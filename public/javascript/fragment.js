@@ -9,9 +9,7 @@ function failure(err) {
   alert("upload failed.", err);
 }
 
-function processAndSubmit(datauri, analysis) {
-  console.log(datauri);
-  console.log(analysis);
+function processAndSubmit(datauri, thumburi, analysis) {
   var xhr = new XMLHttpRequest();
   xhr.open("POST", "submit", true);
   xhr.setRequestHeader("Content-Type","application/json");
@@ -32,7 +30,8 @@ function processAndSubmit(datauri, analysis) {
     company:  document.getElementById("company").value,
     inkname:  document.getElementById("inkname").value,
     dominant: document.getElementById("dominant").value,
-    image: datauri
+    imageData: datauri,
+    thumbnail: thumburi
   };
   xhr.send(JSON.stringify(obj));
 }
@@ -54,6 +53,11 @@ function setupPublish(c) {
       cinfo.style.background = color;
       cinfo.style.border = color;
       p.appendChild(cinfo);
+      
+      var img = new Image();
+      img.src = dataurl;
+      p.appendChild(img);
+
       main.querySelector("#dominant").value = rgb.join(',');
     });
 
@@ -68,7 +72,18 @@ function setupPublish(c) {
         alert("you'll need to fill in the name for this ink");
       }
       else {
-        processAndSubmit(c.toDataURL("image/png"), data.analysis);
+        var datauri = c.toDataURL("image/png");
+        var thumburi = (function() {
+          var sc = document.createElement("canvas");
+          sc.width = 125;
+          sc.height = c.height / (c.width/sc.width);
+          var simg = new Image();
+          simg.src = datauri;
+          var sctx = sc.getContext("2d");
+          sctx.drawImage(simg,0,0,sc.width,sc.height);
+          return sc.toDataURL("image/png");
+        }());
+        processAndSubmit(datauri, thumburi, data.analysis);
       }
     };
     button.removeAttribute("disabled");
@@ -76,6 +91,7 @@ function setupPublish(c) {
 }
 
 function handleDroppedData(dataURI) {
+  document.getElementById("company").focus();
   var j = new JpegImage();
 
   j.onload = function() {

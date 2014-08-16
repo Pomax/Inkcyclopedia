@@ -10,9 +10,8 @@ app.set('view engine', 'ejs');
 app.engine('html', require('ejs').renderFile);	
 app.use(express.static(__dirname + '/public'));
 
-
 routes.setup(app);
 
-var server = app.listen(3000, function() {
+var server = app.listen(1234, function() {
     console.log('Listening on port %d', server.address().port);
 });

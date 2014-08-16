@@ -13,10 +13,10 @@
     <main>
       <% inks.forEach(function(ink) { %>
       <div class="ink">
-        "<%= ink.inkname %>" by <%= ink.company %>
+        <p>"<%= ink.inkname %>" by <%= ink.company %></p>
         <span style="height: 10px; background: rgb(<%= ink.dominant.r %>,<%= ink.dominant.g %>,<%= ink.dominant.b %>)"></span>
         <br>
-        <a href="<%= ink.imageData %>" target="_blank"><img src="<%= ink.imageData %>" width=200 height=20></a>
+        <a href="images/<%= ink.id %>" target="_blank"><img src="<%= ink.thumbnail %>" width=200 height=20></a>
       </div>
       <% }); %>
     </main>
