@@ -10,7 +10,7 @@ I was designing a typeface, and a colleague asked me "what does it look like whe
 
 I had no response other than "No idea, let me buy a fountain pen and get back to you". Then I bought several. Of course, none of the super expensive ones, but I do have some EF [Lamy Safari's](http://www.gouletpens.com/Lamy_Safari_Fountain_Pens_s/934.htm) (in matte black and laquer red, loaded with black and red ink) for doing drawing work, a 1.5 calligraphy nib Safari for -unsurprisingly- calligraphy, and a [Sheaffer 100](http://www.gouletpens.com/SearchResults.asp?Search=sheaffer+100) (with "fine" nib, because "medium" is way too fat) for regular writing.
 
-I also like writing in red, and while I started off with a [Waterman Red](http://www.gouletpens.com/Waterman_Audacious_Red_p/wm-s0110730.htm), because it's a decent red, and every pen shop carries it, I lamented not being able to use a particular share of red aquarel ink I had from way back when. So I figured: "how many red inks can there be? I'll just find a matching one and use that!"
+I also like writing in red, and while I started off with a [Waterman Red](http://www.gouletpens.com/Waterman_Audacious_Red_p/wm-s0110730.htm), because it's a decent red, and every pen shop carries it, I lamented not being able to use a particular shade of red aquarel ink I had from way back when. So I figured: "how many red inks can there be? I'll just find a matching one and use that!"
 
 As it turns out, there are [REALLY QUITE A LOT!](http://www.gouletpens.com/Shop_All_Bottled_Ink_s/1106.htm?searching=Y&sort=7&cat=1106&show=30&page=1&f-Red=1174) of even just red inks.
 
