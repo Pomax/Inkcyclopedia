@@ -1,43 +1,6 @@
 var main = document.querySelector("main");
 
 /**
- * ..
- */
-function success(total) {
-  alert("fragment" + (total>1?"s":"") + " uploaded.");
-}
-
-/**
- * ..
- */
-function failure(err) {
-  alert("upload failed.", err);
-}
-
-/**
- * ..
- */
-function processAndSubmit(postObject, total) {
-  var xhr = new XMLHttpRequest();
-  xhr.open("POST", "submit", true);
-  xhr.setRequestHeader("Content-Type","application/json");
-  xhr.onreadystatechange = function() {
-    if (xhr.status >= 400) {
-      xhr.onreadystatechange = function(){};
-      failure(new Error({
-        status: xhr.status,
-        readyState: xhr.readyState
-      }));
-    }
-    if (xhr.status === 200 && xhr.readyState === 4) {
-      xhr.onreadystatechange = function(){};
-      success(total);
-    }
-  };
-  xhr.send(JSON.stringify({ samples: postObject }));
-}
-
-/**
  *
  */
 function setColor(idx, rgb, color, img) {
@@ -139,38 +102,9 @@ function setupPublishButton(total) {
   button.innerHTML = "Publish " + (total>1 ? "these":"this") + " sample" + (total>1 ? "s":"");
 
   button.onclick = function() {
-    var postObject = [];
-    var dataContainer;
-    var img;
-    var datauri;
-    var thumburi;
-
-    for (var i=0; i<total; i++) {
-      dataContainer = document.querySelector("div.s"+i);
-      img = dataContainer.querySelector("img");
-      datauri = img.src;
-      thumburi = (function() {
-        var sc = document.createElement("canvas");
-        sc.width = 125;
-        sc.height = img.height / (img.width/sc.width);
-        var simg = new Image();
-        simg.src = datauri;
-        var sctx = sc.getContext("2d");
-        sctx.drawImage(simg,0,0,sc.width,sc.height);
-        return sc.toDataURL("image/png");
-      }());
-      
-      postObject.push({
-        datauri: datauri,
-        thumburi: thumburi,
-        company: dataContainer.querySelector("input.company").value.trim(),
-        inkname: dataContainer.querySelector("input.inkname").value.trim(),
-        dominant: dataContainer.querySelector("input.dominant").value.trim()
-      });
-    }
-
-    processAndSubmit(postObject, total);
+    alert("The inkcyclopedia is still in alpha.\nSubmissions are not accepted yet.");
   };
+
   main.appendChild(button);
 }
 
