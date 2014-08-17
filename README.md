@@ -10,11 +10,11 @@ I was designing a typeface, and a colleague asked me "what does it look like whe
 
 I had no response other than "No idea, let me buy a fountain pen and get back to you". Then I bought several. Of course, none of the super expensive ones, but I do have some EF [Lamy Safari's](http://www.gouletpens.com/Lamy_Safari_Fountain_Pens_s/934.htm) (in matte black and laquer red, loaded with black and red ink) for doing drawing work, a 1.5 calligraphy nib Safari for -unsurprisingly- calligraphy, and a [Sheaffer 100](http://www.gouletpens.com/SearchResults.asp?Search=sheaffer+100) (with "fine" nib, because "medium" is way too fat) for regular writing.
 
-I also like writing in red, and while I started off with a [Waterman Red](http://www.gouletpens.com/Waterman_Audacious_Red_p/wm-s0110730.htm), because it's a decent red, and every pen shop carries it, I lamented not being able to use a particular share of red aquarel ink I had from way back when. So I figured: "how many red inks can there be? I'll just find a matching one and use that!"
+I also like writing in red, and while I started off with a [Waterman Red](http://www.gouletpens.com/Waterman_Audacious_Red_p/wm-s0110730.htm), because it's a decent red, and every pen shop carries it, I lamented not being able to use a particular shade of red aquarel ink I had from way back when. So I figured: "how many red inks can there be? I'll just find a matching one and use that!"
 
 As it turns out, there are [REALLY QUITE A LOT!](http://www.gouletpens.com/Shop_All_Bottled_Ink_s/1106.htm?searching=Y&sort=7&cat=1106&show=30&page=1&f-Red=1174) of even just red inks.
 
-So because I can, I bought eight reds that looks like they might be close to the aquarel ink I had, and waited for them to arrive. When they did, for the most part I was unsatisfied, but one of them ([Diamine pink](http://www.gouletpens.com/Diamine_80ml_Flamingo_Pink_Ink_p/d7026.htm), of all colours, which is not quite as pink on paper as it is in the link swatch) was really close and super great and I love it and it's my main ink. But if just finding a matching red is this much work, how much work is it to just find a colour that's fun and new and you like and doesn't cost you $100 in finding out because you bought full bottles of ink?
+So because I can, I bought eight reds that looked like they might be close to the aquarel ink I had, and waited for them to arrive. When they did, for the most part I was unsatisfied, but one of them ([Diamine pink](http://www.gouletpens.com/Diamine_80ml_Flamingo_Pink_Ink_p/d7026.htm), of all colours, which is not quite as pink on paper as it is in the link swatch) was really close and super great and I love it and it's my main ink. But if just finding a matching red is this much work, how much work is it to just find a colour that's fun and new and you like and doesn't cost you $100 in finding out because you bought full bottles of ink?
 
 Seriously.
 
@@ -32,7 +32,7 @@ So basically: I did this so you don't have to. 170 inks, probably more as time g
 So, what's the deal with this project/website?
 ----------------------------------------------
 
-I'm still developing the Inkcyclopedia at the moment, so I'll first be going through my 170 inks and getting their images to look like the do "in real life". I have calibrated monitors (because photography) so it's mostly a matter of sitting down with the samples cut up into individual colours and matching the pixels to what I see on the paper on my desk.
+I'm still developing the Inkcyclopedia at the moment, so I'll first be going through my 170 inks and getting their images to look like they do "in real life". I have calibrated monitors (because photography) so it's mostly a matter of sitting down with the samples cut up into individual colours and matching the pixels to what I see on the paper on my desk.
 
 Once that's done, I'll open up the floor to the rest of the world - because submitting a sample is stupidly simple. The Inkcyclopedia comes with a dedicate "submit a sample" page where all you have to do is drag your sample into the browser, and some cool JavaScript does color abstraction and the like, giving you what it thinks is the color of your sample, as well as some additional colours that it found that you can pick instead if it got the most important one wrong. You then just say which company's ink it is, and hit submit!
 
