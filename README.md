@@ -25,7 +25,7 @@ I'm sorry...
 
 Don't be, I'll recover. If anything, my handwriting is pretty damn fancy with all the writing I've been doing, and I discovered that I really like writing in [Insular Majuscule](https://en.wikipedia.org/wiki/Insular_majuscule) (which you might know as "Gaelic fonts", except it's not really Gaelic but really much more Irish, and it's not a font, but a script, but that's neither here nor there)
 
-However, if you're thinking of getting a fountain pen (and I won't lie, I have some $3 Platinum Preppy pens that work **just as well** for just writing as my $40 Shaeffer 100, so don't let the myth of "it's expensive" fool you: it really, *really* isn't) then finding an ink you like is going to be a stupid amount of work, if you don't just want "Parker Black" but something you actually like.
+However, if you're thinking of getting a fountain pen (and I won't lie, I have some $3 [Platinum Preppy](http://www.gouletpens.com/Black_Fine_Platinum_Preppy_Fountain_Pen_p/plat-ppq-200-01-f.htm) pens that work *just as well* for just writing as my $40 Shaeffer 100, so don't let the myth of "it's expensive" fool you: it really, *really* isn't) then finding an ink you like is going to be a stupid amount of work, if you don't just want "Parker Black" but something you actually like.
 
 So basically: I did this so you don't have to. 170 inks, probably more as time goes on, because this shouldn't be as horrible as it really is right now. Good luck finding a store with an open bottle of 200+ inks where you live.
 
