@@ -14,7 +14,7 @@ I also like writing in red, and while I started off with a [Waterman Red](http:/
 
 As it turns out, there are [REALLY QUITE A LOT!](http://www.gouletpens.com/Shop_All_Bottled_Ink_s/1106.htm?searching=Y&sort=7&cat=1106&show=30&page=1&f-Red=1174) of even just red inks.
 
-So because I can, I bought eight reds that looks like they might be close to the aquarel ink I had, and waited for them to arrive. When they did, for the most part I was unsatisfied, but one of them ([Diamine pink](http://www.gouletpens.com/Diamine_80ml_Flamingo_Pink_Ink_p/d7026.htm), of all colours, which is not quite as pink on paper as it is in the link swatch) was really close and super great and I love it and it's my main ink. But if just finding a matching red is this much work, how much work is it to just find a colour that's fun and new and you like and doesn't cost you $100 in finding out because you bought full bottles of ink?
+So because I can, I bought eight reds that looked like they might be close to the aquarel ink I had, and waited for them to arrive. When they did, for the most part I was unsatisfied, but one of them ([Diamine pink](http://www.gouletpens.com/Diamine_80ml_Flamingo_Pink_Ink_p/d7026.htm), of all colours, which is not quite as pink on paper as it is in the link swatch) was really close and super great and I love it and it's my main ink. But if just finding a matching red is this much work, how much work is it to just find a colour that's fun and new and you like and doesn't cost you $100 in finding out because you bought full bottles of ink?
 
 Seriously.
 
