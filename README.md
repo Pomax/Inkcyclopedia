@@ -32,7 +32,7 @@ So basically: I did this so you don't have to. 170 inks, probably more as time g
 So, what's the deal with this project/website?
 ----------------------------------------------
 
-I'm still developing the Inkcyclopedia at the moment, so I'll first be going through my 170 inks and getting their images to look like the do "in real life". I have calibrated monitors (because photography) so it's mostly a matter of sitting down with the samples cut up into individual colours and matching the pixels to what I see on the paper on my desk.
+I'm still developing the Inkcyclopedia at the moment, so I'll first be going through my 170 inks and getting their images to look like they do "in real life". I have calibrated monitors (because photography) so it's mostly a matter of sitting down with the samples cut up into individual colours and matching the pixels to what I see on the paper on my desk.
 
 Once that's done, I'll open up the floor to the rest of the world - because submitting a sample is stupidly simple. The Inkcyclopedia comes with a dedicate "submit a sample" page where all you have to do is drag your sample into the browser, and some cool JavaScript does color abstraction and the like, giving you what it thinks is the color of your sample, as well as some additional colours that it found that you can pick instead if it got the most important one wrong. You then just say which company's ink it is, and hit submit!
 
