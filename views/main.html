@@ -8,17 +8,22 @@
   </head>
 
   <body>
-    <h1>An inkcyclopedia of sorts...</h1>
+    <header>
+      <h1>An inkcyclopedia of sorts...</h1>
+      <h3>A repository of (currently) <%= inks.length %> fountain pen inks</h3>
+    </header>
 
     <main>
+      <ul>
       <% inks.forEach(function(ink) { %>
-      <div class="ink">
-        <p>"<%= ink.inkname %>" by <%= ink.company %></p>
-        <span style="height: 10px; background: rgb(<%= ink.dominant.r %>,<%= ink.dominant.g %>,<%= ink.dominant.b %>)"></span>
-        <br>
-        <a href="images/<%= ink.id %>" target="_blank"><img src="<%= ink.thumbnail %>" width=200 height=20></a>
-      </div>
+        <li class="ink card">
+          <p class="ink name"><em><%= ink.inkname %></em></p>
+          <p class="ink company"><%= ink.company %></p>
+          <a href="images/<%= ink.id %>" target="_blank"><img src="<%= ink.thumburi %>" width=200 height=20></a>
+          <p class="colorbar" style="background: rgb(<%= ink.dominant.r %>,<%= ink.dominant.g %>,<%= ink.dominant.b %>)">&nbsp;</p>
+        </li>
       <% }); %>
+      </ul>
     </main>
 
     <footer>
@@ -27,6 +32,7 @@
   </body>
 
   <scripts>
+    <script src="javascript/circles.js"></script>
   </scripts>
 
 </html>

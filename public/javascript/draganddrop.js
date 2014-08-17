@@ -10,16 +10,31 @@
   };
 
   function readFileData(e) {
-    var file = e.dataTransfer.files[0],
-        reader = new FileReader(),
-        data;
+    var files = e.dataTransfer.files;
+    var i = 0;
+    var total = files.length;
+    var data;
 
-    reader.addEventListener("loadend", function (e) {
-      data = this.result;
-      handleDroppedData(data);
-    });
 
-    reader.readAsDataURL(file);  
+    function next() {
+      if(i===total) return;
+      var reader = buildReader(i, total);
+      reader.readAsDataURL(files[i]);
+      i++;
+    }
+
+    function buildReader(idx, total) {
+      var reader = new FileReader();
+      reader.addEventListener("loadend", function (e) {
+        data = this.result;
+        handleDroppedData(data, idx, total);
+        next();
+      });
+      return reader;
+    }
+
+    next();
+
   }
 
   function setup() {

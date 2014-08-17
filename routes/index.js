@@ -32,7 +32,7 @@ module.exports = {
   image: function(req, res) {
     res.set('Content-Type', 'image/png');
     var inkdata = res.locals.inkmap[req.params.inkid];
-    var imguri = inkdata.imageData;
+    var imguri = inkdata.datauri;
     // turn image into a file
     var bpos = imguri.indexOf(";base64,");
     var filedata = imguri.substring(bpos + 8);

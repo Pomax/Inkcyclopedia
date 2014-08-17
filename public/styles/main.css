@@ -1,7 +1,11 @@
 img, span { display: inline-block; vertical-align: middle; }
+
 span { height: 20px; width: 100%; }
+
 img { border: 1px solid black; }
+
 .ink { display: inline-block; min-width: 250px; max-width: 250px; margin: 1em;}
+
 html, body {
   margin: 0;
   padding: 0;
@@ -9,6 +13,78 @@ html, body {
   color: #FEFEF2;
   font-family: Helvetica, Arial;
 }
-h1 { text-align: center; }
+
+header, main { text-align: center; }
+
+main * { text-align: left; }
+
 footer { margin: 1em; }
+
 a, a:visited { color: #D0D0C4; }
+
+/*
+ul {
+	position:relative;
+  display: block;
+	margin: 0;
+	padding: 0;
+  background: red;
+}
+li {
+  position: relative;
+  transform-origin: 0px 0px;
+  padding-bottom: 1em;
+}
+li p {
+  display: none;
+}
+li img {
+  display: none;
+}
+li:hover{
+  z-index: 10;
+  background: #CCC;
+  border-radius: 1em;
+  border: 1px solid black;
+  color: #333;
+  font-weight: bold;
+  text-indent: 1em;
+}
+li:hover p {
+  display: block;
+}
+li:hover img {
+  display: block;
+  border: none;
+}
+*/
+
+.card {
+  background: #DDD;
+  border-radius: 1em 1em 0 1em;
+  border: 1px solid black;
+  color: #333;
+  border: 8px solid #DDD;
+}
+.card p {
+  display: block;
+  color: #333;
+}
+.card img {
+  display: block;
+  border: none;
+}
+
+.ink.card p {
+  margin: 0.2em 0 0 0;
+}
+
+.ink.card p.colorbar {
+  border-radius: 0 0 0 0.9em;
+}
+.ink.name {
+  font-style: italic;
+}
+.ink.company {
+  text-align: right;
+}

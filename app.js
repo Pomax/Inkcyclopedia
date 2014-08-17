@@ -4,7 +4,7 @@ var fs = require("fs"),
     routes = require("./routes"),
     bodyParser = require("body-parser");;
 
-app.use(bodyParser.json({ limit: "5mb" }));
+app.use(bodyParser.json({ limit: "100mb" }));
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 app.engine('html', require('ejs').renderFile);	
