@@ -16,11 +16,12 @@
     <main>
       <ul>
       <% inks.forEach(function(ink) { %>
-        <li class="ink card">
+        <% var color = "rgb(" + ink.dominant.r + "," + ink.dominant.g + "," + ink.dominant.b + ")" %>
+        <li class="ink card" style="color: <%= color %>;">
           <p class="ink name"><em><%= ink.inkname %></em></p>
           <p class="ink company"><%= ink.company %></p>
-          <a href="images/<%= ink.id %>" target="_blank"><img src="<%= ink.thumburi %>" width=200 height=20></a>
-          <p class="colorbar" style="background: rgb(<%= ink.dominant.r %>,<%= ink.dominant.g %>,<%= ink.dominant.b %>)">&nbsp;</p>
+          <img src="<%= ink.thumburi %>" width=200 height=20 onclick="loadImage('images/<%= ink.id %>', '<%= color %>')">
+          <p class="colorbar" style="background: <%= color %>">&nbsp;</p>
         </li>
       <% }); %>
       </ul>
@@ -33,6 +34,7 @@
 
   <scripts>
     <script src="javascript/circles.js"></script>
+    <script src="javascript/imgloader.js"></script>
   </scripts>
 
 </html>

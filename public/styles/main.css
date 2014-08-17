@@ -22,57 +22,31 @@ footer { margin: 1em; }
 
 a, a:visited { color: #D0D0C4; }
 
-/*
-ul {
-	position:relative;
-  display: block;
-	margin: 0;
-	padding: 0;
-  background: red;
-}
 li {
   position: relative;
-  transform-origin: 0px 0px;
-  padding-bottom: 1em;
 }
-li p {
-  display: none;
-}
+
 li img {
   display: none;
+  border: none;
+  position: absolute;
+  bottom:; 1em;
+  cursor: pointer;
 }
-li:hover{
-  z-index: 10;
-  background: #CCC;
-  border-radius: 1em;
-  border: 1px solid black;
-  color: #333;
-  font-weight: bold;
-  text-indent: 1em;
-}
-li:hover p {
-  display: block;
-}
+
 li:hover img {
   display: block;
-  border: none;
 }
-*/
 
 .card {
   background: #DDD;
   border-radius: 1em 1em 0 1em;
   border: 1px solid black;
-  color: #333;
+  color: inherit;
   border: 8px solid #DDD;
 }
 .card p {
   display: block;
-  color: #333;
-}
-.card img {
-  display: block;
-  border: none;
 }
 
 .ink.card p {
