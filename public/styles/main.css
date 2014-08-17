@@ -1,10 +1,4 @@
-img, span { display: inline-block; vertical-align: middle; }
-
-span { height: 20px; width: 100%; }
-
-img { border: 1px solid black; }
-
-.ink { display: inline-block; min-width: 250px; max-width: 250px; margin: 1em;}
+@import "controls.css";
 
 html, body {
   margin: 0;
@@ -13,6 +7,16 @@ html, body {
   color: #FEFEF2;
   font-family: Helvetica, Arial;
 }
+
+h1 { font-size: 250%; }
+
+img, span { display: inline-block; vertical-align: middle; }
+
+span { height: 20px; width: 100%; }
+
+img { border: 1px solid black; }
+
+.ink { display: inline-block; min-width: 250px; max-width: 250px; margin: 1em;}
 
 header, main { text-align: center; }
 
@@ -56,9 +60,25 @@ li:hover img {
 .ink.card p.colorbar {
   border-radius: 0 0 0 0.9em;
 }
-.ink.name {
+.ink .name {
   font-style: italic;
 }
-.ink.company {
+.ink .company {
   text-align: right;
+}
+
+section.filters {
+  text-align: center;
+  background: #444;
+  width: 100%;
+  padding: 0.5em 0;
+}
+
+canvas.rangepicker {
+  cursor: none;
+  line-height: 1em;
+  vertical-align: bottom;
+  margin-bottom: 1px;
+  border: 1px solid #999;
+  border-width: 1px 1px;
 }

@@ -1,0 +1,16 @@
+.hide-company {
+  display: none!important;
+}
+
+.hide-name {
+  display: none!important;
+}
+
+.hide-hue {
+  display: none!important;
+}
+
+.active {
+  border: 2px solid red;
+  margin: -1px;
+}

@@ -1,6 +1,5 @@
 <!doctype html>
 <html>
-
   <head>
     <meta charset="utf-8">
     <title>Inkcyclopedia</title>
@@ -13,13 +12,25 @@
       <h3>A repository of (currently) <%= inks.length %> fountain pen inks</h3>
     </header>
 
+    <section class="filters">
+      <label>filter by company:</label>
+      <select onchange="filterCompany(this)">
+        <option value=""></option>
+        <% Object.keys(inkmap.getCompanies()).sort().forEach(function(c) { %>
+        <option value="<%= c %>"><%= c %> (<%= inkmap.getCompanies()[c] %>)</option>
+      <% }) %></select>
+      <label>filter by name:</label>
+      <input type="text" value="" onkeyup="filterName(this)">
+      <button onclick="filterHue(this)">set hue filter</button>
+    </section>
+
     <main>
       <ul>
       <% inks.forEach(function(ink) { %>
         <% var color = "rgb(" + ink.dominant.r + "," + ink.dominant.g + "," + ink.dominant.b + ")" %>
-        <li class="ink card" style="color: <%= color %>;">
-          <p class="ink name"><em><%= ink.inkname %></em></p>
-          <p class="ink company"><%= ink.company %></p>
+        <li class="ink card" style="color: <%= color %>;" data-hue="<%= ink.dominant.hsl.H %>">
+          <p class="name <%= ink.inkname.replace(/\W/g,'-') %>"><em><%= ink.inkname %></em></p>
+          <p class="company <%= ink.company.replace(/\W/g,'-') %>"><%= ink.company %></p>
           <img src="<%= ink.thumburi %>" width=200 height=20 onclick="loadImage('images/<%= ink.id %>', '<%= color %>')">
           <p class="colorbar" style="background: <%= color %>">&nbsp;</p>
         </li>
@@ -40,6 +51,7 @@
   <scripts>
     <script src="javascript/circles.js"></script>
     <script src="javascript/imgloader.js"></script>
+    <script src="javascript/mainfilter.js"></script>
   </scripts>
 
 </html>
