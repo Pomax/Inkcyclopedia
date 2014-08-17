@@ -7,7 +7,7 @@ function setStyle(e, s) {
 function loadImage(url, rgb) {
   var underlay = document.createElement("div");
   setStyle(underlay, {
-    background: "rgba(0,0,0,0.4)", //rgb.replace('rgb','rgba').replace(')',',0.2)'),
+    background: "rgba(0,0,0,0.4)",
     position: "fixed",
     top: 0,
     left: 0,
@@ -16,16 +16,20 @@ function loadImage(url, rgb) {
     textAlign: "center",
     lineHeight: window.innerHeight + "px"
   });
+  document.body.appendChild(underlay);      
 	var img = new Image();
-  img.onload = function() {
-    setStyle(img, {
+  img.src="ajax-loader.gif";
+  underlay.appendChild(img);
+
+  var sample = new Image();
+  sample.onload = function() {
+    setStyle(sample, {
       border: "10px solid " + rgb,
       maxWidth: "calc(100% - 20px)"
     });
-    underlay.appendChild(img);
-    document.body.appendChild(underlay);      
+    img.parentNode.replaceChild(sample,img);
   };
-  img.src = url;
+  sample.src = url;
   underlay.onclick = function() {
     underlay.parentNode.removeChild(underlay);
   }
