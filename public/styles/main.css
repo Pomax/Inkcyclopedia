@@ -30,6 +30,8 @@ li {
   position: relative;
 }
 
+main ul { text-align:center; }
+
 li img {
   display: none;
   border: none;
