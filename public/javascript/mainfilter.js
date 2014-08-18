@@ -71,6 +71,13 @@ function filterName(e) {
   });
 }
 
+function getCoordinates(e) {
+  return {
+    x: (e.pageX - e.target.getBoundingClientRect().left)|0,
+    y: (e.pageY - e.target.getBoundingClientRect().top)|0
+  };
+}
+
 /**
 *
 */
@@ -104,17 +111,20 @@ var filterHue = (function(){
   var marking = false;
 
   function mousemove(e) {
+    var pos = getCoordinates(e);
+
     cvs.width = w;
     ctx.drawImage(img,0,0);
     if(marking) {
-      endmark = e.offsetX;
+      endmark = pos.x;
       ctx.fillStyle = "rgba(255,255,255,0.4)";
       ctx.fillRect(startmark < endmark ?  startmark : endmark, 0, Math.abs(startmark-endmark), h);
     }
+
     ctx.strokeStyle = "black";
     ctx.beginPath();
-    ctx.moveTo(e.offsetX, 0);
-    ctx.lineTo(e.offsetX, h);
+    ctx.moveTo(pos.x, 0);
+    ctx.lineTo(pos.x, h);
     ctx.stroke();
     ctx.closePath();
     if(marking) {
@@ -129,7 +139,8 @@ var filterHue = (function(){
   cvs.addEventListener("mousemove", mousemove);
 
   function mousedown(e) {
-    startmark = e.offsetX;
+    var pos = getCoordinates(e);    
+    startmark = pos.x;
     marking = true;
   }
 
