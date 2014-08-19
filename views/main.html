@@ -21,7 +21,17 @@
       <% }) %></select>
       <label>filter by name:</label>
       <input type="text" value="" onkeyup="filterName(this)">
-      <button onclick="filterHue(this)">set hue filter</button>
+      <!-- hue filtering is fun -->
+      <label>filter by hue:</label>
+      <div class="ranger">
+        <input type="range" min="0" max="360" step="1" value="0" class="start">
+        <div class="shuttered">
+          <div class="left shutter"></div>
+          <div id="spectrum" data-offset="0"></div>
+          <div class="right shutter"></div>
+        </div>
+        <input type="range" min="0" max="360" step="1" value="360" class="end">
+      </div>
     </section>
 
     <main>
@@ -52,6 +62,9 @@
     <script src="javascript/circles.js"></script>
     <script src="javascript/imgloader.js"></script>
     <script src="javascript/mainfilter.js"></script>
+    <!-- hue filter -->
+    <link rel="stylesheet" href="styles/ranger.css">
+    <script src="javascript/ranger.js"></script>
   </scripts>
 
 </html>

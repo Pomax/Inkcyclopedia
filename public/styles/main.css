@@ -76,6 +76,10 @@ section.filters {
   padding: 0.5em 0;
 }
 
+section.filters * + label {
+  margin-left: 0.5em;
+}
+
 canvas.rangepicker {
   cursor: none;
   line-height: 1em;

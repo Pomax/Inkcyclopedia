@@ -79,111 +79,25 @@ function getCoordinates(e) {
 }
 
 /**
-*
-*/
-var filterHue = (function(){
-  
-  // generate the hue-spectrum-map-image-thing
-  var w = 360;
-  var h = 22;
-  var cvs = document.createElement("canvas");
-  cvs.classList.add("rangepicker");
-  cvs.width=w;
-  cvs.height=h;
-  var ctx = cvs.getContext("2d");
-  for(var i=0; i<w; i++) {
-    color = "hsl(" + i + ", 100%, 50%)";
-    ctx.strokeStyle = color;
-    ctx.beginPath();    
-    ctx.moveTo(i,0);
-    ctx.lineTo(i,h);
-    ctx.stroke();
-    ctx.closePath();
-  }
-  var img = new Image();
-  img.height = w;
-  img.width = h;
-  img.src = cvs.toDataURL("image/png");
+ * Sweet interactive hue filtering
+ */
+function filterHue(e) {
+  var data = e.detail;
+  var tau = Math.PI*2;
+  var start = (data.start * tau/360);
+  var end   = (data.end * tau/360);
+  var epsilon = (((Math.abs(start - end + tau) % tau)*100)|0) / 100;
+  var endmod = end % tau;
 
-  // set up user interactio for selecting a start/end range
-  var startmark = 0;
-  var endmark = w;
-  var marking = false;
+  addClass(allitems, "hide-hue");
+  allitems.filter(function(li) {
+    var H = parseFloat(li.getAttribute("data-hue"));
+    if(epsilon < 0.1) return true;
+    if(end > tau) return start <= H || H <= endmod;
+    return start <= H && H <= end;
+  }).forEach(function(li) {
+    li.classList.remove("hide-hue");
+  });
+}
 
-  function mousemove(e) {
-    var pos = getCoordinates(e);
-
-    cvs.width = w;
-    ctx.drawImage(img,0,0);
-    if(marking) {
-      endmark = pos.x;
-      ctx.fillStyle = "rgba(255,255,255,0.4)";
-      ctx.fillRect(startmark < endmark ?  startmark : endmark, 0, Math.abs(startmark-endmark), h);
-    }
-
-    ctx.strokeStyle = "black";
-    ctx.beginPath();
-    ctx.moveTo(pos.x, 0);
-    ctx.lineTo(pos.x, h);
-    ctx.stroke();
-    ctx.closePath();
-    if(marking) {
-      ctx.beginPath();
-      ctx.moveTo(startmark, 0);
-      ctx.lineTo(startmark, h);
-      ctx.stroke();
-      ctx.closePath();
-    }
-  }
-
-  cvs.addEventListener("mousemove", mousemove);
-
-  function mousedown(e) {
-    var pos = getCoordinates(e);    
-    startmark = pos.x;
-    marking = true;
-  }
-
-  cvs.addEventListener("mousedown", mousedown);
-
-  function mouseup(e) {
-    marking = false;
-  }
-
-  cvs.addEventListener("mouseup", mouseup);
-
-  var button = false;
-
-  var reset = document.createElement("button");
-  reset.innerHTML = "reset hues";
-  reset.onclick = function() {
-    button.classList.remove("active");
-    removeClass(allitems, "hide-hue");
-    if(reset.parentNode) reset.parentNode.removeChild(reset);
-  };
-
-  // return the actual UX for the hue filter
-  return function(e) {
-    button = e;
-    button.classList.add("active");
-    button.parentNode.appendChild(cvs);
-    if(reset.parentNode) reset.parentNode.removeChild(reset);   
-    cvs.addEventListener("mouseup", function(e) {
-      if(cvs.parentNode) cvs.parentNode.removeChild(cvs);
-      button.parentNode.appendChild(reset);
-
-      var comp  = Math.PI*2/360;
-      var start = (startmark < endmark ? startmark : endmark) * comp;
-      var end   = (startmark < endmark ? endmark : startmark) * comp;
-
-      addClass(allitems, "hide-hue");
-      allitems.filter(function(li) {
-        var H = parseFloat(li.getAttribute("data-hue"));
-        return start <= H && H <= end;
-      }).forEach(function(li) {
-        li.classList.remove("hide-hue");
-      });
-
-    });    
-  }
-}());
+document.addEventListener("hue-update", filterHue);
