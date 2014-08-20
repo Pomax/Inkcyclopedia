@@ -4,7 +4,41 @@ function setStyle(e, s) {
   });
 }
 
-function loadImage(url, rgb) {
+var ul = document.querySelector("main ul");
+var previews = document.querySelector("li.previews");
+var previewing = 0;
+var loaded = {};
+
+function addImage(url) {
+  if(!previewing) {
+    previews.classList.remove("hidden");
+    ul.querySelector(".nextcolumn").classList.remove("hidden");
+    ul.classList.remove("cc1");
+    ul.classList.add("cc2");
+  }
+
+  loaded[url] = new Image();
+  loaded[url].onclick = function() { removeImage(url); };
+  loaded[url].src = url;
+  previews.appendChild(loaded[url]);
+  previewing++;
+}
+
+function removeImage(url) {
+  previews.removeChild(loaded[url]);
+  loaded[url] = false;
+  previewing--;
+
+  if(previewing === 0) {
+    ul.classList.remove("cc2");
+    ul.classList.add("cc1");
+    ul.querySelector(".nextcolumn").classList.add("hidden");
+    previews.classList.add("hidden");
+  }
+}
+
+function loadImage(inkid, rgb) {
+  /*
   var underlay = document.createElement("div");
   setStyle(underlay, {
     background: "rgba(0,0,0,0.4)",
@@ -33,4 +67,8 @@ function loadImage(url, rgb) {
   underlay.onclick = function() {
     underlay.parentNode.removeChild(underlay);
   }
+  */
+
+  var url = "images/" + inkid;
+  if(!loaded[url]) { addImage(url); } else { removeImage(url); }
 }

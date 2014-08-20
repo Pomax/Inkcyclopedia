@@ -6,6 +6,8 @@ html, body {
   background: #333;
   color: #FEFEF2;
   font-family: Helvetica, Arial;
+  height: 100%;
+  overflow: hidden;
 }
 
 h1 { font-size: 250%; }
@@ -20,6 +22,10 @@ img { border: 1px solid black; }
 
 header, main { text-align: center; }
 
+header { display: block; height: 8em; }
+
+main { height: calc(100% - 15em); overflow: auto; }
+
 main * { text-align: left; }
 
 footer { margin: 1em; }
@@ -30,7 +36,7 @@ li {
   position: relative;
 }
 
-main ul { text-align:center; }
+main ul { text-align:center; width: 50%; margin: auto;}
 
 li img {
   display: none;
@@ -50,6 +56,7 @@ li:hover img {
   border: 1px solid black;
   color: inherit;
   border: 8px solid #DDD;
+  cursor: pointer;
 }
 .card p {
   display: block;
@@ -70,10 +77,12 @@ li:hover img {
 }
 
 section.filters {
+  display: block;
   text-align: center;
   background: #444;
   width: 100%;
   padding: 0.5em 0;
+  height: 2.5em;
 }
 
 section.filters * + label {
@@ -87,4 +96,65 @@ canvas.rangepicker {
   margin-bottom: 1px;
   border: 1px solid #999;
   border-width: 1px 1px;
+}
+
+footer {
+  clear: both;
+}
+
+
+.cc1 {
+  width: 50%;
+  -webkit-column-count: 1;
+  -moz-column-count: 1;
+  -o-column-count: 1;
+  -ms-column-count: 1;
+  column-count: 1;  
+}
+
+.cc2 {
+  width: 95%;
+  -webkit-column-count: 2;
+  -moz-column-count: 2;
+  -o-column-count: 2;
+  -ms-column-count: 2;
+  column-count: 2;  
+}
+
+.nextcolumn {
+  -webkit-column-break-before: always;
+  -webkit-column-break-after: always;
+  -moz-column-break-before: always;
+  -moz-column-break-after: always;
+  -o-column-break-before: always;
+  -o-column-break-after: always;
+  -ms-column-break-before: always;
+  -ms-column-break-after: always;
+  column-break-before: always;
+  column-break-after: always;
+}
+
+ul li.previews {
+  position: fixed;
+  display: block;
+  width: 48%;
+  background: #444;
+  top: 13.5em;
+  bottom: 2em;
+  left: 0;
+  overflow: auto;
+}
+ul li.previews img {
+  display: block;
+  border: none;
+  position: relative;
+  max-width: 100%;
+}
+ul li.previews img + img {
+  border-top: 5px solid #444;
+}
+
+ul li.previews.hidden,
+ul li.nextcolumn.hidden {
+  display: none !important;
 }
