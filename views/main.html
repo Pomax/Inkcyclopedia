@@ -12,57 +12,24 @@
       <h3>A repository of (currently) <%= inks.length %> fountain pen inks</h3>
     </header>
 
-    <section class="filters">
-      <label>filter by company:</label>
-      <select onchange="filterCompany(this)">
-        <option value=""></option>
-        <% Object.keys(inkmap.getCompanies()).sort().forEach(function(c) { %>
-        <option value="<%= c %>"><%= c %> (<%= inkmap.getCompanies()[c] %>)</option>
-      <% }) %></select>
-      <label>filter by name:</label>
-      <input type="text" value="" onkeyup="filterName(this)">
-      <!-- hue filtering is fun -->
-      <label>filter by hue:</label>
-      <div class="ranger">
-        <input type="range" min="0" max="360" step="1" value="0" class="start">
-        <div class="shuttered">
-          <div class="left shutter"></div>
-          <div id="spectrum" data-offset="0"></div>
-          <div class="right shutter"></div>
-        </div>
-        <input type="range" min="0" max="360" step="1" value="360" class="end">
-      </div>
-    </section>
+    <% include filters.html %>
 
-    <main>
-      <ul>
+    <main><ul>
+      <li class="previews hidden"></li>
+      <li class="nextcolumn hidden"></li>
       <% inks.forEach(function(ink) { %>
-        <% var color = "rgb(" + ink.dominant.r + "," + ink.dominant.g + "," + ink.dominant.b + ")" %>
-        <li class="ink card" style="color: <%= color %>;" data-hue="<%= ink.dominant.hsl.H %>">
-          <p class="name <%= ink.inkname.replace(/\W/g,'-') %>"><em><%= ink.inkname %></em></p>
-          <p class="company <%= ink.company.replace(/\W/g,'-') %>"><%= ink.company %></p>
-          <img src="<%= ink.thumburi %>" width=200 height=20 onclick="loadImage('images/<%= ink.id %>', '<%= color %>')">
-          <p class="colorbar" style="background: <%= color %>">&nbsp;</p>
-        </li>
+        <% include swatch.html %>
       <% }); %>
-      </ul>
-    </main>
+    </ul></main>
 
-    <footer>
-      By <a href="http://twitter.com/TheRealPomax">Pomax</a> ,
-      mostly with inks from <a href="http://www.gouletpens.com">The Goulet Pen Company</a>
-      —
-      <a href="submit">click here to submit an ink sample</a>
-      —
-      Note: still under development, samples are not color corrected yet.
-    </footer>
+    <% include footer.html %>
   </body>
 
   <scripts>
     <script src="javascript/circles.js"></script>
     <script src="javascript/imgloader.js"></script>
     <script src="javascript/mainfilter.js"></script>
-    <!-- hue filter -->
+    <!-- hue filter style/script -->
     <link rel="stylesheet" href="styles/ranger.css">
     <script src="javascript/ranger.js"></script>
   </scripts>
