@@ -20,6 +20,13 @@ img { border: 1px solid black; }
 
 header, main { text-align: center; }
 
+header img {
+  border: none;
+  position: absolute;
+  top: 1em;
+  left: 1em;
+}
+
 main * { text-align: left; }
 
 footer { margin: 1em; }
