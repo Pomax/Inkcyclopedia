@@ -101,3 +101,16 @@ function filterHue(e) {
 }
 
 document.addEventListener("hue-update", filterHue);
+
+
+// when we do scrolling, and we scroll past the header, keep the filters always in view
+var filterbar = document.querySelector("section.filters");
+var anchor = filterbar.getBoundingClientRect().top;
+window.addEventListener("scroll", function() {
+  if(filterbar.getBoundingClientRect().top < 0) {
+    filterbar.classList.add("top-sticky");
+  }
+  if(window.scrollY < anchor) {
+    filterbar.classList.remove("top-sticky");
+  }
+});

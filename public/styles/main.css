@@ -95,3 +95,9 @@ canvas.rangepicker {
   border: 1px solid #999;
   border-width: 1px 1px;
 }
+
+section.filters.top-sticky {
+  position: fixed;
+  top: 0;
+  z-index: 10;
+}
