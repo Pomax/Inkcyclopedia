@@ -5,22 +5,27 @@
     <title>Inkcyclopedia</title>
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="stylesheet" href="styles/main.css">
+
+    <link href='http://fonts.googleapis.com/css?family=Shadows+Into+Light+Two' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Cuprum' rel='stylesheet' type='text/css'>
   </head>
 
   <body>
     <header>
-      <a href="/"><img src="inkcyclopedia.jpg"></a>
+      <a href="/"><img src="inkart.png"></a>
       <h1>A (tiny) encyclopedia of fountain pen inks</h1>
       <h3>A repository of —currently— <%= inks.length %> fountain pen inks</h3>
     </header>
 
     <% include filters.html %>
 
-    <main><ul>
+    <main>
+      <ul>
       <% inks.forEach(function(ink) { %>
         <% include swatch.html %>
       <% }); %>
-    </ul></main>
+      </ul>
+    </main>
 
     <% include footer.html %>
   </body>

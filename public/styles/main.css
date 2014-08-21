@@ -8,36 +8,62 @@ html, body {
   font-family: Helvetica, Arial;
 }
 
-h1 { font-size: 250%; }
+h1 {
+  font-size: 250%;
+}
 
-img, span { display: inline-block; vertical-align: middle; }
+img, span {
+  display: inline-block;
+  vertical-align: middle;
+}
 
-span { height: 20px; width: 100%; }
+span {
+  height: 20px;
+  width: 100%;
+}
 
-img { border: 1px solid black; }
+img {
+  border: 1px solid black;
+}
 
-.ink { display: inline-block; min-width: 250px; max-width: 250px; margin: 1em;}
-
-header, main { text-align: center; }
+header, main {
+  text-align: center;
+}
 
 header img {
   border: none;
   position: absolute;
-  top: 1em;
+  top: 1.5em;
   left: 1em;
+  max-width: 600px;
 }
 
-main * { text-align: left; }
+header h1,
+header h3 {
+  font-family: "Shadows Into Light Two";
+  position: relative;
+  z-index: 3;
+}
 
-footer { margin: 1em; }
+main * {
+  text-align: left;
+}
 
-a, a:visited { color: #D0D0C4; }
+footer {
+  margin: 1em;
+}
+
+a, a:visited {
+  color: #D0D0C4;
+}
 
 li {
   position: relative;
 }
 
-main ul { text-align:center; }
+main ul {
+  text-align:center;
+}
 
 li img {
   display: none;
@@ -59,8 +85,16 @@ li:hover img {
   border: 8px solid #DDD;
   cursor: pointer;
 }
+
 .card p {
   display: block;
+}
+
+.ink {
+  display: inline-block;
+  min-width: 250px;
+  max-width: 250px;
+  margin: 0.6em;
 }
 
 .ink.card p {
@@ -70,14 +104,18 @@ li:hover img {
 .ink.card p.colorbar {
   border-radius: 0 0 0 0.9em;
 }
+
 .ink .name {
   font-style: italic;
 }
+
 .ink .company {
   text-align: right;
 }
 
 section.filters {
+  font-family: "Cuprum";
+  font-size: 100%;
   text-align: center;
   background: #444;
   width: 100%;
@@ -101,4 +139,21 @@ section.filters.top-sticky {
   position: fixed;
   top: 0;
   z-index: 10;
+}
+
+
+ul.compressed {
+  text-align: left;
+  width: 300px;
+}
+ul.compressed li {
+  margin: 5px 1px;
+}
+section.previews {
+  float: right;
+}
+section.previews.expanded {
+  width: 5em;
+  background: blue;
+  height: 1000px;
 }
