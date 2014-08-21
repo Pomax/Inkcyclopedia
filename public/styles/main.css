@@ -225,3 +225,11 @@ img {
 footer {
   margin: 1em;
 }
+
+footer a, footer a:visited {
+  color: #F0F0DD;
+}
+
+footer a:hover {
+  color: #F0F0BB;
+}
