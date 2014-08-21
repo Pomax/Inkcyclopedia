@@ -12,7 +12,7 @@
 
   <body>
     <header>
-      <a href="/"><img src="inkart.png"></a>
+      <a class="logo" href="/"><img src="inkart.png"></a>
       <h1>A (tiny) encyclopedia of fountain pen inks</h1>
       <h3>A repository of —currently— <%= inks.length %> fountain pen inks</h3>
     </header>
@@ -20,11 +20,17 @@
     <% include filters.html %>
 
     <main>
-      <ul>
-      <% inks.forEach(function(ink) { %>
-        <% include swatch.html %>
-      <% }); %>
+      <div class="swatch pane">
+        <h3>Click an ink to preview it, and click the background to switch pane</h3>
+        <ul class="swatches">
+          <% inks.forEach(function(ink) { %>
+            <% include swatch.html %>
+          <% }); %>
       </ul>
+      </div><div class="preview pane">
+        <h1>no inks selected for comparing yet... go click some inks!<br>
+            And anywhere in this panel to go back to the inks.</h1>
+      </div>
     </main>
 
     <% include footer.html %>

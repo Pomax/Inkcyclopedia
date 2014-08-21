@@ -1,15 +1,173 @@
 @import "controls.css";
 
 html, body {
-  margin: 0;
-  padding: 0;
+  font-family: Helvetica, Arial;
+  font-size: 16px;
   background: #333;
   color: #FEFEF2;
-  font-family: Helvetica, Arial;
+
+  /* single page app, effectively */
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
 }
 
-h1 {
+/* ========= header ========== */
+
+header {
+  font-family: "Shadows Into Light Two";
+  text-align: center;
+  margin: 0;
+  height: 7em;
+  overflow: hidden;
+}
+
+a.logo {
+  position: absolute;
+  top: 1.5em;
+  left: 1em;
+  z-index: 1;
+}
+
+a.logo img {
+  border: none;
+  max-width: 600px;
+}
+
+header h1 {
   font-size: 250%;
+}
+
+header h1,
+header h3 {
+  position: relative;
+  z-index: 2;
+  margin: 0;
+}
+
+header h1 + h3 {
+  margin-top: 0.25em;
+}
+
+
+/* ========= filters =========== */
+
+section.filters {
+  font-family: "Cuprum";
+  font-size: 100%;
+  text-align: center;
+  background: #444;
+  width: 100%;
+  padding: 0.5em 0;
+  margin: 0;
+  box-sizing: border-box;
+
+  height: 3.5em;
+  overflow: hidden;
+}
+
+section.filters * + label {
+  margin-left: 0.5em;
+}
+
+canvas.rangepicker {
+  cursor: none;
+  line-height: 1em;
+  vertical-align: bottom;
+  margin-bottom: 1px;
+  border: 1px solid #999;
+  border-width: 1px 1px;
+}
+
+section.filters.top-sticky {
+  position: fixed;
+  top: 0;
+  z-index: 10;
+}
+
+/* ========= main fragment =========== */
+
+main {
+  position: relative;
+  height: calc(100% - 10.5em);
+  overflow: hidden;
+  width: 200%;
+  margin: 0;
+  left: 0;
+  transition: left 0.3s;
+}
+
+main.switched {
+  left: -100%;
+}
+
+main div.pane {
+  display: inline-block;
+
+  margin: 0;
+  padding: 0;
+  vertical-align:top;
+
+  position: relative;
+  height: 100%;
+  width: 50%;
+  overflow: auto;
+}
+
+.swatch.pane .swatches {
+  text-align: center;
+}
+
+.swatch.pane {
+  background: url('/arrow-right.svg');
+}
+
+.swatch.pane h3 {
+  font-family: "Shadows Into Light Two";
+  text-align: center;
+}
+
+.preview.pane {
+  background: url('/arrow-left.svg');
+}
+
+.preview.pane h1 {
+  font-family: "Shadows Into Light Two";
+  text-align: center;
+  position: relative;
+  top: 30%;
+  color: #DDD;
+}
+
+.preview.pane img {
+  display: block;
+  margin-left: 40px;
+  max-width: calc(100% - 40px);
+  max-height: 150px;
+  cursor: pointer;
+}
+
+/* ========= swatch list =========== */
+
+li {
+  position: relative;
+}
+
+li.previewing {
+  color: white!important;
+}
+
+li img {
+  display: none;
+  border: none;
+  position: absolute;
+  bottom:; 1em;
+  cursor: pointer;
+}
+
+li:hover img {
+  display: block;
 }
 
 img, span {
@@ -24,57 +182,6 @@ span {
 
 img {
   border: 1px solid black;
-}
-
-header, main {
-  text-align: center;
-}
-
-header img {
-  border: none;
-  position: absolute;
-  top: 1.5em;
-  left: 1em;
-  max-width: 600px;
-}
-
-header h1,
-header h3 {
-  font-family: "Shadows Into Light Two";
-  position: relative;
-  z-index: 3;
-}
-
-main * {
-  text-align: left;
-}
-
-footer {
-  margin: 1em;
-}
-
-a, a:visited {
-  color: #D0D0C4;
-}
-
-li {
-  position: relative;
-}
-
-main ul {
-  text-align:center;
-}
-
-li img {
-  display: none;
-  border: none;
-  position: absolute;
-  bottom:; 1em;
-  cursor: pointer;
-}
-
-li:hover img {
-  display: block;
 }
 
 .card {
@@ -113,47 +220,8 @@ li:hover img {
   text-align: right;
 }
 
-section.filters {
-  font-family: "Cuprum";
-  font-size: 100%;
-  text-align: center;
-  background: #444;
-  width: 100%;
-  padding: 0.5em 0;
-}
+/* ============= footer ============== */
 
-section.filters * + label {
-  margin-left: 0.5em;
-}
-
-canvas.rangepicker {
-  cursor: none;
-  line-height: 1em;
-  vertical-align: bottom;
-  margin-bottom: 1px;
-  border: 1px solid #999;
-  border-width: 1px 1px;
-}
-
-section.filters.top-sticky {
-  position: fixed;
-  top: 0;
-  z-index: 10;
-}
-
-
-ul.compressed {
-  text-align: left;
-  width: 300px;
-}
-ul.compressed li {
-  margin: 5px 1px;
-}
-section.previews {
-  float: right;
-}
-section.previews.expanded {
-  width: 5em;
-  background: blue;
-  height: 1000px;
+footer {
+  margin: 1em;
 }
