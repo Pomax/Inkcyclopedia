@@ -1,7 +1,7 @@
 Inkcyclopedia
 =============
 
-A [tiny representation of the vast world of fountain pen inks](http://flickr.nihongoresources.com:1234/). Or -really- just "inks". Except Indian Black Ink, which is made with all manner of heavy pigments and ingredients that would destroy a fountain pen in pretty much less than a minute (that's not even a joke).
+A [tiny representation of the vast world of fountain pen inks](http://inkcyclopedia.org). Or -really- just "inks". Except Indian Black Ink, which is made with all manner of heavy pigments and ingredients that would destroy a fountain pen in pretty much less than a minute (that's not even a joke).
 
 Why?
 ----
