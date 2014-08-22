@@ -1,0 +1,71 @@
+/* ========= swatch list =========== */
+
+li {
+  position: relative;
+}
+
+li.previewing {
+  color: white!important;
+}
+
+li img {
+  display: none;
+  border: none;
+  position: absolute;
+  bottom:; 1em;
+  cursor: pointer;
+}
+
+li:hover img {
+  display: block;
+}
+
+img, span {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+span {
+  height: 20px;
+  width: 100%;
+}
+
+img {
+  border: 1px solid black;
+}
+
+.card {
+  background: #DDD;
+  border-radius: 1em 1em 0 1em;
+  border: 1px solid black;
+  color: inherit;
+  border: 8px solid #DDD;
+  cursor: pointer;
+}
+
+.card p {
+  display: block;
+}
+
+.ink {
+  display: inline-block;
+  min-width: 250px;
+  max-width: 250px;
+  margin: 0.6em;
+}
+
+.ink.card p {
+  margin: 0.2em 0 0 0;
+}
+
+.ink.card p.colorbar {
+  border-radius: 0 0 0 0.9em;
+}
+
+.ink .name {
+  font-style: italic;
+}
+
+.ink .company {
+  text-align: right;
+}
