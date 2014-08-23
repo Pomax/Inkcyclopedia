@@ -1,56 +1,34 @@
 var main = document.querySelector("main");
 
 /**
- * ..
+ * ink successfully uploaded
  */
 function success(total) {
   alert("fragment" + (total>1?"s":"") + " uploaded.");
 }
 
 /**
- * ..
+ * ink upload failed
  */
 function failure(err) {
   alert("upload failed.", err);
 }
 
 /**
- * ..
+ * set the visibly dominant color for an ink sample
  */
-function processAndSubmit(postObject, total) {
-  var xhr = new XMLHttpRequest();
-  xhr.open("POST", "submit", true);
-  xhr.setRequestHeader("Content-Type","application/json");
-  xhr.onreadystatechange = function() {
-    if (xhr.status >= 400) {
-      xhr.onreadystatechange = function(){};
-      failure(new Error({
-        status: xhr.status,
-        readyState: xhr.readyState
-      }));
-    }
-    if (xhr.status === 200 && xhr.readyState === 4) {
-      xhr.onreadystatechange = function(){};
-      success(total);
-    }
-  };
-  xhr.send(JSON.stringify({ samples: postObject }));
-}
-
-/**
- *
- */
-function setColor(idx, rgb, color, img) {
+function setColor(idx, rgb, color) {
   var d = main.querySelector(".s"+idx);
   d.querySelector("input.dominant").value = rgb.join(',');
   d.querySelector("label.dominant").style.background = color;
-  img.style.border = "10px solid "+color;
-  img.style.borderWidth = "10px 0";
+  var img = d.querySelector(".imagecontainer canvas");
+  img.style.borderColor = color;
+  img.classList.add("bordered");
 }
 
 /**
- * Figure out the dominant colour
- * see https://github.com/leeoniya/RgbQuant.js
+ * Figure out the dominant color use the color quantizer at
+ * https://github.com/leeoniya/RgbQuant.js
  */
 function quantize(c, p, idx, total) {
   var img = new Image();
@@ -90,9 +68,15 @@ function quantize(c, p, idx, total) {
     }
   };
   img.src = c.toDataURL("image/png");
-  return img;
+  return {
+    img: img,
+    canvas: c
+  };
 }
 
+/**
+ * generate a single ink sample's HTML skeleton
+ */
 function getTemplate(idx) {
   var div = document.createElement("div");
   div.classList.add("sample");
@@ -102,17 +86,18 @@ function getTemplate(idx) {
   '  <label>Ink name:</label><input class="inkname" type="text">',
   '  <label class="dominant">&nbsp;&nbsp;&nbsp;&nbsp;</label>',
   '  <input class="dominant" type="hidden">',
+  '  <span class="crop"></span>',
   '  <hr>',
   '  <p class="colors">Dominant color information for this image (click one to override the best-estimated dominant color): </p>',
   '  <hr>',
-  '  <img style="display:hidden;">',
+  '  <div class="imagecontainer"><img style="display:hidden;"></div>',
   '  <hr>'
   ].join('\n');
   return div;
 };
 
 /**
- *
+ * build a template with the correct sequence information
  */
 function buildFragment(idx) {
   var container = getTemplate(idx);
@@ -121,17 +106,92 @@ function buildFragment(idx) {
 }
 
 /**
- * do color quantization to find the most important color
+ * add a cropping box
  */
-function performAnalysis(container, c, idx, total) {
-  var p = container.querySelector("p.colors");
-  var img = quantize(c, p, idx, total);
-  var target = container.querySelector("img");
-  container.replaceChild(img, target);
+function addCropBox(container, result) {
+  var c = result.canvas;
+  var ctx = c.getContext("2d");
+  // we need to compensate for CSS scaling!
+  var dims = c.getBoundingClientRect();
+  var fw = c.width/dims.width;
+  var fh = c.height/dims.height;
+  // set up the cropping functionality
+  var sx, sy, ex, ey;
+  var recording = false;
+  c.addEventListener("mousedown", function(e) {
+    recording = true;
+    sx = e.offsetX * fw;
+    sy = e.offsetY * fh - (c.classList.contains("bordered") ? 10 : 0);
+  });
+  c.addEventListener("mousemove", function(e) {
+    if(recording) {
+      e.stopPropagation();
+      e.preventDefault();
+      ex = e.offsetX * fw;
+      ey = e.offsetY * fh - (c.classList.contains("bordered") ? 10 : 0);
+      c.width = c.width;
+      ctx.drawImage(result.img,0,0);
+      ctx.fillStyle = "rgba(255,255,255,0.3)";
+      ctx.fillRect(sx,sy,ex-sx,ey-sy);
+      ctx.strokeStyle = "black"
+      ctx.strokeRect(sx,sy,ex-sx,ey-sy);
+      return false;
+    }
+  });
+  c.addEventListener("mouseup", function(e) {
+    recording = false;
+    // build crop image
+    c.width = c.width;
+    ctx.drawImage(result.img,0,0);
+    var cropcanvas = document.createElement("canvas");
+    cropcanvas.width = ex - sx;
+    cropcanvas.height = ey - sy;
+    var cropctx = cropcanvas.getContext("2d");
+    cropctx.drawImage(result.img, -sx, -sy);
+    // show crop
+    var cregion = container.querySelector(".crop");
+    cregion.innerHTML ="";
+    cregion.appendChild(cropcanvas);
+  });
 }
 
 /**
- *
+ * perform color analysis on the submitted image
+ */
+function performAnalysis(container, c, idx, total) {
+  var p = container.querySelector("p.colors");
+  var result = quantize(c, p, idx, total);
+  var target = container.querySelector("img");
+  target.parentNode.replaceChild(result.canvas, target);
+  addCropBox(container, result);
+}
+
+/**
+ * post the ink data to the server. The postObject is sent
+ * as an array of inks.
+ */
+function processAndSubmit(postObject, total) {
+  var xhr = new XMLHttpRequest();
+  xhr.open("POST", "submit", true);
+  xhr.setRequestHeader("Content-Type","application/json");
+  xhr.onreadystatechange = function() {
+    if (xhr.status >= 400) {
+      xhr.onreadystatechange = function(){};
+      failure(new Error({
+        status: xhr.status,
+        readyState: xhr.readyState
+      }));
+    }
+    if (xhr.status === 200 && xhr.readyState === 4) {
+      xhr.onreadystatechange = function(){};
+      success(total);
+    }
+  };
+  xhr.send(JSON.stringify({ samples: postObject }));
+}
+
+/**
+ * add a "publish" button and hook it up so that it submits all samples
  */
 function setupPublishButton(total) {
   var button = document.createElement("button");
@@ -147,11 +207,11 @@ function setupPublishButton(total) {
 
     for (var i=0; i<total; i++) {
       dataContainer = document.querySelector("div.s"+i);
-      img = dataContainer.querySelector("img");
-      datauri = img.src;
+      img = dataContainer.querySelector(".imagecontainer canvas");
+      datauri = img.toDataURL("image/png");
       thumburi = (function() {
         var sc = document.createElement("canvas");
-        sc.width = 125;
+        sc.width = 350;
         sc.height = img.height / (img.width/sc.width);
         var simg = new Image();
         simg.src = datauri;
@@ -159,10 +219,11 @@ function setupPublishButton(total) {
         sctx.drawImage(simg,0,0,sc.width,sc.height);
         return sc.toDataURL("image/png");
       }());
-      
+
       postObject.push({
         datauri: datauri,
         thumburi: thumburi,
+        cropuri: dataContainer.querySelector("span.crop canvas").toDataURL("image/png"),
         company: dataContainer.querySelector("input.company").value.trim(),
         inkname: dataContainer.querySelector("input.inkname").value.trim(),
         dominant: dataContainer.querySelector("input.dominant").value.trim()
@@ -175,7 +236,9 @@ function setupPublishButton(total) {
 }
 
 /**
- * ..
+ * when an image is, or multiple images are dropped onto the dropzone,
+ * load a new template for each and determine the dominant color of
+ * each dropped image.
  */
 function handleDroppedData(dataURI, idx, total) {
   if(idx===0) { main.innerHTML = ""; }

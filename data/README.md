@@ -1,1 +1,0 @@
-This directory contains ink profiles in JSON format.
