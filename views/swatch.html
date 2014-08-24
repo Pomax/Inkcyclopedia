@@ -4,5 +4,8 @@
     data-hue="<%= ink.dominant.hsl.H %>">
   <p class="company <%= ink.company.replace(/\W/g,'-') %>"><%= ink.company %></p>
   <p class="name <%= ink.inkname.replace(/\W/g,'-') %>"><%= ink.inkname %></p>
-  <p class="crop"><img src="inks/images/<%= ink.id %>/crop.png"></p>
+  <p class="colorpoint"><%= color %></p>
+  <p class="crop">
+    <img src="inks/images/<%= ink.id %>/crop.png" onclick="loadImage('<%= ink.id %>', '<%= color %>')">
+  </p>
 </li>

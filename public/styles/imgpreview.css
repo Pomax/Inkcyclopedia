@@ -1,0 +1,18 @@
+.underlay {
+  background: rgba(0,0,0,0.4);
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  z-index: 10;
+}
+
+.underlay img {
+  position: absolute;
+  top: 30%;
+  left: 0;
+  border: 10px solid;
+  max-width: calc(100% - 20px);
+}

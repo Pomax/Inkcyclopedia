@@ -18,3 +18,7 @@
   border: 2px solid red;
   margin: -1px;
 }
+
+.noscroll {
+  overflow: hidden!important;
+}

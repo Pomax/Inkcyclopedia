@@ -1,4 +1,4 @@
-/* ========= swatch list =========== */
+@import "imgpreview.css";
 
 ul.swatches li {
   position: relative;
@@ -9,12 +9,12 @@ ul.swatches .ink.card {
   border: 1px solid white;
   border-radius: 1em;
   color: inherit;
-  cursor: pointer;
   display: inline-block;
   min-width: 250px;
   max-width: 250px;
   height: 100px;
   margin: 0.6em;
+  cursor: default;
   box-sizing: border-box;
 }
 
@@ -34,6 +34,7 @@ ul.swatches .ink.card p.crop img {
   right: -4px;
   width: 40px;
   height: 40px;
+  cursor: pointer;
 }
 
 ul.swatches .ink.card .company {
@@ -51,3 +52,13 @@ ul.swatches .ink.card .name {
   right: calc(40px + 0.5em);
 }
 
+ul.swatches .ink.card .colorpoint {
+  color: transparent;
+  font-family: Cuprum;
+}
+
+/*
+ul.swatches .ink.card:hover .colorpoint {
+  color: rgba(255,255,255,0.1);
+}
+*/
