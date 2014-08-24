@@ -1,12 +1,8 @@
-<% var color = "rgb(" + ink.dominant.r + "," + ink.dominant.g + "," + ink.dominant.b + ")" %>
+<% var color = "rgb(" + ink.dominant.rgb.r + "," + ink.dominant.rgb.g + "," + ink.dominant.rgb.b + ")" %>
 <li class="ink card"
-    style="color: <%= color %>;"
-    data-hue="<%= ink.dominant.hsl.H %>"
-    onclick="loadImage(this, 'images/<%= ink.id %>', '<%= color %>')">
-
-  <p class="name <%= ink.inkname.replace(/\W/g,'-') %>"><em><%= ink.inkname %></em></p>
+    style="background: <%= color %>;"
+    data-hue="<%= ink.dominant.hsl.H %>">
   <p class="company <%= ink.company.replace(/\W/g,'-') %>"><%= ink.company %></p>
-  <!-- <img src="<%= ink.thumburi %>" width=200 height=20 onclick="loadImage('images/<%= ink.id %>', '<%= color %>')"> -->
-  <p class="colorbar" style="background: <%= color %>">&nbsp;</p>
-
+  <p class="name <%= ink.inkname.replace(/\W/g,'-') %>"><%= ink.inkname %></p>
+  <p class="crop"><img src="inks/images/<%= ink.id %>/crop.png"></p>
 </li>

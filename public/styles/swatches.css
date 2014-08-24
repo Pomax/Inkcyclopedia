@@ -1,71 +1,53 @@
 /* ========= swatch list =========== */
 
-li {
+ul.swatches li {
   position: relative;
 }
 
-li.previewing {
-  color: white!important;
-}
-
-li img {
-  display: none;
-  border: none;
-  position: absolute;
-  bottom:; 1em;
-  cursor: pointer;
-}
-
-li:hover img {
-  display: block;
-}
-
-img, span {
-  display: inline-block;
-  vertical-align: middle;
-}
-
-span {
-  height: 20px;
-  width: 100%;
-}
-
-img {
-  border: 1px solid black;
-}
-
-.card {
+ul.swatches .ink.card {
   background: #DDD;
-  border-radius: 1em 1em 0 1em;
-  border: 1px solid black;
+  border: 1px solid white;
+  border-radius: 1em;
   color: inherit;
-  border: 8px solid #DDD;
   cursor: pointer;
-}
-
-.card p {
-  display: block;
-}
-
-.ink {
   display: inline-block;
   min-width: 250px;
   max-width: 250px;
+  height: 100px;
   margin: 0.6em;
+  box-sizing: border-box;
 }
 
-.ink.card p {
-  margin: 0.2em 0 0 0;
+ul.swatches .ink.card p {
+  display: block;
+  margin: 0;
+  color: white;
 }
 
-.ink.card p.colorbar {
-  border-radius: 0 0 0 0.9em;
+ul.swatches .ink.card p.crop img {
+  position: absolute;
+  border: solid white;
+  border-width: 1px 0 0 1px;
+  border-radius: 1em 0 1em 0;
+  box-shadow: 0px 0px 5px 3px #333;
+  top: 58px;
+  right: -1px;
+  width: 40px;
+  height: 40px;
 }
 
-.ink .name {
-  font-style: italic;
+ul.swatches .ink.card .company {
+  text-align: left;
+  padding-left: 0.5em;
+  font-family: "Shadows Into Light Two";
+  font-size: 120%;
+  line-height: 200%;
 }
 
-.ink .company {
-  text-align: right;
+ul.swatches .ink.card .name {
+  font-family: Cuprum;
+  position: absolute;
+  bottom: 0.2em;
+  right: calc(40px + 0.5em);
 }
+
