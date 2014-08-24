@@ -11,11 +11,7 @@
   </head>
 
   <body>
-    <header>
-      <a class="logo" href="/"><img src="inkart.png"></a>
-      <h1>A (tiny) encyclopedia of fountain pen inks</h1>
-      <h3>A repository of —currently— <%= inks.length %> fountain pen inks</h3>
-    </header>
+    <% include header.html %>
 
     <% include filters.html %>
 
@@ -34,6 +30,7 @@
   <scripts>
     <script src="javascript/mainfilter.js"></script>
     <script src="javascript/imgloader.js"></script>
+    <script src="javascript/paletteloader.js"></script>
   </scripts>
 
 </html>

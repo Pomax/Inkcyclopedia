@@ -31,4 +31,65 @@ header h3 {
 
 header h1 + h3 {
   margin-top: 0.25em;
+  display: inline-block;
+}
+
+header div.mainheader {
+  display: block;
+}
+
+header div.palette {
+  display: none;
+}
+
+header.palette div.mainheader {
+  display: none;
+}
+
+header.palette div.palette {
+  position: relative;
+  padding-top: 2em;
+  height: 5em;
+
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -o-flex;
+  display: -ms-flex;
+  display: flex;
+}
+
+header.palette div.palette h1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 5em;
+}
+
+
+div.palette-swatch {
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -o-flex;
+  display: -ms-flex;
+  display: flex;
+
+  height: 100%;
+
+  -webkit-flex: 1;
+  -moz-flex: 1;
+  flex: 1;
+
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  -ms-user-select: none;
+  -user-select: none;
+
+  box-sizing: border-box;
+  border-bottom: 1px solid black;
+}
+
+div.palette-swatch + div.palette-swatch {
+  border-left: 1px solid #000;
 }
