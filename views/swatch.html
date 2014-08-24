@@ -1,7 +1,9 @@
 <% var color = "rgb(" + ink.dominant.rgb.r + "," + ink.dominant.rgb.g + "," + ink.dominant.rgb.b + ")" %>
 <li class="ink card"
     style="background: <%= color %>;"
-    data-hue="<%= ink.dominant.hsl.H %>">
+    data-hue="<%= ink.dominant.hsl.H %>"
+    data-color="<%= color %>"
+    onclick="addToPalette(this)">
   <p class="company <%= ink.company.replace(/\W/g,'-') %>"><%= ink.company %></p>
   <p class="name <%= ink.inkname.replace(/\W/g,'-') %>"><%= ink.inkname %></p>
   <p class="colorpoint"><%= color %></p>
