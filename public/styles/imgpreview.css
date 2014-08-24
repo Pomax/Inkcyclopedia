@@ -16,3 +16,10 @@
   border: 10px solid;
   max-width: calc(100% - 20px);
 }
+
+.underlay .loading {
+  position:absolute;
+  left: calc(50% - 16px);
+  top:  calc(50% - 16px);
+  border: none;
+}
