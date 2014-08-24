@@ -5,7 +5,7 @@ main {
   position: relative;
   height: calc(100% - 10.5em);
   overflow: hidden;
-  width: 200%;
+  width: 100%;
   margin: 0;
   left: 0;
   transition: left 0.3s;
@@ -24,7 +24,7 @@ main div.pane {
 
   position: relative;
   height: 100%;
-  width: 50%;
+  width: 100%;
   overflow: auto;
 }
 
@@ -39,24 +39,4 @@ main div.pane {
 .swatch.pane h3 {
   font-family: "Shadows Into Light Two";
   text-align: center;
-}
-
-.preview.pane {
-  background: url('/arrow-left.svg');
-}
-
-.preview.pane h1 {
-  font-family: "Shadows Into Light Two";
-  text-align: center;
-  position: relative;
-  top: 30%;
-  color: #DDD;
-}
-
-.preview.pane img {
-  display: block;
-  margin-left: 40px;
-  max-width: calc(100% - 40px);
-  max-height: 150px;
-  cursor: pointer;
 }
