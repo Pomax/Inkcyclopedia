@@ -1,20 +1,6 @@
 var main = document.querySelector("main");
 
 /**
- * ink successfully uploaded
- */
-function success(total) {
-  alert("fragment" + (total>1?"s":"") + " uploaded.");
-}
-
-/**
- * ink upload failed
- */
-function failure(err) {
-  alert("upload failed.", err);
-}
-
-/**
  * set the visibly dominant color for an ink sample
  */
 function setColor(idx, rgb, color) {
@@ -171,23 +157,8 @@ function performAnalysis(container, c, idx, total) {
  * as an array of inks.
  */
 function processAndSubmit(postObject, total) {
-  var xhr = new XMLHttpRequest();
-  xhr.open("POST", "submit", true);
-  xhr.setRequestHeader("Content-Type","application/json");
-  xhr.onreadystatechange = function() {
-    if (xhr.status >= 400) {
-      xhr.onreadystatechange = function(){};
-      failure(new Error({
-        status: xhr.status,
-        readyState: xhr.readyState
-      }));
-    }
-    if (xhr.status === 200 && xhr.readyState === 4) {
-      xhr.onreadystatechange = function(){};
-      success(total);
-    }
-  };
-  xhr.send(JSON.stringify({ samples: postObject }));
+  alert("Unfortunately, public submissions on inkcyclopedia.org are\n"+
+        "disabled while the site is still in pre-release development.");
 }
 
 /**
