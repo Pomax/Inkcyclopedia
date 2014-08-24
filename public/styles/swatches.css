@@ -27,11 +27,11 @@ ul.swatches .ink.card p {
 ul.swatches .ink.card p.crop img {
   position: absolute;
   border: solid white;
-  border-width: 1px 0 0 1px;
+  border-width: 1px;
   border-radius: 1em 0 1em 0;
   box-shadow: 0px 0px 5px 3px #333;
-  top: 58px;
-  right: -1px;
+  top: 60px;
+  right: -4px;
   width: 40px;
   height: 40px;
 }
