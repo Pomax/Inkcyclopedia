@@ -57,8 +57,10 @@ ul.swatches .ink.card .colorpoint {
   font-family: Cuprum;
 }
 
-/*
-ul.swatches .ink.card:hover .colorpoint {
-  color: rgba(255,255,255,0.1);
+ul.swatches .ink.card.palette-swatch {
+  box-shadow: 0px 0px 15px 3px white;
 }
-*/
+
+ul.swatches .ink.card p.crop img:hover {
+  box-shadow: 0px 0px 21px 0px white!important;
+}

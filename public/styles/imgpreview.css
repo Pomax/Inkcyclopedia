@@ -9,12 +9,30 @@
   z-index: 10;
 }
 
+.underlay.palette {
+  position: absolute;
+  overflow: auto;
+  box-sizing: border-box;
+  padding: 10%;
+}
+
 .underlay img {
   position: absolute;
   top: 30%;
   left: 0;
   border: 10px solid;
   max-width: calc(100% - 20px);
+}
+
+.underlay img.preview-all {
+  position: relative;
+  max-width: calc(100% - 20px);
+  top: 0;
+  left: 0;
+}
+
+.underlay img.preview-all + img.preview-all {
+  margin-top: 0;
 }
 
 .underlay .loading {
