@@ -14,7 +14,7 @@ ul.swatches .ink.card {
   max-width: 250px;
   height: 100px;
   margin: 0.6em;
-  cursor: default;
+  cursor: pointer;
   box-sizing: border-box;
 }
 
@@ -34,7 +34,11 @@ ul.swatches .ink.card p.crop img {
   right: -4px;
   width: 40px;
   height: 40px;
-  cursor: pointer;
+  cursor: -webkit-zoom-in;
+  cursor: -moz-zoom-in;
+  cursor: -o-zoom-in;
+  cursor: -ms-zoom-in;
+  cursor: zoom-in;
 }
 
 ul.swatches .ink.card .company {
@@ -44,6 +48,12 @@ ul.swatches .ink.card .company {
   font-size: 120%;
   line-height: 200%;
 }
+
+ul.swatches .ink.card .company a {
+  color: white;
+  text-decoration: none;
+}
+
 
 ul.swatches .ink.card .name {
   font-family: Cuprum;
