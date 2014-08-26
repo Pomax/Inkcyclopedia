@@ -100,16 +100,16 @@ div.palette-swatch + div.palette-swatch {
 
 div.palette-swatch img {
   position: relative;
-  width: 20px;
-  left: calc(50% - 10px);
-  height: 50px;
-  top: calc(50% - 25px);
+  width: 32px;
+  left: calc(50% - 16px);
+  height: 32px;
+  top: calc(50% - 9px);
   border: 1px solid white;
-  border-radius: 2em;
+  border-radius: 0.5em 0 0.5em 0;
 }
 
 div.palette-swatch img.highlight {
-  box-shadow: 0px 0px 21px 0px white!important;
+  box-shadow: 0px 0px 10px 0px white!important;
   cursor: -webkit-zoom-in;
   cursor: -moz-zoom-in;
   cursor: -o-zoom-in;
