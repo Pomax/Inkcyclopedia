@@ -9,6 +9,7 @@ function setStyle(e, s) {
 
 function clearSelection() {
   Array.prototype.forEach.call(palette.querySelectorAll("div"), function(d) {
+    d.item.classList.remove("palette-swatch");
     palette.removeChild(d);
   });
   header.classList.remove("palette");
@@ -55,6 +56,7 @@ function buildPaletteSwatch(li, color) {
   var div = document.createElement("div");
   div.classList.add("palette-swatch");
   div.style.background = color;
+  div.item = li;
 
   var img = new Image();
   img.src = li.querySelector(".crop img").src;
