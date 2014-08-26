@@ -7,6 +7,13 @@ function setStyle(e, s) {
   });
 }
 
+function clearSelection() {
+  Array.prototype.forEach.call(palette.querySelectorAll("div"), function(d) {
+    palette.removeChild(d);
+  });
+  header.classList.remove("palette");
+}
+
 function showAllSamples() {
   var srcs = Array.prototype.map.call(palette.querySelectorAll("img"), function(i) {
     var img = new Image();
