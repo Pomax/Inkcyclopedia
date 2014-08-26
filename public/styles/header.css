@@ -116,3 +116,17 @@ div.palette-swatch img.highlight {
   cursor: -ms-zoom-in;
   cursor: zoom-in;
 }
+
+button.reset {
+  border: none;
+  background: transparent;
+  color: white;
+  font-family: "Shadows Into Light Two";
+  cursor: pointer;
+  font-size: 70%;
+  line-height: 115%;
+  position: relative;
+  left: 3em;
+  margin-left: -2em;
+
+}
