@@ -1,10 +1,11 @@
 var inks = require('../lib/inks');
+var vendors = require('../lib/vendors');
 var submit = require('../lib/submit');
 var edit = require('../lib/edit');
 
 module.exports = {
   setup: function(app) {
-    app.get('/', inks.load, this.main);
+    app.get('/', inks.load, vendors.load, this.main);
 
     app.get('/submit', this.submit);
     app.post('/submit', submit.process, this.postSubmission);
