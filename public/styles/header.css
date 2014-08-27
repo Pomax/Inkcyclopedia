@@ -42,6 +42,11 @@ header div.palette {
   display: none;
 }
 
+header.palette {
+  background: #666;
+  box-shadow: inset 0px -100px 200px -100px white
+}
+
 header.palette div.mainheader {
   display: none;
 }

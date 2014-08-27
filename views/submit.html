@@ -3,27 +3,53 @@
 
   <head>
     <meta charset="utf-8">
-    <title>Extremely simple ink fragment uploader</title>
-    <link rel="stylesheet" href="styles/dnd.css">
+    <title>Inkcyclopedia</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/submit.css">
+    <link href='http://fonts.googleapis.com/css?family=Shadows+Into+Light+Two' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Cuprum' rel='stylesheet' type='text/css'>
   </head>
 
   <body>
-    <h1>Extremely simple ink fragment uploader</h1>
+    <% include header.html %>
 
-    <div class="drag-and-drop">drag-and-drop your images here.</div>
-    <hr>
+    <div class="drag-and-drop">
+      Sample submission: drag-and-drop your images here (in this div), then fill in the required data for each sample.
+      A sample will require a representative crop, which is a rectagular area with enough ink to show off what it looks like.
+      Simply click-drag on the image and you try as many times as you like.
+    </div>
 
     <main>
     </main>
 
-    <footer><a href="/">back to the main page</a></footer>
+    <footer>
+      <a href="/">back to the main page</a>
+      —
+      Note: inkcyclopedia is still in beta.
+      <a href="http://github.com/Pomax/Inkcyclopedia/issues">That means something</a>.
+    </footer>
   </body>
+
+  <script type="html/template">
+    <div class="main-data">
+      <label>Company:</label><input class="company" type="text">
+      <label>Ink name:</label><input class="inkname" type="text">
+      Estimated color:
+      <label class="dominant">&nbsp;&nbsp;&nbsp;&nbsp;</label>
+      <input class="dominant" type="hidden">
+      Crop:
+      <span class="crop"><em>Please click-drag a representative crop on the sample</em></span>
+    </div>
+    <p class="colors">Found image colors (click any to override the estimated dominant color): </p>
+    <div class="imagecontainer"><img style="display:hidden;"></div>
+  </script>
 
   <scripts>
     <script src="javascript/jpg.js"></script>
     <script src="javascript/rgbquant.js"></script>
     <script src="javascript/RGBAnalyse.js"></script>
-    <script src="javascript/draganddrop.js"></script>  
+    <script src="javascript/draganddrop.js"></script>
     <script src="javascript/submit.js"></script>
   </scripts>
 

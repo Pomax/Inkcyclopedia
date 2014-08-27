@@ -4,14 +4,14 @@ var main = document.querySelector("main");
  * ink successfully uploaded
  */
 function success(total) {
-  alert("fragment" + (total>1?"s":"") + " uploaded.");
+  alert("Sample" + (total>1?"s":"") + " submitted. Once verified, it'll show up on the site.\nUntil then, it's listed on http://inkcyclopedia.org/unverified");
 }
 
 /**
  * ink upload failed
  */
 function failure(err) {
-  alert("upload failed.", err);
+  alert("Sample submission failed. For now, please refer to your\ndev tools console and network tab to find out why.");
 }
 
 /**
@@ -78,21 +78,11 @@ function quantize(c, p, idx, total) {
  * generate a single ink sample's HTML skeleton
  */
 function getTemplate(idx) {
+  var template = document.querySelector("script[type='html/template']");
   var div = document.createElement("div");
   div.classList.add("sample");
   div.classList.add("s"+idx);
-  div.innerHTML = [
-  '  <label>Company:</label><input class="company" type="text">',
-  '  <label>Ink name:</label><input class="inkname" type="text">',
-  '  <label class="dominant">&nbsp;&nbsp;&nbsp;&nbsp;</label>',
-  '  <input class="dominant" type="hidden">',
-  '  <span class="crop"></span>',
-  '  <hr>',
-  '  <p class="colors">Dominant color information for this image (click one to override the best-estimated dominant color): </p>',
-  '  <hr>',
-  '  <div class="imagecontainer"><img style="display:hidden;"></div>',
-  '  <hr>'
-  ].join('\n');
+  div.innerHTML = template.innerHTML;
   return div;
 };
 

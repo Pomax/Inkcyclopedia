@@ -30,3 +30,13 @@ section.filters.top-sticky {
   top: 0;
   z-index: 10;
 }
+
+a.submission {
+  background: white;
+  border-width: 1px;
+  margin: 0 1em;
+  vertical-align: middle;
+  padding: 2px 8px;
+  border-radius: 2px;
+  text-decoration: none;
+}

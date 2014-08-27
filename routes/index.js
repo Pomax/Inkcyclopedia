@@ -6,8 +6,12 @@ var edit = require('../lib/edit');
 module.exports = {
   setup: function(app) {
     app.get('/', inks.load, vendors.load, this.main);
+    app.get('/unverified', function(req, res, next) {
+      res.locals.showUnverified = true;
+      next();
+    }, inks.load, vendors.load, this.main);
 
-    app.get('/submit', this.submit);
+    app.get('/submit', inks.load, this.submit);
     app.post('/submit', submit.process, this.postSubmission);
 
     app.get('/edit', this.edit);
@@ -17,10 +21,17 @@ module.exports = {
       req.params.inkid = inkid;
       next();
     });
+
+    app.use(function(err, req, res, next){
+      res.status(err.status).json(err);
+    });
   },
 
   main: function(req, res) {
     res.setHeader('Cache-Control', 'no-cache');
+    if (!res.locals.showUnverified) {
+      res.locals.showUnverified = false;
+    }
     res.render('main.html');
   },
 

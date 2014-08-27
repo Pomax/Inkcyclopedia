@@ -1,0 +1,114 @@
+.drag-and-drop {
+  position: relative;
+  display: block;
+  background: #444;
+  border: 1px solid black;
+  border-width: 1px 0;
+  height: 4em;
+  text-align: center;
+  font-family: Cuprum;
+  font-size: 110%;
+  margin-top: 1em;
+  padding-top: 1em;
+}
+
+.hover {
+  background: #666;
+}
+
+main {
+  overflow-y: auto;
+  height: calc(100% - 17em);
+  width: 100%;
+}
+
+
+div.sample {
+  overflow: hidden;
+  background: #444;
+  display: block;
+  margin: 1em;
+  padding: 1em;
+  border: 1px solid white;
+  border-radius: 1em;
+}
+
+div.sample div.main-data, p.colors {
+  margin-bottom: 1em;
+}
+
+p {
+  margin: 0; padding: 0;
+}
+
+p + p {
+  margin-top: 1em;
+}
+
+canvas {
+  max-width: 100%;
+}
+
+.color-info {
+  display: inline-block;
+  height: 10px;
+  width: 3em;
+  vertical-align: middle;
+}
+
+footer {
+  margin: 1em;
+}
+
+a, a:visited {
+  color: #D0D0C4;
+}
+
+hr {
+  border: 1px solid #666;
+}
+
+button.publish {
+  width: 25em;
+  height: 3em;
+  background: #DDD;
+  color: #333;
+  font-family: Arial;
+  font-weight: bold;
+  border-radius: 0.4em;
+  font-size: 110%;
+  margin: 1em auto 0;
+  display: block;
+  cursor: pointer;
+  margin-bottom: 1em;
+}
+
+button.publish:hover {
+  box-shadow: 0 0 10px 0px #CCC;
+}
+
+.imagecontainer {
+  position: relative;
+}
+
+.crop canvas {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  vertical-align: -0.4em;
+}
+
+canvas.bordered {
+  border: 10px solid;
+  border-width: 10px 0;
+}
+
+footer {
+  width: 100%;
+  text-align: center;
+  border-top: 1px solid black;
+  margin: 0;
+  padding-top: 1em;
+  background: #444;
+  height: 3em;
+}

@@ -86,6 +86,10 @@ function filterHue(e) {
   var tau = Math.PI*2;
   var start = (data.start * tau/360);
   var end   = (data.end * tau/360);
+  var offset = data.offset * tau/360;
+
+  // TODO: reorder on hue slide
+
   var epsilon = (((Math.abs(start - end + tau) % tau)*100)|0) / 100;
   var endmod = end % tau;
 

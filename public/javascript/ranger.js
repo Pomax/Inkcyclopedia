@@ -31,7 +31,7 @@
     var start = document.querySelector("input.start");
     var end = document.querySelector("input.end");
 
-    var offset = parseInt(spectrum.getAttribute("data-offset"));
+    var offset = (parseInt(spectrum.getAttribute("data-offset")) + 360) % 360;
 
     var s_val = parseInt(start.value) + offset;
     if(s_val < 0) s_val += 360;
@@ -40,7 +40,11 @@
     if(e_val < 0) e_val += 360;
     if(e_val <= s_val) e_val += 360;
 
-    var result = { start: s_val, end: e_val };
+    var result = {
+      start: s_val,
+      end: e_val,
+      offset: offset
+    };
 
     document.dispatchEvent(new CustomEvent("hue-update", { detail: result }));
   }

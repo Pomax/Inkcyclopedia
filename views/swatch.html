@@ -6,16 +6,10 @@
     onclick="addToPalette(this)">
   <p class="company <%= ink.company.replace(/\W/g,'-') %>"><%= ink.company %></p>
   <p class="name <%= ink.inkname.replace(/\W/g,'-') %>"><%= ink.inkname %></p>
-  <p class="colorpoint"><%= color %></p>
+  <p class="colorpoint"><!-- <%= color %> --></p>
   <p class="crop">
     <img src="inks/images/<%= ink.id %>/crop.png"
          onclick="loadImage('<%= ink.id %>', '<%= color %>')"
          title="view sample">
   </p>
-  <!--
-  <select>
-    <option></option>
-    <option><a href="<%= findVendor(ink.company).url %>">vendor website</a></option>
-  </select>
-  -->
 </li>
