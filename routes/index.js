@@ -23,6 +23,7 @@ module.exports = {
     });
 
     app.use(function(err, req, res, next){
+      console.log(err);
       res.status(err.status).json(err);
     });
   },
