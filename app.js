@@ -1,19 +1,23 @@
-var fs = require("fs"),
-    express = require("express")
-    app = express(),
-    routes = require("./routes"),
-    bodyParser = require("body-parser");;
+// Don't bother running if we don't have a database to work with.
+require("./lib/dbase")(function(err, models) {
 
+  var fs = require("fs"),
+      express = require("express")
+      app = express(),
+      routes = require("./routes"),
+      bodyParser = require("body-parser");
 
-app.use(bodyParser.json({ limit: "100mb" }));
-app.set('views', __dirname + '/views');
-app.set('view engine', 'ejs');
-app.engine('html', require('ejs').renderFile);
-app.use(express.static(__dirname + '/public'));
+  app.disable('x-powered-by');
+  app.set('views', __dirname + '/views');
+  app.set('view engine', 'ejs');
+  app.engine('html', require('ejs').renderFile);
+  app.use(bodyParser.json({ limit: "100mb" }));
+  app.use(express.static(__dirname + '/public'));
 
+  routes.setup(app, models);
 
-routes.setup(app);
+  var server = app.listen(1234, function() {
+      console.log('Listening on port %d', server.address().port);
+  });
 
-var server = app.listen(1234, function() {
-    console.log('Listening on port %d', server.address().port);
 });
