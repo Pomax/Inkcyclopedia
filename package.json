@@ -10,6 +10,7 @@
     "habitat": "^1.1.0",
     "rgbanalyse": "^0.1.9",
     "sequelize": "^1.7.10",
-    "sqlite3": "^2.2.7"
+    "sqlite3": "^2.2.7",
+    "uuid": "^1.4.1"
   }
 }
