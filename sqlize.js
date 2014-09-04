@@ -1,15 +1,72 @@
 var uuid = require("uuid");
 var fs = require("fs-extra");
+var path = require("path");
+
+console.log("unlinking database.");
+var res = fs.unlinkSync("inkcyclopedia.sqlite");
 
 require("./lib/dbase")(function(err, models) {
+
+  var inks = (function setupInkLoader() {
+    var inks = [];
+    var inkmap = {};
+    var inkdata = {
+      /**
+       * Generally only called on startup, and when submissions take place
+       */
+      update: function(callback) {
+
+        // reload from data directory
+        fs.ensureDirSync("public/legacy/metadata");
+        fs.readdir("public/legacy/metadata", function(err, dir) {
+          var _inks = [];
+          var _inkmap = {};
+
+          dir.forEach(function(f) {
+            if(f.indexOf(".json") !== -1) {
+              var data = (function() {
+                var file = path.join(__dirname, 'public/legacy/metadata', f);
+                var fsdata = fs.readFileSync(file);
+                try {
+                  return JSON.parse(fsdata);
+                } catch (e) {
+                  console.error("error parsing "+file);
+                  return false;
+                }
+              }());
+
+              _inks.push(data);
+              _inkmap[data.id] = data;
+            }
+          });
+
+          inks = _inks;
+          inkmap = _inkmap;
+
+          if(callback) { callback(this); }
+        });
+      },
+
+      /**
+       * Alias the ink information into res.locals
+       */
+      load: function(req, res, next) {
+        res.locals.inks = inks;
+        res.locals.inkmap = inkmap;
+        next();
+      }
+    };
+
+    return inkdata;
+  }());
 
   /**
    * move images from their old location to the new location on disk
    */
   var moveImages = function(ink, image) {
-    var loc = "public/inks/images/"+ink.id;
+    var loc = "public/legacy/images/"+ink.id;
     var newloc = "public/inks/images/"+image.id;
-    fs.rename(loc, newloc);
+    fs.copySync(loc, newloc);
   };
 
   /**
@@ -37,7 +94,6 @@ require("./lib/dbase")(function(err, models) {
    * convert all the old inks to the new format
    */
   var convertInks = function(pen) {
-    var inks = require("./lib/inks");
     var req = {};
     var res = { locals: {} };
 
@@ -62,7 +118,7 @@ require("./lib/dbase")(function(err, models) {
 
           var profile = models.Profile.build({
             id: uuid.v4(),
-            inkid: ink.id,
+            inkid: newink.id,
             year: 2014,
             pigmented: false,
             fluorescent: false,

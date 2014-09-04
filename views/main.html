@@ -18,11 +18,11 @@
     <main>
       <div class="swatch pane">
         <ul class="swatches">
-          <% inks.forEach(function(ink) {
-            if (showUnverified && ink.unverified) { %>
+          <% inkdata.swatches.forEach(function(swatch) {
+            if (showUnverified && swatch.unverified) { %>
               <% include swatch.html %>
             <% } %>
-            <% if (!showUnverified && !ink.unverified) { %>
+            <% if (!showUnverified && !swatch.unverified) { %>
               <% include swatch.html %>
             <% } %>
           <% }); %>

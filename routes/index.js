@@ -1,28 +1,29 @@
-var models = false;
-
-var inks;
-var vendors = require('../lib/vendors');
-var submit = require('../lib/submit');
-var edit = require('../lib/edit');
 
 /**
  *
  */
 function setup(app, _models) {
   models = _models;
-  inks = require('../lib/inks')(models);
+  var inks = require('../lib/inks')(models);
+  var vendors = require('../lib/vendors');
+  var submit = require('../lib/submit')(models);
 
+  // main page
   app.get('/', inks.load, vendors.load, this.main);
+
+  // submission page + POST handler
+  app.get('/submit', inks.load, this.submit);
+  app.post('/submit', submit.process, this.postSubmission);
+
+  // unverified submissions page
   app.get('/unverified', function(req, res, next) {
     res.locals.showUnverified = true;
     next();
   }, inks.load, vendors.load, this.main);
 
-  app.get('/submit', inks.load, this.submit);
-  app.post('/submit', submit.process, this.postSubmission);
 
-  app.get('/edit', this.edit);
-  app.post('/edit', edit.process, this.postEdit);
+//  app.get('/edit', this.edit);
+//  app.post('/edit', edit.process, this.postEdit);
 
   app.param("inkid", function(req, res, next, inkid) {
     req.params.inkid = inkid;

@@ -4,8 +4,8 @@
   <label>filter by company:</label>
   <select onchange="filterCompany(this)">
     <option value=""></option>
-    <% Object.keys(inkmap.getCompanies()).sort().forEach(function(c) { %>
-    <option value="<%= c %>"><%= c %> (<%= inkmap.getCompanies()[c] %>)</option>
+    <% inkdata.getCompanies().forEach(function(c) { %>
+    <option value="<%= c.company %>"><%= c.company + (c.inkline?' '+c.inkline:'') %> (<%= c.count %>)</option>
   <% }) %></select>
 
   <!-- name filter is freeform. It filters while you type -->

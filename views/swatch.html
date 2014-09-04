@@ -1,18 +1,21 @@
-<% var color = "rgb(" + ink.dominant.rgb.r + "," + ink.dominant.rgb.g + "," + ink.dominant.rgb.b + ")" %>
+<% var color = "rgb(" + swatch.r + "," + swatch.g + "," + swatch.b + ")" %>
 <li class="ink card"
     style="background: <%= color %>;"
-    data-hue="<%= ink.dominant.hsl.H %>"
+    data-hue="<%= swatch.H %>"
+    data-chroma="<%= swatch.C %>"
     data-color="<%= color %>"
     onclick="addToPalette(this)">
 
-  <p class="company <%= ink.company.replace(/\W/g,'-') %>"><%= ink.company %></p>
-  <p class="name <%= ink.inkname.replace(/\W/g,'-') %>"><%= ink.inkname %></p>
-  <p class="colorpoint"><!-- <%= color %> --></p>
+  <p class="company <%= swatch.company.replace(/\W/g,'-') %>"><%= swatch.company %></p>
+  <p class="name <%= swatch.inkname.replace(/\W/g,'-') %>"><%= swatch.inkname %></p>
+  <p class="colorpoint"><%= color %></p>
 
   <p class="crop">
-    <img src="inks/images/<%= ink.id %>/crop.png"
-         onclick="loadImage('<%= ink.id %>', '<%= color %>')"
+    <% swatch.images.split(",").forEach(function(imgid, idx) { if(idx>0) return; %>
+    <img src="inks/images/<%= imgid %>/crop.png"
+         onclick="loadImage('<%= imgid %>', '<%= color %>')"
          style="background: <%= color %>"
          title="view sample">
+    <% }) %>
   </p>
 </li>
