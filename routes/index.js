@@ -1,6 +1,6 @@
 var models = false;
 
-var inks = require('../lib/inks');
+var inks;
 var vendors = require('../lib/vendors');
 var submit = require('../lib/submit');
 var edit = require('../lib/edit');
@@ -10,6 +10,7 @@ var edit = require('../lib/edit');
  */
 function setup(app, _models) {
   models = _models;
+  inks = require('../lib/inks')(models);
 
   app.get('/', inks.load, vendors.load, this.main);
   app.get('/unverified', function(req, res, next) {
@@ -25,6 +26,16 @@ function setup(app, _models) {
 
   app.param("inkid", function(req, res, next, inkid) {
     req.params.inkid = inkid;
+    next();
+  });
+
+  app.param("company", function(req, res, next, company) {
+    req.params.company = company.toLowerCase();
+    next();
+  });
+
+  app.param("inkname", function(req, res, next, inkname) {
+    req.params.inkname = company.toLowerCase();
     next();
   });
 

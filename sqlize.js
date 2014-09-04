@@ -1,32 +1,34 @@
 var uuid = require("uuid");
+var fs = require("fs-extra");
+
 require("./lib/dbase")(function(err, models) {
 
   /**
    * move images from their old location to the new location on disk
    */
   var moveImages = function(ink, image) {
-    // move to public/ink/images/imageid/[standard, ...]
-
-    // ...
-
-    // then unlink original
-
-    // ...
+    var loc = "public/inks/images/"+ink.id;
+    var newloc = "public/inks/images/"+image.id;
+    fs.copy(loc, newloc);
+    fs.unlink(loc);
   };
 
   /**
    * save and crosslink
    */
-  var save = function(image, profile, newink) {
+  var save = function(ink, image, colorprofile, profile, newink) {
     image.save().success(function() {
       console.log("saved image ", image.id);
-      moveImages(newink, image);
-      profile.images = [image.id];
-      profile.save().success(function() {
-        console.log("saved profile ", profile.id);
-        newink.profiles = [profile.id];
-        newink.save().success(function() {
-          console.log("saved", newink.company, "/", newink.inkname,"base data");
+      moveImages(ink, image);
+      colorprofile.save().success(function() {
+        profile.colorprofileid = colorprofile.id;
+        profile.images = [image.id];
+        profile.save().success(function() {
+          console.log("saved profile ", profile.id);
+          newink.profiles = [profile.id];
+          newink.save().success(function() {
+            console.log("saved", newink.company, "/", newink.inkname,"base data");
+          });
         });
       });
     });
@@ -70,7 +72,19 @@ require("./lib/dbase")(function(err, models) {
             scented: false
           });
 
-          // plain image
+          var colorprofile = models.ColorProfile.build({
+            id: uuid.v4(),
+            r: ink.dominant.rgb.r,
+            g: ink.dominant.rgb.g,
+            b: ink.dominant.rgb.b,
+            α: ink.dominant.hsl.α,
+            β: ink.dominant.hsl.β,
+            H: ink.dominant.hsl.H,
+            S: ink.dominant.hsl.S,
+            L: ink.dominant.hsl.L,
+            C: ink.dominant.hsl.C
+          });
+
           var image = models.Image.build({
             id: uuid.v4(),
             profileid: profile.id,
@@ -79,7 +93,7 @@ require("./lib/dbase")(function(err, models) {
             type: "sample"
           });
 
-          save(image, profile, newink);
+          save(ink, image, colorprofile, profile, newink);
 
         });
 
