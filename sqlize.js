@@ -9,8 +9,7 @@ require("./lib/dbase")(function(err, models) {
   var moveImages = function(ink, image) {
     var loc = "public/inks/images/"+ink.id;
     var newloc = "public/inks/images/"+image.id;
-    fs.copy(loc, newloc);
-    fs.remove(loc);
+    fs.rename(loc, newloc);
   };
 
   /**
