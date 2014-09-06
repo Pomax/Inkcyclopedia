@@ -1,0 +1,16 @@
+.persona {
+  float: right;
+  position: relative;
+  top: 1em;
+  right: 1em;
+  z-index: 99;
+  margin-left: -100%;
+}
+
+.persona .login-button { display: inline-block; }
+.persona .account-button,
+.persona .logout-button { display: none; }
+
+.logged-in .persona .login-button { display: none; }
+/* .logged-in .persona .account-button, */
+.logged-in .persona .logout-button { display: inline-block; }

@@ -91,6 +91,10 @@ button.publish {
   margin-bottom: 1em;
 }
 
+button.publish[disabled] {
+  opacity: 0.2;
+}
+
 button.publish:hover {
   box-shadow: 0 0 10px 0px #CCC;
 }

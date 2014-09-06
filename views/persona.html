@@ -1,37 +1,49 @@
-<script src="https://login.persona.org/include.js"></script>
+<div class="persona">
+  <button class="login-button">Login</button>
+  <button class="account-button">My Account</button>
+  <button class="logout-button">Logout</button>
+  <script src="https://login.persona.org/include.js"></script>
+  <script id="persona-auth">(function setupPersona(){
 
-<script id="persona-auth">
-  document.querySelector("#login").addEventListener("click", function() {
-    navigator.id.request();
-  }, false);
+    var html   = document.querySelector("html");
+    var login  = document.querySelector(".persona .login-button");
+    var logout = document.querySelector(".persona .logout-button");
 
-  document.querySelector("#logout").addEventListener("click", function() {
-    navigator.id.logout();
-  }, false);
+    document.addEventListener("persona-user-login", function(evt) {
+      var data = evt.detail;
+      html.classList.add("logged-in");
+    });
 
-  navigator.id.watch({
-    onlogin: function(assertion) {
-      var xhr = new XMLHttpRequest();
-      xhr.open("POST", "/persona/verify", true);
-      xhr.setRequestHeader("Content-Type", "application/json");
-      xhr.addEventListener("loadend", function(e) {
-        var data = JSON.parse(this.responseText);
-        if (data && data.status === "okay") {
-          console.log("You have been logged in as: " + data.email);
-        }
-      }, false);
+    document.addEventListener("persona-user-logout", function(evt) {
+      html.classList.remove("logged-in");
+    });
 
-      xhr.send(JSON.stringify({
-        assertion: assertion
-      }));
-    },
-    onlogout: function() {
-      var xhr = new XMLHttpRequest();
-      xhr.open("POST", "/persona/logout", true);
-      xhr.addEventListener("loadend", function(e) {
-        console.log("You have been logged out");
-      });
-      xhr.send();
-    }
-  });
-</script>
+    login.addEventListener("click", function() { navigator.id.request(); });
+    logout.addEventListener("click", function() { navigator.id.logout(); });
+
+    navigator.id.watch({
+      onlogin: function(assertion) {
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "/persona/verify", true);
+        xhr.setRequestHeader("Content-Type", "application/json");
+        xhr.addEventListener("loadend", function(e) {
+          var data = JSON.parse(this.responseText);
+          if (data && data.status === "okay") {
+            document.dispatchEvent(new CustomEvent("persona-user-login", { detail: data }));
+          }
+        });
+        xhr.send(JSON.stringify({ assertion: assertion }));
+      },
+      onlogout: function() {
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "/persona/logout", true);
+        xhr.addEventListener("loadend", function(e) {
+          document.dispatchEvent(new CustomEvent("persona-user-logout"));
+        });
+        xhr.send();
+      }
+    });
+
+  }());</script>
+
+</div>

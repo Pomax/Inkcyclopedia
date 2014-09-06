@@ -197,7 +197,25 @@ function processAndSubmit(postObject, total) {
 function setupPublishButton(total) {
   var button = document.createElement("button");
   button.classList.add("publish");
-  button.innerHTML = "Publish " + (total>1 ? "these":"this") + " sample" + (total>1 ? "s":"");
+  var publishText = "Publish " + (total>1 ? "these":"this") + " sample" + (total>1 ? "s":"");
+
+  function loggedin() {
+    document.removeEventListener("persona-user-login", loggedin);
+    button.removeAttribute("disabled");
+    button.textContent = publishText;
+    document.addEventListener("persona-user-logout", loggedout);
+  }
+  function loggedout() {
+    document.removeEventListener("persona-user-logout", loggedout);
+    button.disabled = true;
+    button.textContent = "Please log in to publish samples";
+    document.addEventListener("persona-user-login", loggedin);
+  }
+  document.addEventListener("persona-user-login", loggedin);
+  document.addEventListener("persona-user-logout", loggedout);
+
+  var html = document.querySelector("html");
+  if(!html.classList.contains("logged-in")) { loggedout(); } else { loggedin(); }
 
   button.onclick = function() {
     var postObject = [];

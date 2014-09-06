@@ -1,7 +1,5 @@
-var uuid = require("uuid");
 var fs = require("fs-extra");
 var path = require("path");
-var rgba = require("rgbanalyse");
 
 console.log("unlinking database.");
 try { var res = fs.unlinkSync("inkcyclopedia.sqlite"); } catch(e) {}
@@ -114,13 +112,13 @@ require("./lib/dbase")(function(err, models) {
         inks.forEach(function(ink) {
 
           var newink = models.Ink.build({
-            id: uuid.v4(),
+            id: models.uuid.v4(),
             company: ink.company,
             inkname: ink.inkname,
           });
 
           var profile = models.Profile.build({
-            id: uuid.v4(),
+            id: models.uuid.v4(),
             inkid: newink.id,
             year: 2014,
             pigmented: false,
@@ -135,7 +133,7 @@ require("./lib/dbase")(function(err, models) {
               yuv = converter.rgbToYUV(rgb.r, rgb.g, rgb.b);
 
           var colorprofile = models.ColorProfile.build({
-            id: uuid.v4()
+            id: models.uuid.v4()
             , r: ink.dominant.rgb.r
             , g: ink.dominant.rgb.g
             , b: ink.dominant.rgb.b
@@ -148,7 +146,7 @@ require("./lib/dbase")(function(err, models) {
           });
 
           var image = models.Image.build({
-            id: uuid.v4(),
+            id: models.uuid.v4(),
             profileid: profile.id,
             penid:  pen.id,
             userid: "pomax@nihongoresources.com",
@@ -172,7 +170,7 @@ require("./lib/dbase")(function(err, models) {
   user.save().success(function() {
     console.log("Saved master user account");
     var nib = models.Nib.build({
-          id: uuid.v4(),
+          id: models.uuid.v4(),
           company: "Platinum",
           model: "Preppy",
           year: 2014,
@@ -182,7 +180,7 @@ require("./lib/dbase")(function(err, models) {
     nib.save().success(function() {
       console.log("Saved Platinum Preppy 03 nib");
       var pen = models.Pen.build({
-            id: uuid.v4(),
+            id: models.uuid.v4(),
             company: "Platinum",
             model: "Preppy",
             year: 2014,

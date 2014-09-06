@@ -10,7 +10,7 @@ function setup(app, _models) {
   var inks = require('../lib/inks')(models);
   var vendors = require('../lib/vendors');
   var submit = require('../lib/submit')(inks, models);
-
+  var auth = require('../lib/auth');
 
   (function bindParameters() {
     app.param("inkid", function(req, res, next, inkid) {
@@ -34,7 +34,7 @@ function setup(app, _models) {
     app.get('/', inks.load, vendors.load, setUnverified, this.main);
 
     app.get('/submit', inks.load, this.submit);
-    app.post('/submit', submit.process, this.postSubmission);
+    app.post('/submit', auth, submit.process, this.postSubmission);
 
     app.get('/unverified', function(req, res, next) {
       res.locals.showUnverified = true;
@@ -50,7 +50,7 @@ function setup(app, _models) {
 
 
   app.use(function errorHandler(err, req, res, next){
-    console.log(err);
+    console.log(JSON.stringify(err));
     res.status(err.status).json(err);
   });
 }
