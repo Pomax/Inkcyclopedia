@@ -1,46 +1,55 @@
+function setUnverified(req, res, next) {
+  if (!res.locals.showUnverified) {
+    res.locals.showUnverified = false;
+  }
+  next();
+}
 
-/**
- *
- */
 function setup(app, _models) {
   models = _models;
   var inks = require('../lib/inks')(models);
   var vendors = require('../lib/vendors');
-  var submit = require('../lib/submit')(models);
-
-  // main page
-  app.get('/', inks.load, vendors.load, this.main);
-
-  // submission page + POST handler
-  app.get('/submit', inks.load, this.submit);
-  app.post('/submit', submit.process, this.postSubmission);
-
-  // unverified submissions page
-  app.get('/unverified', function(req, res, next) {
-    res.locals.showUnverified = true;
-    next();
-  }, inks.load, vendors.load, this.main);
+  var submit = require('../lib/submit')(inks, models);
 
 
-//  app.get('/edit', this.edit);
-//  app.post('/edit', edit.process, this.postEdit);
+  (function bindParameters() {
+    app.param("inkid", function(req, res, next, inkid) {
+      req.params.inkid = inkid;
+      next();
+    });
 
-  app.param("inkid", function(req, res, next, inkid) {
-    req.params.inkid = inkid;
-    next();
-  });
+    app.param("company", function(req, res, next, company) {
+      req.params.company = company.toLowerCase();
+      next();
+    });
 
-  app.param("company", function(req, res, next, company) {
-    req.params.company = company.toLowerCase();
-    next();
-  });
+    app.param("inkname", function(req, res, next, inkname) {
+      req.params.inkname = company.toLowerCase();
+      next();
+    });
+  }.bind(this)());
 
-  app.param("inkname", function(req, res, next, inkname) {
-    req.params.inkname = company.toLowerCase();
-    next();
-  });
 
-  app.use(function(err, req, res, next){
+  (function bindRoutes() {
+    app.get('/', inks.load, vendors.load, setUnverified, this.main);
+
+    app.get('/submit', inks.load, this.submit);
+    app.post('/submit', submit.process, this.postSubmission);
+
+    app.get('/unverified', function(req, res, next) {
+      res.locals.showUnverified = true;
+      next();
+    }, inks.load, vendors.load, this.main);
+
+    // app.get('/edit', this.edit);
+    // app.post('/edit', edit.process, this.postEdit);
+
+    // app.get('/:company', inks.load, setUnverified, this.company);
+    // app.get('/:company/:inkname', inks.load, setUnverified, this.ink);
+  }.bind(this)());
+
+
+  app.use(function errorHandler(err, req, res, next){
     console.log(err);
     res.status(err.status).json(err);
   });
@@ -54,9 +63,6 @@ module.exports = {
 
   main: function(req, res) {
     res.setHeader('Cache-Control', 'no-cache');
-    if (!res.locals.showUnverified) {
-      res.locals.showUnverified = false;
-    }
     res.render('main.html');
   },
 
@@ -74,6 +80,14 @@ module.exports = {
 
   postEdit: function(req, res) {
     res.render('posted.html');
+  },
+
+  company: function(req, res) {
+    res.render('main.html');
+  },
+
+  ink: function(req, res) {
+    res.render('main.html');
   }
 
 };

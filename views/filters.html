@@ -24,6 +24,15 @@
     <input type="range" min="0" max="360" step="1" value="360" class="end">
   </div>
 
+  <!-- several predefined sorts -->
+  <!--
+  <label>sort on :</label>
+  <select onmousedown="this.value='';" onchange="sortElementsBy(this)">
+    <% ["hue","saturation","lightness","luma","chrominance-u","chrominance-v","random"].forEach(function(c) { %>
+    <option value="<%= c %>"><%= c %></option>
+  <% }) %></select>
+  -->
+
   <a class="submission" href="/submit">Submit a sample</a>
 </section>
 

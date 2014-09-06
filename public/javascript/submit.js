@@ -3,14 +3,18 @@ var main = document.querySelector("main");
 /**
  * ink successfully uploaded
  */
-function success(total) {
-  alert("Sample" + (total>1?"s":"") + " submitted. Once verified, it'll show up on the site.\nUntil then, it's listed on http://inkcyclopedia.org/unverified");
+function success(element, total) {
+  element.classList.remove("failed");
+  element.classList.add("submitted");
+  //alert("Sample" + (total>1?"s":"") + " submitted. Once verified, it'll show up on the site.\nUntil then, it's listed on http://inkcyclopedia.org/unverified");
 }
 
 /**
  * ink upload failed
  */
-function failure(err) {
+function failure(element, err) {
+  element.classList.remove("submitted");
+  element.classList.add("failed");
   alert("Sample submission failed. For now, please refer to your\ndev tools console and network tab to find out why.");
 }
 
@@ -161,23 +165,30 @@ function performAnalysis(container, c, idx, total) {
  * as an array of inks.
  */
 function processAndSubmit(postObject, total) {
-  var xhr = new XMLHttpRequest();
-  xhr.open("POST", "submit", true);
-  xhr.setRequestHeader("Content-Type","application/json");
-  xhr.onreadystatechange = function() {
-    if (xhr.status >= 400) {
-      xhr.onreadystatechange = function(){};
-      failure(new Error({
-        status: xhr.status,
-        readyState: xhr.readyState
-      }));
-    }
-    if (xhr.status === 200 && xhr.readyState === 4) {
-      xhr.onreadystatechange = function(){};
-      success(total);
-    }
-  };
-  xhr.send(JSON.stringify({ samples: postObject }));
+
+  postObject.forEach(function(sample) {
+    var element = sample.element;
+    delete sample.element;
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "submit", true);
+    xhr.setRequestHeader("Content-Type","application/json");
+    xhr.onreadystatechange = function() {
+      if (xhr.status >= 400) {
+        xhr.onreadystatechange = function(){};
+        failure(element, new Error({
+          status: xhr.status,
+          readyState: xhr.readyState
+        }));
+      }
+      if (xhr.status === 200 && xhr.readyState === 4) {
+        xhr.onreadystatechange = function(){};
+        success(element, total);
+      }
+    };
+    xhr.send(JSON.stringify({ sample: sample }));
+
+
+  })
 }
 
 /**
@@ -211,10 +222,12 @@ function setupPublishButton(total) {
       }());
 
       postObject.push({
+        element: dataContainer,
         datauri: datauri,
         thumburi: thumburi,
         cropuri: dataContainer.querySelector("span.crop canvas").toDataURL("image/png"),
         company: dataContainer.querySelector("input.company").value.trim(),
+        inkline: dataContainer.querySelector("input.inkline").value.trim(),
         inkname: dataContainer.querySelector("input.inkname").value.trim(),
         dominant: dataContainer.querySelector("input.dominant").value.trim()
       });

@@ -1,8 +1,12 @@
 <% var color = "rgb(" + swatch.r + "," + swatch.g + "," + swatch.b + ")" %>
 <li class="ink card"
     style="background: <%= color %>;"
-    data-hue="<%= swatch.H %>"
-    data-chroma="<%= swatch.C %>"
+    data-hue="<%= swatch.H * 2 * Math.PI %>"
+    data-saturation="<%= swatch.S %>"
+    data-lightness="<%= swatch.L %>"
+    data-luma="<%= swatch.Y %>"
+    data-chrominance-u="<%= swatch.U %>"
+    data-chrominance-v="<%= swatch.V %>"
     data-color="<%= color %>"
     onclick="addToPalette(this)">
 

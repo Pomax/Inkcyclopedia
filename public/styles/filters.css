@@ -12,6 +12,16 @@ section.filters {
   overflow: hidden;
 }
 
+section.filters input[type=text] {
+  width: 8em;
+}
+
+section.filters input,
+section.filters select {
+  position: relative;
+  z-index: 10;
+}
+
 section.filters * + label {
   margin-left: 0.5em;
 }

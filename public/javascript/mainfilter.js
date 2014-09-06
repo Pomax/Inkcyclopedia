@@ -81,27 +81,86 @@ function getCoordinates(e) {
 /**
  * Sweet interactive hue filtering
  */
+var tau = Math.PI*2;
+var hue_start=0;
+var hue_end=tau;
 function filterHue(e) {
   var data = e.detail;
-  var tau = Math.PI*2;
-  var start = (data.start * tau/360);
-  var end   = (data.end * tau/360);
   var offset = data.offset * tau/360;
 
-  // TODO: reorder on hue slide
+  hue_start = (data.start * tau/360);
+  hue_end   = (data.end * tau/360);
 
-  var epsilon = (((Math.abs(start - end + tau) % tau)*100)|0) / 100;
-  var endmod = end % tau;
+  // TODO: reorder on hue slide?
+
+  var epsilon = (((Math.abs(hue_start - hue_end + tau) % tau)*100)|0) / 100;
+  var endmod = hue_end % tau;
 
   addClass(allitems, "hide-hue");
   allitems.filter(function(li) {
     var H = parseFloat(li.getAttribute("data-hue"));
     if(epsilon < 0.1) return true;
-    if(end > tau) return start <= H || H <= endmod;
-    return start <= H && H <= end;
+    if(hue_end > tau) return hue_start <= H || H <= endmod;
+    return hue_start <= H && H <= hue_end;
   }).forEach(function(li) {
     li.classList.remove("hide-hue");
   });
 }
 
 document.addEventListener("hue-update", filterHue);
+
+/**
+ * Change background color as we scroll
+ */
+(function() {
+  var m = document.querySelector(".swatches");
+  var d = m.parentNode;
+  var s = 15;
+  var l = 25;
+
+  var scrollHandler = function() {
+    var pc = parseInt( 100 * d.scrollTop / (d.scrollHeight - d.clientHeight) );
+    pc = (pc - 5) % 100;
+    pc = hue_start + (hue_end-hue_start)*pc/100;
+    var h = pc * 360/tau;
+    var color = "hsl(" + h + ", "+s+"%, "+l+"%)";
+    document.body.style.background = color;
+  };
+
+  d.addEventListener("scroll", scrollHandler);
+  scrollHandler();
+
+  document.addEventListener("hue-update", scrollHandler);
+}());
+
+ 
+/**
+ * Sorting
+ */
+function sortElementsBy(select) {
+  var attr = select.options[select.selectedIndex].value;
+  if(attr==="random") return randomSort();
+  allitems.sort( function(_a,_b) {
+    var a = parseFloat(_a.getAttribute("data-"+attr));
+    var b = parseFloat(_b.getAttribute("data-"+attr));
+    var c = a-b;
+    if (c===0) {
+      a = _a.querySelector(".company").textContent + " " + _a.querySelector(".name").textContent;
+      b = _b.querySelector(".company").textContent + " " + _b.querySelector(".name").textContent;
+      return a<b ? -1 : 1;
+    }
+    return c;
+  }).forEach(function(e) {
+    e.parentNode.appendChild(e);
+  });
+}
+
+function randomSort() {
+  allitems.sort( function(_a,_b) {
+    return 2 * Math.random() - 1;;
+  }).forEach(function(e) {
+    e.parentNode.appendChild(e);
+  });
+}
+
+sortElementsBy({options: [{value:"hue"}], selectedIndex: 0});

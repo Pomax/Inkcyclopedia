@@ -33,6 +33,14 @@ div.sample {
   border-radius: 1em;
 }
 
+div.sample.submitted {
+  background: #999;
+}
+
+div.sample.failed {
+  background: #C22;
+}
+
 div.sample div.main-data, p.colors {
   margin-bottom: 1em;
 }

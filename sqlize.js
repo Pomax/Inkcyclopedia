@@ -1,11 +1,14 @@
 var uuid = require("uuid");
 var fs = require("fs-extra");
 var path = require("path");
+var rgba = require("rgbanalyse");
 
 console.log("unlinking database.");
-var res = fs.unlinkSync("inkcyclopedia.sqlite");
+try { var res = fs.unlinkSync("inkcyclopedia.sqlite"); } catch(e) {}
 
 require("./lib/dbase")(function(err, models) {
+
+  var converter = require("./lib/converter");
 
   var inks = (function setupInkLoader() {
     var inks = [];
@@ -127,17 +130,21 @@ require("./lib/dbase")(function(err, models) {
             scented: false
           });
 
+          var rgb = ink.dominant.rgb,
+              hsl = converter.rgbToHSL(rgb.r, rgb.g, rgb.b),
+              yuv = converter.rgbToYUV(rgb.r, rgb.g, rgb.b);
+
           var colorprofile = models.ColorProfile.build({
-            id: uuid.v4(),
-            r: ink.dominant.rgb.r,
-            g: ink.dominant.rgb.g,
-            b: ink.dominant.rgb.b,
-            α: ink.dominant.hsl.α,
-            β: ink.dominant.hsl.β,
-            H: ink.dominant.hsl.H,
-            S: ink.dominant.hsl.S,
-            L: ink.dominant.hsl.L,
-            C: ink.dominant.hsl.C
+            id: uuid.v4()
+            , r: ink.dominant.rgb.r
+            , g: ink.dominant.rgb.g
+            , b: ink.dominant.rgb.b
+            , H: hsl.h
+            , S: hsl.s
+            , L: hsl.l
+            , Y: yuv.y
+            , U: yuv.u
+            , V: yuv.v
           });
 
           var image = models.Image.build({
