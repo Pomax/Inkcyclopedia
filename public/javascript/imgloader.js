@@ -6,8 +6,10 @@ function setStyle(e, s) {
 
 function loadImage(id, rgb) {
   var e = window.event;
-  e.stopPropagation();
-  e.preventDefault();
+  if(e) {
+    e.stopPropagation();
+    e.preventDefault();
+  }
 
   var underlay = document.createElement("div");
   underlay.classList.add("underlay");

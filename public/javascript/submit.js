@@ -99,6 +99,25 @@ function buildFragment(idx) {
   return container;
 }
 
+// siiiigh
+function getCoordinates(e) {
+  e = e || window.event;
+
+  var target = e.target || e.srcElement,
+      style = window.getComputedStyle(target, null),
+      borderLeftWidth = parseInt(style.getPropertyValue('border-left-width'), 10),
+      borderTopWidth = parseInt(style.getPropertyValue('border-top-width'), 10),
+      rect = target.getBoundingClientRect(),
+      offsetX = Math.round(e.clientX - rect.left),
+      offsetY = Math.round(e.clientY - rect.top);
+
+  return {
+    x: offsetX,
+    y: offsetY
+  };
+}
+
+
 /**
  * add a cropping box
  */
@@ -110,19 +129,23 @@ function addCropBox(container, result) {
   var fw = c.width/dims.width;
   var fh = c.height/dims.height;
   // set up the cropping functionality
-  var sx, sy, ex, ey;
+  var sx, sy, ex, ey, coords;
   var recording = false;
   c.addEventListener("mousedown", function(e) {
     recording = true;
-    sx = e.offsetX * fw;
-    sy = e.offsetY * fh - (c.classList.contains("bordered") ? 10 : 0);
+    coords = getCoordinates(e);
+    sx = coords.x * fw;
+    sy = coords.y * fh - (c.classList.contains("bordered") ? 10 : 0);
   });
   c.addEventListener("mousemove", function(e) {
     if(recording) {
       e.stopPropagation();
       e.preventDefault();
-      ex = e.offsetX * fw;
-      ey = e.offsetY * fh - (c.classList.contains("bordered") ? 10 : 0);
+
+      coords = getCoordinates(e);
+      ex = coords.x * fw;
+      ey = coords.y * fh - (c.classList.contains("bordered") ? 10 : 0);
+
       c.width = c.width;
       ctx.drawImage(result.img,0,0);
       ctx.fillStyle = "rgba(255,255,255,0.3)";
