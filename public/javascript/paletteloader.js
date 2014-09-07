@@ -96,3 +96,11 @@ function addToPalette(li) {
   }
   palette.appendChild(buildPaletteSwatch(li, color));
 }
+
+Array.prototype.slice.call(document.querySelectorAll("swatch")).forEach(function(e) {
+  e.onclick = addToPallete(e);
+  e.querySelector(".menu").onclick = function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+  }
+});

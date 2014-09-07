@@ -1,7 +1,10 @@
-  <div class="more">
-    <label>⨁</label>
-    <ul class="foldout hidden">
-      <li><a href="<%= findVendor(ink.company).url %>">Visit the vendor website</a></li>
-      <li><a href="http://www.gouletpens.com">Buy this ink from Goulet Pens</a></li>
+  <% searchTerm = encodeURIComponent(swatch.company + ' ' + swatch.inkname) %>
+  <% vendor = findVendor(swatch.company).url %>
+  <div class="menu">
+    <span class="label">⋮</span>
+    <ul class="links">
+      <li><% if (vendor) { %><a target="_blank" href="<%= vendor %>">Visit the vendor website</a><% } %></li>
+      <li><a target="_blank" href="http://www.gouletpens.com/SearchResults.asp?Search=<%= searchTerm %>">Find this ink at Goulet Pens</a></li>
+      <li><a target="_blank" href="https://duckduckgo.com/?q=<%= searchTerm %>">Search for this ink online</a></li>
     </ul>
   </div>

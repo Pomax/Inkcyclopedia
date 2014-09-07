@@ -7,19 +7,20 @@
     data-luma="<%= swatch.Y %>"
     data-chrominance-u="<%= swatch.U %>"
     data-chrominance-v="<%= swatch.V %>"
-    data-color="<%= color %>"
-    onclick="addToPalette(this)">
+    data-color="<%= color %>">
 
   <p class="company <%= swatch.company.replace(/\W/g,'-') %>"><%= swatch.company %></p>
   <p class="name <%= swatch.inkname.replace(/\W/g,'-') %>"><%= swatch.inkname %></p>
   <p class="colorpoint"><%= color %></p>
 
-  <p class="crop">
+  <% include swatch-menu.html %>
+
+  <div class="crop">
     <% swatch.images.split(",").forEach(function(imgid, idx) { if(idx>0) return; %>
     <img src="inks/images/<%= imgid %>/crop.png"
          onclick="loadImage('<%= imgid %>', '<%= color %>')"
          style="background: <%= color %>"
          title="view sample">
     <% }) %>
-  </p>
+  </div>
 </li>

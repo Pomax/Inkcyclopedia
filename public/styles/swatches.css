@@ -24,26 +24,9 @@ ul.swatches .ink.card p {
   color: white;
 }
 
-ul.swatches .ink.card p.crop img {
-  position: absolute;
-  border: solid white;
-  border-width: 1px;
-  border-radius: 1em 0 1em 0;
-  box-shadow: 0px 0px 5px 3px #333;
-  top: 60px;
-  right: -4px;
-  width: 40px;
-  height: 40px;
-  cursor: -webkit-zoom-in;
-  cursor: -moz-zoom-in;
-  cursor: -o-zoom-in;
-  cursor: -ms-zoom-in;
-  cursor: zoom-in;
-}
-
 ul.swatches .ink.card .company {
   text-align: left;
-  padding-left: 0.5em;
+  padding-left: 1.5em;
   font-family: "Shadows Into Light Two";
   font-size: 120%;
   line-height: 200%;
@@ -71,7 +54,86 @@ ul.swatches .ink.card.palette-swatch {
   box-shadow: 0px 0px 15px 3px white;
 }
 
-ul.swatches .ink.card p.crop img:hover {
+
+ul.swatches .ink.card .menu {
+  font-family: Cuprum;
+  position: absolute;
+  z-index: 2;
+  border-right: dotted rgba(255,255,255,0.3);
+  border-width: 1px;
+  border-radius: 1em 0 0 1em;
+  cursor: auto;
+  top: 0px;
+  left: 0px;
+  width: 20px;
+  height: 100%;
+  background: rgba(255,255,255,0);
+  overflow: hidden;
+  transition: width      0.1s linear,
+              background 0.1s linear;
+}
+
+ul.swatches .ink.card .menu:hover {
+  border-radius: 0.75em;
+  width: 100%;
+  background: white;
+  color: #333;
+}
+
+ul.swatches .ink.card .menu:hover .label {
+  display: none;
+}
+
+ul.swatches .ink.card .menu .links {
+  display: none;
+  margin: 0;
+  padding: 0;
+  padding-top: 0.5em;
+  list-style: none;
+}
+
+ul.swatches .ink.card .menu:hover .links {
+  display: block;
+}
+
+ul.swatches .ink.card .menu .links li + li {
+  margin-top: 0.75em;
+}
+
+ul.swatches .ink.card .menu .links li a {
+  color: #222;
+}
+
+ul.swatches .ink.card .menu .links li a:hover {
+  color: #22D;
+}
+
+
+ul.swatches .ink.card .menu .label {
+  position: absolute;
+  top: calc(50% - 0.5em);
+  left: calc(100% - 1em);
+}
+
+ul.swatches .ink.card .crop img {
+  position: absolute;
+  z-index: 5;
+  border: solid white;
+  border-width: 1px;
+  border-radius: 1em 0 1em 0;
+  box-shadow: 0px 0px 5px 3px #333;
+  top: 60px;
+  right: -4px;
+  width: 40px;
+  height: 40px;
+  cursor: -webkit-zoom-in;
+  cursor: -moz-zoom-in;
+  cursor: -o-zoom-in;
+  cursor: -ms-zoom-in;
+  cursor: zoom-in;
+}
+
+ul.swatches .ink.card .crop img:hover {
   box-shadow: 0px 0px 21px 0px white!important;
 }
 
