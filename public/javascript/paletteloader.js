@@ -102,7 +102,9 @@ Array.prototype.slice.call(document.querySelectorAll(".ink.card")).forEach(funct
     addToPalette(li);
   };
   li.querySelector(".menu").onclick = function(e) {
-    e.preventDefault();
-    e.stopPropagation();
+    if(e.target.localName !== "a") {
+      e.preventDefault();
+      e.stopPropagation();
+    }
   }
 });
