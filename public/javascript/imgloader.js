@@ -4,12 +4,10 @@ function setStyle(e, s) {
   });
 }
 
-function loadImage(id, rgb) {
-  var e = window.event;
-  if(e) {
-    e.stopPropagation();
-    e.preventDefault();
-  }
+function loadImage(e, id, rgb) {
+  var e = e || window.event;
+  e.stopPropagation();
+  e.preventDefault();
 
   var underlay = document.createElement("div");
   underlay.classList.add("underlay");
