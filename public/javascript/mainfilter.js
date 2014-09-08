@@ -133,7 +133,7 @@ document.addEventListener("hue-update", filterHue);
   document.addEventListener("hue-update", scrollHandler);
 }());
 
- 
+
 /**
  * Sorting
  */

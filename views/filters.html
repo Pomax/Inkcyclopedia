@@ -1,37 +1,49 @@
 <section class="filters">
 
-  <!-- company filter lists how many inks are known for said company -->
-  <label>filter by company:</label>
-  <select onchange="filterCompany(this)">
-    <option value=""></option>
-    <% inkdata.getCompanies().forEach(function(c) { %>
-    <option value="<%= c.company %>"><%= c.company + (c.inkline?' '+c.inkline:'') %> (<%= c.count %>)</option>
-  <% }) %></select>
-
-  <!-- name filter is freeform. It filters while you type -->
-  <label>filter by name:</label>
-  <input type="text" value="" onkeyup="filterName(this)">
-
-  <!-- hue filtering is fun! It filters on the fly based on the color range you want to see swatches for -->
-  <label>filter by hue:</label>
-  <div class="ranger">
-    <input type="range" min="0" max="360" step="1" value="0" class="start">
-    <div class="shuttered">
-      <div class="left shutter"></div>
-      <div id="spectrum" data-offset="0"></div>
-      <div class="right shutter"></div>
+  <div class="column main">
+    <div class="company-filter">
+      <!-- company filter lists how many inks are known for said company -->
+      <label>filter by company:</label>
+      <select onchange="filterCompany(this)">
+        <option value=""></option>
+        <% inkdata.getCompanies().forEach(function(c) { %>
+        <option value="<%= c.company %>"><%= c.company + (c.inkline?' '+c.inkline:'') %> (<%= c.count %>)</option>
+      <% }) %></select>
     </div>
-    <input type="range" min="0" max="360" step="1" value="360" class="end">
+
+    <div class="name-filter">
+      <!-- name filter is freeform. It filters while you type -->
+      <label>filter by name:</label>
+      <input type="text" value="" onkeyup="filterName(this)">
+    </div>
   </div>
 
-  <!-- several predefined sorts -->
-  <!--
-  <label>sort on :</label>
-  <select onmousedown="this.value='';" onchange="sortElementsBy(this)">
-    <% ["hue","saturation","lightness","luma","chrominance-u","chrominance-v","random"].forEach(function(c) { %>
-    <option value="<%= c %>"><%= c %></option>
-  <% }) %></select>
-  -->
+  <div class="column">
+    <div class="hue-filter">
+      <!-- hue filtering is fun! It filters on the fly based on the color range you want to see swatches for -->
+      <label>filter by hue:</label>
+      <div class="ranger">
+        <input type="range" min="0" max="360" step="1" value="0" class="start">
+        <div class="shuttered">
+          <div class="left shutter"></div>
+          <div id="spectrum" data-offset="0"></div>
+          <div class="right shutter"></div>
+        </div>
+        <input type="range" min="0" max="360" step="1" value="360" class="end">
+      </div>
+    </div>
+  </div>
+
+  <div class="column">
+    <div class="sorting">
+      <!-- several predefined sorts -->
+      <label>sort on :</label>
+      <select onmousedown="this.value='';" onchange="sortElementsBy(this)">
+        <% ["hue","saturation","lightness","luma","chrominance-u","chrominance-v","random"].forEach(function(c) { %>
+        <option value="<%= c %>"><%= c %></option>
+      <% }) %></select>
+    </div>
+  </div>
 
   <a class="submission" href="/submit">Submit a sample</a>
 </section>

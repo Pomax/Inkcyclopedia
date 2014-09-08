@@ -1,0 +1,17 @@
+main h1 {
+  text-align: left;
+}
+
+main {
+  overflow: auto;
+  background: url('/arrow-right.svg');
+}
+
+main .markdown {
+  width: 800px;
+  margin: auto;
+}
+
+main .markdown a {
+  color: #FFF;
+}

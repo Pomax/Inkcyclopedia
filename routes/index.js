@@ -32,6 +32,8 @@ function setup(app, _models) {
 
   (function bindRoutes() {
     app.get('/', inks.load, vendors.load, setUnverified, this.main);
+    app.get('/about', inks.load, this.about);
+    app.get('/blog', inks.load, this.blog);
 
     app.get('/submit', inks.load, this.submit);
     app.post('/submit', auth, submit.process, this.postSubmission);
@@ -64,6 +66,14 @@ module.exports = {
   main: function(req, res) {
     res.setHeader('Cache-Control', 'no-cache');
     res.render('main.html');
+  },
+
+  about: function(req, res) {
+    res.render('about.html');
+  },
+
+  blog: function(req, res) {
+    res.render('blog.html');
   },
 
   submit: function(req, res) {

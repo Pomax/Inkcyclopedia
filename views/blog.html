@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Inkcyclopedia</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link href='http://fonts.googleapis.com/css?family=Shadows+Into+Light+Two' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Cuprum' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/blog.css">
+    <script src="/javascript/marked.js"></script>
+  </head>
+
+  <body>
+    <% nopersona = true %>
+    <% include header.html %>
+
+    <main>
+<div class="markdown">
+Launch time is now.
+===
+After trying some 250 inks, I think it's time to officially launch this inkcyclopedia!
+
+The current Inkcyclopedia contains 235 ink samples, default-sorted by hue, but resortable on various color model dimensions, with additional filters for company name, ink name, and hue restriction. It also supports Persona login, which means you can log into the site without actually needing "an account" (which is nice, I don't like accounts) with the intent being that as a user you will be able to save lists of inks you own and want, as well as save selections you've made (like saved palettes).
+
+But wait, there's more. You can also upload your own samples if you're logged in, by using the "submit a sample" link:
+
+![ ](https://pomax.github.io/gh-weblog/images/inkcyclopedia-ink-sample.jpg)
+
+Simply drag-and-drop the sample image from your desktop onto the browser in the drag-and-drop bar, and then give the company name, ink line (if it's an ink from a particular line of inks), and ink name. Finally, you get to click-drag an area of the image to act as "crop" that will show up as the ink thumbnail on the main page. Happy? Hit submit and done!
+
+Inks are submitted as "unverified" by default, so they won't immedaitely show up, they need to be okayed by someone with DB rights (which right now is just me) but you can view them by using the [unverified browse link](/unverified).
+
+
+― Posted September 7<sup>th</sup>, 2014
+---
+</div>
+      <script src="/javascript/mdconvert.js"></script>
+    </main>
+
+    <% include footer.html %>
+  </body>
+
+</html>

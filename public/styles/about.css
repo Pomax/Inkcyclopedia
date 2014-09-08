@@ -1,0 +1,21 @@
+h1 {
+  text-align: center;
+}
+
+main {
+  overflow: auto;
+  background: url('/arrow-right.svg');
+}
+
+main .markdown {
+  width: 800px;
+  margin: auto;
+}
+
+main .markdown h1 {
+  display: none;
+}
+
+main .markdown a {
+  color: #FFF;
+}

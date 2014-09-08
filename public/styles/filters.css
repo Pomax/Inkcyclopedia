@@ -12,7 +12,15 @@ section.filters {
   overflow: hidden;
 }
 
-section.filters input[type=text] {
+section.filters input[type=text],
+section.filters select {
+  width: 14em;
+  border: 1px solid #333;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+section.filters .sorting select {
   width: 8em;
 }
 
@@ -26,7 +34,7 @@ section.filters * + label {
   margin-left: 0.5em;
 }
 
-canvas.rangepicker {
+section.filters canvas.rangepicker {
   cursor: none;
   line-height: 1em;
   vertical-align: bottom;
@@ -41,7 +49,7 @@ section.filters.top-sticky {
   z-index: 10;
 }
 
-a.submission {
+section.filters a.submission {
   background: white;
   border-width: 1px;
   margin: 0 1em;
@@ -49,4 +57,17 @@ a.submission {
   padding: 2px 8px;
   border-radius: 2px;
   text-decoration: none;
+  white-space: nowrap;
+}
+
+section.filters .column {
+  display: inline-block;
+  text-align: left;
+  padding: 0 0.6em;
+  vertical-align: middle;
+}
+
+section.filters .column.main label {
+  display: inline-block;
+  width: 8em;
 }
