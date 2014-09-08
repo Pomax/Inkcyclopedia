@@ -107,18 +107,22 @@
     var ls = document.querySelector(".left.shutter");
     var start = document.querySelector(".start");
 
-    listen(start, "input", function(e) {
+    var update_start = function(e) {
       ls.style.width = start.value + "px";
       updateInformation();
-    });
+    };
+    listen(start, "input", update_start);
+    start.update = update_start;
 
     var rs = document.querySelector(".right.shutter");
     var end = document.querySelector(".end");
 
-    listen(end, "input", function(e) {
+    var update_end = function(e) {
       rs.style.width = (360 - end.value) + "px";
       updateInformation();
-    });
+    };
+    listen(end, "input", update_end);
+    end.update = update_end;
 
   }());
 }());

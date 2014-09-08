@@ -71,3 +71,7 @@ section.filters .column.main label {
   display: inline-block;
   width: 8em;
 }
+
+section.filters .hue-reset {
+  cursor: pointer;
+}

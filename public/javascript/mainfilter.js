@@ -84,6 +84,7 @@ function getCoordinates(e) {
 var tau = Math.PI*2;
 var hue_start=0;
 var hue_end=tau;
+
 function filterHue(e) {
   var data = e.detail;
   var offset = data.offset * tau/360;
@@ -108,6 +109,16 @@ function filterHue(e) {
 }
 
 document.addEventListener("hue-update", filterHue);
+
+document.querySelector(".hue-reset").addEventListener("click", function(evt) {
+  var start = document.querySelector("input[type=range].start")
+  start.value = 0;
+  start.update();
+  var end = document.querySelector("input[type=range].end");
+  end.value = 360;
+  end.update();
+});
+
 
 /**
  * Change background color as we scroll
