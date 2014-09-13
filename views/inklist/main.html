@@ -3,38 +3,38 @@
   <head>
     <meta charset="utf-8">
     <title>Inkcyclopedia</title>
-    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="icon" type="image/png" href="/images/favicon.png">
     <link href='http://fonts.googleapis.com/css?family=Shadows+Into+Light+Two' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Cuprum' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="/styles/style.css">
     <% include opengraph.html %>
   </head>
 
   <body>
-    <% include header.html %>
-
-    <% include filters.html %>
-
+    <% include ../fragments/header.html %>
+    <% include ../fragments/filters.html %>
     <main>
+      <script src="/javascript/wantown.js"></script>
       <div class="swatch pane">
         <ul class="swatches">
           <% inkdata.swatches.forEach(function(swatch) {
+            if (typeof list !== 'undefined' && list.indexOf(swatch.id) === -1) { return }
             if (showUnverified && swatch.unverified) { %>
-              <% include swatch.html %>
+              <% include swatches/swatch.html %>
             <% } %>
             <% if (!showUnverified && !swatch.unverified) { %>
-              <% include swatch.html %>
+              <% include swatches/swatch.html %>
             <% } %>
           <% }); %>
       </ul>
-      <% include footer.html %>
+      <% include ../fragments/footer.html %>
     </main>
   </body>
 
   <scripts>
-    <script src="javascript/mainfilter.js"></script>
-    <script src="javascript/imgloader.js"></script>
-    <script src="javascript/paletteloader.js"></script>
+    <script src="/javascript/mainfilter.js"></script>
+    <script src="/javascript/imgloader.js"></script>
+    <script src="/javascript/paletteloader.js"></script>
   </scripts>
 
 </html>

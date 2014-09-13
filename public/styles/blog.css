@@ -4,7 +4,7 @@ main h1 {
 
 main {
   overflow: auto;
-  background: url('/arrow-right.svg');
+  background: url('/images/arrow-right.svg');
 }
 
 main .markdown {

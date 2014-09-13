@@ -18,15 +18,15 @@ require("./lib/dbase")(function(err, models) {
       update: function(callback) {
 
         // reload from data directory
-        fs.ensureDirSync("public/legacy/metadata");
-        fs.readdir("public/legacy/metadata", function(err, dir) {
+        fs.ensureDirSync("temp/legacy/metadata");
+        fs.readdir("temp/legacy/metadata", function(err, dir) {
           var _inks = [];
           var _inkmap = {};
 
           dir.forEach(function(f) {
             if(f.indexOf(".json") !== -1) {
               var data = (function() {
-                var file = path.join(__dirname, 'public/legacy/metadata', f);
+                var file = path.join(__dirname, 'temp/legacy/metadata', f);
                 var fsdata = fs.readFileSync(file);
                 try {
                   return JSON.parse(fsdata);
@@ -65,7 +65,7 @@ require("./lib/dbase")(function(err, models) {
    * move images from their old location to the new location on disk
    */
   var moveImages = function(ink, image) {
-    var loc = "public/legacy/images/"+ink.id;
+    var loc = "temp/legacy/images/"+ink.id;
     var newloc = "public/inks/images/"+image.id;
     fs.copySync(loc, newloc);
   };

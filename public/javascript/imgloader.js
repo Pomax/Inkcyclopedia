@@ -18,7 +18,7 @@ function loadImage(e, id, rgb) {
 
   var img = new Image();
   img.classList.add("loading");
-  img.src="ajax-loader.gif";
+  img.src="images/ajax-loader.gif";
   underlay.appendChild(img);
 
   var sample = new Image();

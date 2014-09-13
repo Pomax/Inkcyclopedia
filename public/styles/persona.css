@@ -8,9 +8,33 @@
 }
 
 .persona .login-button { display: inline-block; }
-.persona .account-button,
+.persona .account,
 .persona .logout-button { display: none; }
 
 .logged-in .persona .login-button { display: none; }
-/* .logged-in .persona .account-button, */
+.logged-in .persona .account,
 .logged-in .persona .logout-button { display: inline-block; }
+
+.persona .account { position: relative; }
+.persona .account ul.hidden { display: none!important; }
+.persona .account ul {
+  position: absolute;
+  top: 1.75em;
+  left: 0.2em;
+  display: block;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+}
+.persona .account ul li {
+  white-space: nowrap;
+}
+
+.persona a {
+  color: white;
+}
+
+.persona .login a {
+  display: block;
+}

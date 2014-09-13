@@ -52,7 +52,6 @@ function quantize(c, p, idx, total) {
       // weed out neutrals as best we can
       return !(d1<neutral && d2<neutral && d3<neutral);
     });
-    //console.log(pal);
 
     var rgb, cinfo;
     for(var i = 0; i <pal.length; i++) {

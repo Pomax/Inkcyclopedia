@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <title>You inkcyclopedia account</title>
+    <link rel="icon" type="image/png" href="/images/favicon.png">
+    <link rel="stylesheet" href="/styles/style.css">
+    <link rel="stylesheet" href="/styles/account.css">
+    <link href='http://fonts.googleapis.com/css?family=Shadows+Into+Light+Two' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Cuprum' rel='stylesheet' type='text/css'>
+  </head>
+
+  <body>
+    <% include ../fragments/header.html %>
+
+    <main>
+      <h1>Your settings</h1>
+
+      <p>There really aren't all that many settings, because it just doesn't make sense to need you to provide more details.</p>
+
+      <p>The only meaningful thing right now is whether you want to be known by your uuid.v4 identifier, or by a more human
+        readable alias. If you'd like an alias (and that can be your real name or a fake name, whatever you feel makes
+        the most sense) just enter it into the alias box below, and if it's still available it'll be yours if you save your
+        settings.</p>
+
+      <p>If you already have an alias, it'll show up as placeholder text. Changing your alias after you picked one, however,
+        is generally silly so try to just pick one you can live with, if you don't already have an alias that you use all
+        over the internet.</p>
+
+      <label>Set your alias to:</label>
+      <input class="alias" type="text"<% if (!!user.alias) { %> placeholder="<%= user.alias %>"<% } %>>
+      <button class="alias">make it happen</button>
+
+      <div class="result hidden"></div>
+
+      <script>
+        var button = document.querySelector("button.alias");
+        var input = document.querySelector("input.alias");
+        var result = document.querySelector("div.result");
+
+        var original = "<%= user.alias %>";
+
+        button.onclick = function() {
+          result.classList.add("hidden");
+
+          var value = input.value;
+          if (value == original) return;
+          if (!value.trim()) return;
+
+          var xhr = new XMLHttpRequest();
+          xhr.open("POST", "/myaccount/setalias", true);
+          xhr.setRequestHeader("Content-Type","application/json");
+          xhr.onreadystatechange = function() {
+            if(xhr.status === 200) {
+              if (xhr.readyState === 4) {
+                // success
+                result.textContent = "Settings saved.";
+                result.classList.remove("hidden");
+                original = value;
+              }
+            }
+            else if(parseInt(xhr.status,10) >= 400) {
+              result.textContent = "Settings could not be saved.";
+              result.classList.remove("hidden");
+            }
+          }
+          var data = JSON.stringify({ alias: value });
+          xhr.send(data);
+        }
+
+      </script>
+
+    </main>
+  </body>
+
+</html>

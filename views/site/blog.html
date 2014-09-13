@@ -3,17 +3,17 @@
   <head>
     <meta charset="utf-8">
     <title>Inkcyclopedia</title>
-    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="icon" type="image/png" href="/images/favicon.png">
     <link href='http://fonts.googleapis.com/css?family=Shadows+Into+Light+Two' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Cuprum' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="styles/style.css">
-    <link rel="stylesheet" href="styles/blog.css">
+    <link rel="stylesheet" href="/styles/style.css">
+    <link rel="stylesheet" href="/styles/blog.css">
     <script src="/javascript/marked.js"></script>
   </head>
 
   <body>
     <% nopersona = true %>
-    <% include header.html %>
+    <% include ../fragments/header.html %>
 
     <main>
 <div class="markdown">
@@ -38,7 +38,7 @@ Inks are submitted as "unverified" by default, so they won't immedaitely show up
       <script src="/javascript/mdconvert.js"></script>
     </main>
 
-    <% include footer.html %>
+    <% include ../fragments/footer.html %>
   </body>
 
 </html>

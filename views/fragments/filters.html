@@ -40,7 +40,7 @@
       <!-- several predefined sorts -->
       <label>sort on :</label>
       <select onmousedown="this.value='';" onchange="sortElementsBy(this)">
-        <% ["hue","saturation","lightness","luma","chrominance-u","chrominance-v","random"].forEach(function(c) { %>
+        <% ["hue","saturation","lightness","luma","chrominance-u","chrominance-v","alphabetically","random"].forEach(function(c) { %>
         <option value="<%= c %>"><%= c %></option>
       <% }) %></select>
     </div>
@@ -50,5 +50,5 @@
 </section>
 
 <!-- hue filter style/script -->
-<link rel="stylesheet" href="styles/ranger.css">
-<script src="javascript/ranger.js"></script>
+<link rel="stylesheet" href="/styles/ranger.css">
+<script src="/javascript/ranger.js"></script>

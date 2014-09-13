@@ -1,0 +1,84 @@
+ul.swatches .ink.card .menu {
+  font-family: Cuprum;
+  position: absolute;
+  z-index: 2;
+  border-right: dotted rgba(255,255,255,0.3);
+  border-width: 1px;
+  border-radius: 1em 0 0 1em;
+  cursor: auto;
+  top: 0px;
+  left: 0px;
+  width: 20px;
+  height: 100%;
+  background: rgba(255,255,255,0);
+  overflow: hidden;
+  transition: width      0.1s linear,
+              background 0.1s linear;
+}
+
+ul.swatches .ink.card .menu:hover {
+  border-radius: 0.75em;
+  width: 100%;
+  background: white;
+  color: #333;
+}
+
+ul.swatches .ink.card .menu:hover .label {
+  display: none;
+}
+
+ul.swatches .ink.card .menu .links {
+  display: none;
+  margin: 0;
+  padding: 0;
+  padding-top: 0.5em;
+  list-style: none;
+}
+
+ul.swatches .ink.card .menu:hover .links {
+  display: block;
+}
+
+ul.swatches .ink.card .menu .links li.icon + li.icon,
+ul.swatches .ink.card .menu .links li.item + li.item {
+  margin-top: 0.75em;
+}
+
+ul.swatches .ink.card .menu .links li.icon {
+  cursor: pointer;
+  color: rgb(173, 177, 198);
+}
+
+ul.swatches .ink.card .menu .links li.icon.I {
+  color: rgb(255, 119, 81);
+}
+
+ul.swatches .ink.card .menu .links li a {
+  color: #222;
+}
+
+ul.swatches .ink.card .menu .links li a:hover {
+  color: #22D;
+}
+
+
+ul.swatches .ink.card .menu .label {
+  position: absolute;
+  top: calc(50% - 0.5em);
+  left: calc(100% - 1em);
+}
+
+ul.swatches .ink.card .menu .own,
+ul.swatches .ink.card .menu .want {
+  position: absolute;
+  left: 0.5em;
+  z-index: 10;
+}
+
+ul.swatches .ink.card .menu .icon.own {
+  top: 25%;
+}
+
+ul.swatches .ink.card .menu .icon.want {
+  top: 50%;
+}

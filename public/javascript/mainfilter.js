@@ -145,12 +145,31 @@ document.querySelector(".hue-reset").addEventListener("click", function(evt) {
 }());
 
 
+function randomSort() {
+  allitems.sort( function(_a,_b) {
+    return 2 * Math.random() - 1;
+  }).forEach(function(e) {
+    e.parentNode.appendChild(e);
+  });
+}
+
+function sortAlphabet() {
+  allitems.sort( function(_a,_b) {
+    var a = _a.querySelector(".company").textContent + _a.querySelector(".name").textContent;
+    var b = _b.querySelector(".company").textContent + _b.querySelector(".name").textContent;
+    return a == b ? 0 : a < b ? -1 : 1;
+  }).forEach(function(e) {
+    e.parentNode.appendChild(e);
+  });
+}
+
 /**
  * Sorting
  */
 function sortElementsBy(select) {
   var attr = select.options[select.selectedIndex].value;
   if(attr==="random") return randomSort();
+  if(attr==="alphabetically") return sortAlphabet();
   allitems.sort( function(_a,_b) {
     var a = parseFloat(_a.getAttribute("data-"+attr));
     var b = parseFloat(_b.getAttribute("data-"+attr));
@@ -166,12 +185,6 @@ function sortElementsBy(select) {
   });
 }
 
-function randomSort() {
-  allitems.sort( function(_a,_b) {
-    return 2 * Math.random() - 1;;
-  }).forEach(function(e) {
-    e.parentNode.appendChild(e);
-  });
-}
+
 
 sortElementsBy({options: [{value:"hue"}], selectedIndex: 0});

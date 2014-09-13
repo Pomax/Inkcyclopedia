@@ -7,7 +7,8 @@
     data-luma="<%= swatch.Y %>"
     data-chrominance-u="<%= swatch.U %>"
     data-chrominance-v="<%= swatch.V %>"
-    data-color="<%= color %>">
+    data-color="<%= color %>"
+    id="swatch-<%= swatch.id %>">
 
   <p class="company <%= swatch.company.replace(/\W/g,'-') %>"><%= swatch.company %></p>
   <p class="name <%= swatch.inkname.replace(/\W/g,'-') %>"><%= swatch.inkname %></p>
@@ -17,10 +18,24 @@
 
   <div class="crop">
     <% swatch.images.split(",").forEach(function(imgid, idx) { if(idx>0) return; %>
-    <img src="inks/images/<%= imgid %>/crop.png"
+    <img src="/inks/images/<%= imgid %>/crop.png"
          onclick="loadImage(event, '<%= imgid %>', '<%= color %>')"
          style="background: <%= color %>"
          title="view sample">
     <% }) %>
   </div>
 </li>
+
+<% if (typeof email !== "undefined") { %>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  activateWantOwn("swatch-<%= swatch.id %>");
+  <% if (typeof owned !== "undefined" && owned.indexOf(swatch.id) !== -1) { %>
+  toggleOwnWant('swatch-<%= swatch.id %>', ".own");
+  <% } %>
+  <% if (typeof wishlist !== "undefined" && wishlist.indexOf(swatch.id) !== -1) { %>
+  toggleOwnWant('swatch-<%= swatch.id %>', ".want");
+  <% } %>
+});
+</script>
+<% } %>
