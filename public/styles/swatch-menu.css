@@ -76,8 +76,10 @@ ul.swatches .ink.card .menu .label {
 ul.swatches .ink.card .menu .own,
 ul.swatches .ink.card .menu .want {
   display: none;
-
-
+  position: absolute;
+  left: 0.5em;
+  z-index: 10;
+}
 ul.swatches .ink.card .menu .icon.own {
   top: 25%;
 }
