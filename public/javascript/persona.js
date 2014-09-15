@@ -14,7 +14,7 @@ window.PersonaHelper = {
     var loggedin = function(evt) {
       var data = evt.detail;
       html.classes().add("logged-in");
-      hidden.set("value", data.email);
+      hidden.value = data.email;
       account.find("button").onclick = function() {
         var ul = account.find("ul");
         if(ul.classes().contains("hidden")) {
