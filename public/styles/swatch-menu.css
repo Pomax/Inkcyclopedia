@@ -68,12 +68,15 @@ ul.swatches .ink.card .menu .label {
   left: calc(100% - 1em);
 }
 
+.logged-in ul.swatches .ink.card .menu .own,
+.logged-in ul.swatches .ink.card .menu .want {
+  display: block;
+}
+
 ul.swatches .ink.card .menu .own,
 ul.swatches .ink.card .menu .want {
-  position: absolute;
-  left: 0.5em;
-  z-index: 10;
-}
+  display: none;
+
 
 ul.swatches .ink.card .menu .icon.own {
   top: 25%;
