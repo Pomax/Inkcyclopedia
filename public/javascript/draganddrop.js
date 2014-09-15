@@ -1,7 +1,7 @@
 /**
  * Try to enable drag and drop for files
  */
-(function() {
+(function setupDragAndDrop() {
 
   function cancel(e) {
     e.stopPropagation();
@@ -25,7 +25,7 @@
 
     function buildReader(idx, total) {
       var reader = new FileReader();
-      reader.addEventListener("loadend", function (e) {
+      reader.listen("loadend", function (e) {
         data = this.result;
         handleDroppedData(data, idx, total);
         next();
@@ -38,7 +38,7 @@
   }
 
   function setup() {
-    var holders = document.querySelectorAll(".drag-and-drop"),
+    var holders = find(".drag-and-drop"),
         i=0,
         last=holders.length,
         holder;
@@ -46,26 +46,24 @@
     for(i=0; i<last; i++) {
       holder = holders[i];
 
-      var highlight = function (e) { holder.classList.add('hover'); return cancel(e); };
-      var unhighlight = function (e) { holder.classList.remove('hover'); return cancel(e); };
+      var highlight = function (e) { holder.classes().add('hover'); return cancel(e); };
+      var unhighlight = function (e) { holder.classes().remove('hover'); return cancel(e); };
 
-      holder.addEventListener("dragenter", highlight);
-      holder.addEventListener("dragover", cancel);
-      holder.addEventListener("dragleave", unhighlight);
-      holder.addEventListener("dragexit", unhighlight);
+      holder.listen("dragenter", highlight);
+      holder.listen("dragover", cancel);
+      holder.listen("dragleave", unhighlight);
+      holder.listen("dragexit", unhighlight);
 
-      holder.addEventListener("drop", function (e) {
+      holder.listen("drop", function (e) {
         readFileData(e);
         return unhighlight(e);
       });
     }
   }
 
-  var dnd = function() {
-    document.removeEventListener("DOMContentLoaded", dnd, false);
+  schedule(function() {
     if (typeof window.FileReader === 'undefined') {}
     else { setup(); }
-  };
+  });
 
-  document.addEventListener("DOMContentLoaded", dnd, false);
 }());

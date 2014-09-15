@@ -28,7 +28,7 @@
 
 <% if (typeof email !== "undefined") { %>
 <script>
-document.addEventListener("DOMContentLoaded", function() {
+schedule(function() {
   activateWantOwn("swatch-<%= swatch.id %>");
   <% if (typeof owned !== "undefined" && owned.indexOf(swatch.id) !== -1) { %>
   toggleOwnWant('swatch-<%= swatch.id %>', ".own");

@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Inkcyclopedia</title>
+    <% include ../fragments/universal.html %>
+    <link rel="stylesheet" href="/styles/blog.css">
+    <script src="/javascript/vendor/marked.js"></script>
+  </head>
+
+  <body>
+    <% include ../fragments/header.html %>
+
+    <main>
+<div class="markdown">
+So: why would you log into inkcyclopedia?
+===
+Because after all: it's just an inks repository, so what do you get when you log in? Well, a
+number of things that might be useful. When you're logged in, you can:
+
+1. mark inks as "I want this ink" or "I own this ink", with dedicated links for both,
+2. save your quick selections, so that you can link to them elsewhere on the web,
+3. you can leave notes on things (at least, that'll be coming soon)
+
+You don't have to log in to make use of the website of course, everything works without being
+logged in, but logging in gives you some benefits that you won't have when you're not logged
+in.
+
+Okay so how does logging in work?
+---
+
+Inkcyclopedia uses "Persona", a Mozilla-backed login system that uses your email to verify
+that you're a real person. Rather than asking you to create an account on inkcyclopedia,
+if persona says you're vouched for, inkcyclopedia will simply make you one, associated with
+your email address. If you're on a major email provided it's quite likely it already supports
+Persona's authentication system, so you don't need any new passwords or accounts or the like.
+
+Why is that better than login with twitter/facebook/etc?
+---
+
+By using Persona, your email provider doesn't actually know *where* you're logging in to. All
+it gets is a persona request to vouch for your email identity. Rather than, say, google knowing
+you just logged into inkcyclopedia, with Persona all it knows is that you *maybe* logged in
+to *somewhere*. I don't like tracking, and I won't use a login system that colludes with the
+data aggregators. Persona keeps your login anonymous except to you, and the website you logged
+in to. With the added bonus that you generally don't need to come up with a new username/password
+because you already have those.
+
+</div>
+      <script src="/javascript/mdconvert.js"></script>
+    </main>
+
+    <% include ../fragments/footer.html %>
+  </body>
+
+</html>

@@ -1,0 +1,13 @@
+<link rel="stylesheet" href="/styles/selection.css">
+<h1>Saved selections</h1>
+
+<section class="selections">
+  <% Object.keys(lists).forEach(function(name) { %>
+    <h1><%= name %></h1>
+  <%  lists[name].forEach(function(inkid) {
+        swatch = inkdata.inkmap[inkid]; %>
+     <% include swatches/swatch.html %><%
+      })
+    })
+  %>
+</section>

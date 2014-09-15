@@ -1,0 +1,22 @@
+main {
+  height: calc(100% - 7em);
+}
+
+section.selections h1 {
+  font-family: "Shadows Into Light Two";
+  border-bottom: 1px dotted white;
+  margin-top: 3em;
+}
+
+section.selections h1:before,
+section.selections h1:after {
+  font-family: Helvetica;
+  color: white;
+}
+
+section.selections h1:before { content: '〝'; margin-right: 0.2em; }
+section.selections h1:after  { content: '〞'; margin-left: 0.2em;  }
+
+section.selections li.ink.card {
+  cursor: default;
+}

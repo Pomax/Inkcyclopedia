@@ -1,5 +1,5 @@
 <header>
-  <% if(typeof nopersona === "undefined" || !nopersona) { %><% include persona.html %><% } %>
+  <% include persona.html %>
   <div class="mainheader">
     <a class="logo" href="/"><img src="/images/inkart.png"></a>
     <h1>A (small) encyclopedia of fountain pen inks</h1>
@@ -10,6 +10,10 @@
       </span>
     </h3>
   </div><div class="palette">
-    <h1>Quick selection<button class="reset" onclick="clearSelection()">reset</button></h1>
+    <h1>
+      <% if (typeof userid !== "undefined") { %><button class="save">[save selection]</button><% } %>
+      Quick selection
+      <button class="reset">[reset]</button>
+    </h1>
   </div>
 </header>

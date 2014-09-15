@@ -13,10 +13,11 @@
       <li><a href="/myaccount">My details</a></li>
       <li><a href="/wishlist/<% if (typeof user !== "undefined") { if (!!user.alias) { %><%= user.alias %><% } else { %><%= user.id %><% }} %>">My wishlist</a></li>
       <li><a href="/owned/<% if (typeof user !== "undefined") { %><%= user.alias || user.id %><% } %>">My own inks</a></li>
+      <li><a href="/selections/<% if (typeof user !== "undefined") { %><%= user.alias || user.id %><% } %>">My selections</a></li>
     </ul>
   </div>
   <button class="logout-button">Logout</button>
   <script src="https://login.persona.org/include.js"></script>
 </div>
 <script src="/javascript/persona.js"></script>
-<script>setupPersona("<% if (typeof email !== "undefined") { %><%= email %><% } %>");</script>
+<script>PersonaHelper.setupPersona("<% if (typeof email !== "undefined") { %><%= email %><% } %>");</script>

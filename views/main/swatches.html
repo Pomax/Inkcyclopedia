@@ -1,0 +1,9 @@
+<% inkdata.swatches.forEach(function(swatch) {
+  if (typeof list !== 'undefined' && list.indexOf(swatch.id) === -1) { return }
+  if (typeof showUnverified !== "undefined" && !!showUnverified && swatch.unverified) { %>
+    <% include swatches/swatch.html %>
+  <% } %>
+  <% if ((typeof showUnverified === "undefined" || !showUnverified) && !swatch.unverified) { %>
+    <% include swatches/swatch.html %>
+  <% } %>
+<% }); %>

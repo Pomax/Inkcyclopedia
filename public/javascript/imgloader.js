@@ -1,41 +1,28 @@
-function setStyle(e, s) {
-  Object.keys(s).forEach(function(t) {
-    e.style[t] = s[t];
-  });
-}
-
 function loadImage(e, id, rgb) {
   var e = e || window.event;
   e.stopPropagation();
   e.preventDefault();
 
   var underlay = document.createElement("div");
-  underlay.classList.add("underlay");
-  setStyle(underlay, {
-    lineHeight: window.innerHeight + "px"
-  });
-  document.body.appendChild(underlay);
+  underlay.classes().add("underlay").css({ lineHeight: window.innerHeight + "px" });
+  body.add(underlay);
 
   var img = new Image();
-  img.classList.add("loading");
-  img.src="images/ajax-loader.gif";
-  underlay.appendChild(img);
+  img.classes().add("loading").src = "images/ajax-loader.gif";
+  underlay.add(img);
 
   var sample = new Image();
   sample.onload = function() {
-    setStyle(sample, {
-      borderColor: rgb
-    });
-    img.parentNode.replaceChild(sample,img);
-    document.querySelector("main div.swatch.pane").classList.add("noscroll");
+    underlay.replace(img, sample.css({ borderColor: rgb }));
+    find("main div.swatch.pane").classes().add("noscroll");
   };
-  sample.src = "/inks/images/"+id+"/sample.png";
+  sample.src ="/inks/images/"+id+"/sample.png";
 
   underlay.onclick = function(e) {
     e.preventDefault();
     e.stopPropagation();
-    underlay.parentNode.removeChild(underlay);
-    document.querySelector("main div.swatch.pane").classList.remove("noscroll");
+    underlay.remove();
+    find("main div.swatch.pane").classes().remove("noscroll");
     return false;
   };
 

@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Inkcyclopedia</title>
+    <% include ../fragments/universal.html %>
+    <link rel="stylesheet" href="/styles/quickselection.css">
+    <% include opengraph.html %>
+  </head>
+
+  <body>
+    <% include ../fragments/header.html %>
+    <%if(typeof nofilter === "undefined" || !nofilter) { %><% include ../fragments/filters.html %><% } %>
+    <main>
+      <script src="/javascript/wantown.js"></script>
+      <div class="swatch pane">
+        <ul class="swatches">
+          <% if (typeof lists !== "undefined") { %>
+          <% include selections.html %>
+          <% } else { %>
+          <% include swatches.html %>
+          <% } %>
+      </ul>
+      <% include ../fragments/footer.html %>
+    </main>
+  </body>
+
+  <scripts>
+    <script src="/javascript/imgloader.js"></script>
+    <%if(typeof nofilter === "undefined" || !nofilter) { %><script src="/javascript/mainfilter.js"></script><% } %>
+    <%if(typeof nofilter === "undefined" || !nofilter) { %><script src="/javascript/paletteloader.js"></script><% } %>
+  </scripts>
+
+</html>

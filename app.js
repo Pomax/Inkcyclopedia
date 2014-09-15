@@ -16,7 +16,7 @@ require("./lib/dbase")(function(err, models) {
 
   require("./lib/persona")(express, app, models);
 
-  routes.setup(app, models);
+  routes(models).setup(app);
 
   var server = app.listen(1234, function() {
     console.log('Listening on port %d', server.address().port);

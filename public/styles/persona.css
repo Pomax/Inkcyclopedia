@@ -20,13 +20,18 @@
 .persona .account ul {
   position: absolute;
   top: 1.75em;
-  left: 0.2em;
+  left: -0.2em;
   display: block;
   list-style: none;
   margin: 0;
   padding: 0;
   text-align: left;
+  background: #333;
+  border: 2px solid rgba(255,255,255,0.3);
+  border-radius: 1em;
+  padding: 0.5em 0.75em;
 }
+
 .persona .account ul li {
   white-space: nowrap;
 }

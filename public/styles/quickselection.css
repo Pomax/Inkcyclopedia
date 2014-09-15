@@ -1,0 +1,97 @@
+header.palette {
+  background: #666;
+  box-shadow: inset 0px -100px 200px -100px white
+}
+
+header.palette div.mainheader {
+  display: none;
+}
+
+header.palette div.palette {
+  position: relative;
+  padding-top: 4em;
+  height: 5em;
+
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -o-flex;
+  display: -ms-flex;
+  display: flex;
+}
+
+header.palette div.palette h1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 5em;
+  text-shadow: 0px 0px 15px black;
+}
+
+
+div.palette-swatch {
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -o-flex;
+  display: -ms-flex;
+  display: flex;
+
+  height: 30px;
+
+  -webkit-flex: 1;
+  -moz-flex: 1;
+  flex: 1;
+
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  -ms-user-select: none;
+  -user-select: none;
+
+  box-sizing: border-box;
+  border: 1px solid white;
+  border-width: 1px 0 1px 0;
+
+  cursor: pointer;
+}
+
+div.palette-swatch + div.palette-swatch {
+  border-width: 1px 0px 1px 1px;
+}
+
+div.palette-swatch img {
+  position: relative;
+  width: 32px;
+  left: calc(50% - 16px);
+  height: 32px;
+  top: calc(50% - 9px);
+  border: 1px solid white;
+  border-radius: 0.5em 0 0.5em 0;
+}
+
+div.palette-swatch img.highlight {
+  box-shadow: 0px 0px 10px 0px white!important;
+  cursor: -webkit-zoom-in;
+  cursor: -moz-zoom-in;
+  cursor: -o-zoom-in;
+  cursor: -ms-zoom-in;
+  cursor: zoom-in;
+}
+
+button.save,
+button.reset {
+  border: none;
+  background: transparent;
+  color: white;
+  font-family: "Shadows Into Light Two";
+  cursor: pointer;
+  font-size: 70%;
+  line-height: 115%;
+  position: relative;
+  left: 3em;
+  margin-left: -2em;
+}
+
+button.save {
+  left: -1em;
+}
