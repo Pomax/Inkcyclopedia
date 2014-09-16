@@ -2,3 +2,9 @@ main {
   width: 800px;
   margin: auto;
 }
+body {
+  background: url('/images/arrow-right.svg');
+}
+body header {
+  background: #333;
+}

@@ -11,9 +11,9 @@
     <button>My account</button>
     <ul class="hidden">
       <li><a href="/myaccount">My details</a></li>
-      <li><a href="/wishlist/<% if (typeof user !== "undefined") { if (!!user.alias) { %><%= user.alias %><% } else { %><%= user.id %><% }} %>">My wishlist</a></li>
-      <li><a href="/owned/<% if (typeof user !== "undefined") { %><%= user.alias || user.id %><% } %>">My own inks</a></li>
-      <li><a href="/selections/<% if (typeof user !== "undefined") { %><%= user.alias || user.id %><% } %>">My selections</a></li>
+      <li><a class="wishlist" href="/wishlist/<% if (typeof user !== "undefined") { if (!!user.alias) { %><%= user.alias %><% } else { %><%= user.id %><% }} %>">My wishlist</a></li>
+      <li><a class="owned" href="/owned/<% if (typeof user !== "undefined") { %><%= user.alias || user.id %><% } %>">My own inks</a></li>
+      <li><a class="selections" href="/selections/<% if (typeof user !== "undefined") { %><%= user.alias || user.id %><% } %>">My selections</a></li>
     </ul>
   </div>
   <button class="logout-button">Logout</button>

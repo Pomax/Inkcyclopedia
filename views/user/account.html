@@ -31,42 +31,8 @@
 
       <div class="result hidden"></div>
 
-      <script>
-        var button = document.querySelector("button.alias");
-        var input = document.querySelector("input.alias");
-        var result = document.querySelector("div.result");
-
-        var original = "<%= user.alias %>";
-
-        button.onclick = function() {
-          result.classList.add("hidden");
-
-          var value = input.value;
-          if (value == original) return;
-          if (!value.trim()) return;
-
-          var xhr = new XMLHttpRequest();
-          xhr.open("POST", "/myaccount/setalias", true);
-          xhr.setRequestHeader("Content-Type","application/json");
-          xhr.onreadystatechange = function() {
-            if(xhr.status === 200) {
-              if (xhr.readyState === 4) {
-                // success
-                result.textContent = "Settings saved.";
-                result.classList.remove("hidden");
-                original = value;
-              }
-            }
-            else if(parseInt(xhr.status,10) >= 400) {
-              result.textContent = "Settings could not be saved.";
-              result.classList.remove("hidden");
-            }
-          }
-          var data = JSON.stringify({ alias: value });
-          xhr.send(data);
-        }
-
-      </script>
+      <script src="/javascript/account.js"></script>
+      <script>setupAccountButtons("<%= user.id %>", "<%= user.alias %>");</script>
 
     </main>
   </body>

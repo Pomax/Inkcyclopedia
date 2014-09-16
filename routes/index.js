@@ -1,8 +1,11 @@
 // These are all the content serving/accepting endpoints.
 var routes = {
   main: function(req, res) {
-    res.setHeader('Cache-Control', 'no-cache');
     res.render('main/main.html', res.locals);
+  },
+
+  listdata: function(req, res) {
+    res.json({ list: res.locals.list });
   },
 
   about: function(req, res) {
@@ -93,8 +96,18 @@ module.exports = function(models) {
     next();
   }
 
+  function track(req, res, next) {
+    console.log("track");
+    next();
+  }
+
+  function noCache(req, res, next) {
+    res.setHeader('Cache-Control', 'no-cache');
+    next();
+  }
+
   function bindRoutes(app) {
-    app.get('/',           inks.load, vendors.load, setUnverified, session, userdata, lists.loadlists, routes.main);
+    app.get('/',           noCache, inks.load, vendors.load, setUnverified, session, userdata, lists.loadlists, routes.main);
     app.get('/about',      inks.load, routes.about);
     app.get('/blog',       inks.load, routes.blog);
     app.get('/whatyouget', inks.load, routes.whatyouget);
@@ -105,6 +118,9 @@ module.exports = function(models) {
     app.post('/submit',    auth, submit.process, routes.postSubmission);
 
     // list fetching
+    app.get('/owned',       auth, session, userdata, lists.loadlists, lists.own,  routes.listdata);
+    app.get('/wishlist',    auth, session, userdata, lists.loadlists, lists.want, routes.listdata);
+
     app.get('/owned/:userid',       inks.load, vendors.load, session, userdata, lists.loadlists, lists.getLists, lists.own,       routes.main);
     app.get('/wishlist/:userid',    inks.load, vendors.load, session, userdata, lists.loadlists, lists.getLists, lists.want,      routes.main);
     app.get('/selections/:userid',  inks.load, vendors.load, session, userdata, lists.loadlists, lists.getLists, lists.selection, nofilter, routes.main);
@@ -124,6 +140,7 @@ module.exports = function(models) {
     bindParameters(app);
     bindRoutes(app);
     app.use(function errorHandler(err, req, res, next){
+      console.error(err);
       res.status(err.status).json(err);
     });
   }
