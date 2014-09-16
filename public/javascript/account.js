@@ -19,12 +19,6 @@ function setupAccountButtons(uid, original) {
           // success
           result.textContent = "Settings saved.";
           result.classList.remove("hidden");
-
-          var ul = find(".persona .account ul");
-          ul.find("a.owned, a.wishlist, a.selections").filter(function(e) {
-            e.href = e.href.replace(uid, value);
-          });
-
           uid = value;
           original = value;
         }

@@ -22,6 +22,11 @@ window.PersonaHelper = {
         } else { ul.classes().add("hidden"); }
       };
       persona.find("a.explanation").classes().add("hidden");
+
+      var ul = find(".persona .account ul");
+      ["owned","wishlist","selections"].forEach(function(c) {
+        ul.find("a."+c).href = "/" + c + "/" + (data.alias? data.alias : data.uid);
+      });
     };
 
     if(email) { loggedin({ detail: { email: email }}); }
