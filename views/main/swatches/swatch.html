@@ -24,19 +24,21 @@
          title="view sample">
     <% }) %>
   </div>
+
 </li>
 
-<% if (typeof email !== "undefined") { %>
 <script>
 schedule(function() {
-  window.preloadedWOLists = true;
   activateWantOwn("swatch-<%= swatch.id %>");
-  <% if (typeof owned !== "undefined" && owned.indexOf(swatch.id) !== -1) { %>
-  toggleOwnWant('swatch-<%= swatch.id %>', ".own");
-  <% } %>
-  <% if (typeof wishlist !== "undefined" && wishlist.indexOf(swatch.id) !== -1) { %>
-  toggleOwnWant('swatch-<%= swatch.id %>', ".want");
-  <% } %>
+  <%
+    if (typeof email !== "undefined") {
+      if (typeof owned !== "undefined" && owned.indexOf(swatch.id)!==-1) {
+    %> toggleOwnWant('swatch-<%= swatch.id %>', ".own"); <%
+      }
+      if (typeof wishlist !== "undefined" && wishlist.indexOf(swatch.id)!==-1) {
+    %> toggleOwnWant('swatch-<%= swatch.id %>', ".want"); <%
+      }
+     }
+  %>
 });
 </script>
-<% } %>
