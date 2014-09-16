@@ -126,7 +126,7 @@
       this.header.classes().add("palette");
       var color = li.get("data-color");
       if(li.classes().contains("palette-swatch")) {
-        return removePaletteSwatch(li)();
+        return this.removePaletteSwatch(li)();
       }
       this.palette.add(this.buildPaletteSwatch(li, color));
     }
