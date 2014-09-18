@@ -72,6 +72,27 @@ section.filters .column.main label {
   width: 8em;
 }
 
+section.filters .column.main a,
+section.filters .column.main button {
+  position: relative;
+  display: block;
+  top: -0.2em;
+  margin: 0;
+  padding: 2px 5px;
+  background: white;
+  border-radius: 2px;
+  text-align: center;
+  border-width: 1px;
+  color: #626;
+  font-family: Cuprum;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+section.filters .column.main button + a {
+  margin-top: 2px;
+}
+
 section.filters .hue-reset {
   cursor: pointer;
 }
