@@ -2,12 +2,15 @@
 <h1>Saved selections</h1>
 
 <section class="selections">
-  <% Object.keys(lists).forEach(function(name) { %>
+  <% Object.keys(lists).forEach(function(name) {%>
     <h1><%= name %></h1>
-  <%  lists[name].forEach(function(inkid) {
+    <% if (ownpage) { %><button data-id="<%= lists[name].id %>" class="delete">delete</button><% } %>
+  <%  lists[name].inks.forEach(function(inkid) {
         swatch = inkdata.inkmap[inkid]; %>
      <% include swatches/swatch.html %><%
-      })
-    })
+      });
+    });
   %>
 </section>
+
+<script src="/javascript/selections.js"></script>

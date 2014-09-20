@@ -134,6 +134,9 @@ module.exports = function(models) {
     app. get('/myaccount',          auth, session, userdata, inks.load, routes.account);
     app.post('/myaccount/setalias', auth, session, userdata, setalias,  routes.postSubmission);
 
+
+    // deletion routes
+    app.post('/delete/list', auth, session, userdata, lists.delete, routes.postSubmission);
   }
 
   function setup(app) {

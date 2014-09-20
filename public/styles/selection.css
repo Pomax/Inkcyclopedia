@@ -20,3 +20,18 @@ section.selections h1:after  { content: '〞'; margin-left: 0.2em;  }
 section.selections li.ink.card {
   cursor: default;
 }
+
+section.selections button.delete {
+  float: right;
+  border-radius: 1em;
+  border: 1px solid white;
+  background: #333;
+  color: white;
+  margin: 1em;
+  cursor: pointer;
+}
+
+section.selections button.delete:hover {
+  color: #333;
+  background: #FFF;
+}

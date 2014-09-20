@@ -13,6 +13,7 @@
     <%if(typeof nofilter === "undefined" || !nofilter) { %><% include ../fragments/filters.html %><% } %>
     <main>
       <script src="/javascript/wantown.js"></script>
+
       <script>
       <% if (typeof email !== "undefined") { %>
       schedule(function() {
@@ -22,6 +23,7 @@
         window.preloadedWOLists = false;
       <% } %>
       </script>
+
       <div class="swatch pane">
         <ul class="swatches">
           <% if (typeof lists !== "undefined") { %>

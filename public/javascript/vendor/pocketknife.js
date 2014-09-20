@@ -58,10 +58,9 @@
         };
       }
       if(data) {
-        var fd = new FormData(), name;
-        for(name in Object.keys(data)) {
-          fd.append(name,data[name]); }
-        data = fd; }
+        xhr.setRequestHeader("Content-Type","application/json");
+        data = JSON.stringify(data);
+      }
       xhr.send(data);
       if(!async) { return xhr.responseText; }
     };
