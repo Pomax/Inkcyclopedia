@@ -12,25 +12,32 @@
     <% include ../fragments/header.html %>
 
     <main>
-<div class="markdown">
-So: why would you log into inkcyclopedia?
+      <div class="markdown">
+Why would you log into inkcyclopedia?
 ===
-Because after all: it's just an inks repository, so what do you get when you log in? Well, a
+Because after all: it's just an inks repository, what benefit does logging in carry? Well, a
 number of things that might be useful. When you're logged in, you can:
 
-1. mark inks as "I want this ink" or "I own this ink", with dedicated links for both,
-2. save your quick selections, so that you can link to them elsewhere on the web,
-3. you can leave notes on things (at least, that'll be coming soon)
+1. mark inks as "I want this ink" or "I own this ink", with dedicated links for both, so you
+   can drop those links in online post, or tweets or facebook or IRC and other people can check
+   out your wishlist and owned inks list;
+2. save your quick selections, so that you can link to them elsewhere on the web too, like for
+   showing palettes and "I think these would be cool" lists;
+3. you can leave notes on things (at least, that'll be coming soon. I'm working on getting note-leaving
+   up and running in a way that makes sense not just from a user perspective but also from a
+   backend perspective...)
 
-You don't have to log in to make use of the website of course, everything works without being
-logged in, but logging in gives you some benefits that you won't have when you're not logged
-in.
+So: you don't *have* to log in to enjoy most of what the site has to offer, because everything
+works fine without being logged in, but logging in gives you some personalised benefits. Kind of
+the only thing a login system should be used for, really!
 
-Okay so how does logging in work?
+Okay so how does logging in work? How do I sign up?
 ---
 
-Inkcyclopedia uses "Persona", a Mozilla-backed login system that uses your email to verify
-that you're a real person. Rather than asking you to create an account on inkcyclopedia,
+Short answer? you don't. Just log in.
+
+Long answer: Inkcyclopedia uses "Persona", a Mozilla-backed login system that uses your email
+to verify that you're a real person. Rather than asking you to create an account on inkcyclopedia,
 if persona says you're vouched for, inkcyclopedia will simply make you one, associated with
 your email address. If you're on a major email provided it's quite likely it already supports
 Persona's authentication system, so you don't need any new passwords or accounts or the like.
@@ -45,8 +52,8 @@ to *somewhere*. I don't like tracking, and I won't use a login system that collu
 data aggregators. Persona keeps your login anonymous except to you, and the website you logged
 in to. With the added bonus that you generally don't need to come up with a new username/password
 because you already have those.
+        </div>
 
-</div>
       <script src="/javascript/mdconvert.js"></script>
     </main>
 
