@@ -1,27 +1,22 @@
-<% var color = "rgb(" + swatch.r + "," + swatch.g + "," + swatch.b + ")" %>
-<li class="ink card"
-    style="background: <%= color %>;"
-    data-hue="<%= swatch.H * 2 * Math.PI %>"
-    data-saturation="<%= swatch.S %>"
-    data-lightness="<%= swatch.L %>"
-    data-luma="<%= swatch.Y %>"
-    data-chrominance-u="<%= swatch.U %>"
-    data-chrominance-v="<%= swatch.V %>"
-    data-color="<%= color %>"
-    id="swatch-<%= swatch.id %>">
+          <% var color = "rgb(" + swatch.r + "," + swatch.g + "," + swatch.b + ")" %>
+          <li class="ink card"
+              style="background: <%= color %>;"
+              data-hue="<%= swatch.H * 2 * Math.PI %>"
+              data-saturation="<%= swatch.S %>"
+              data-lightness="<%= swatch.L %>"
+              data-luma="<%= swatch.Y %>"
+              data-chrominance-u="<%= swatch.U %>"
+              data-chrominance-v="<%= swatch.V %>"
+              data-color="<%= color %>"
+              id="swatch-<%= swatch.id %>">
 
-  <p class="company <%= swatch.company.replace(/\W/g,'-') %>"><%= swatch.company %></p>
-  <p class="name <%= swatch.inkname.replace(/\W/g,'-') %>"><%= swatch.inkname %></p>
-  <p class="colorpoint"><!--<%= color %>--></p>
-
-  <% include swatch-menu.html %>
-
-  <div class="crop">
-    <% swatch.images.split(",").forEach(function(imgid, idx) { if(idx>0) return; %>
-    <img src="/inks/images/<%= imgid %>/crop.png"
-         onclick="loadImage(event, '<%= imgid %>', '<%= color %>')"
-         style="background: <%= color %>"
-         title="view sample">
-    <% }) %>
-  </div>
-</li>
+            <p class="company <%= swatch.company.replace(/\W/g,'-') %>"><%= swatch.company %></p>
+            <p class="name <%= swatch.inkname.replace(/\W/g,'-') %>"><%= swatch.inkname %></p>
+            <p class="colorpoint"><!--<%= color %>--></p><% include swatch-menu.html %>
+            <div class="crop"><% swatch.images.split(",").forEach(function(imgid, idx) { if(idx>0) return; %>
+              <img src="/inks/images/<%= imgid %>/crop.png"
+                   onclick="loadImage(event, '<%= imgid %>', '<%= color %>')"
+                   style="background: <%= color %>"
+                   title="view sample"><% }) %>
+            </div>
+          </li>

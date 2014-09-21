@@ -1,14 +1,12 @@
-  <% searchTerm = encodeURIComponent(swatch.company + ' ' + swatch.inkname) %>
-  <% vendor = findVendor(swatch.company).url %>
-  <div class="menu">
-    <span class="label">⋮</span>
-    <ul class="links">
-
-      <li class="own icon" title="I own this ink" onclick="ownInk('<%= swatch.id %>')">✔</li>
-      <li class="want icon" title="I want this ink" onclick="wantInk('<%= swatch.id %>')">❤</li>
-
-      <li class="item"><% if (vendor) { %><a target="_blank" href="<%= vendor %>">Visit the vendor website</a><% } %></li>
-      <li class="item"><a target="_blank" href="http://www.gouletpens.com/SearchResults.asp?Search=<%= searchTerm %>">Find this ink at Goulet Pens</a></li>
-      <li class="item"><a target="_blank" href="https://duckduckgo.com/?q=<%= searchTerm %>">Search for this ink online</a></li>
-    </ul>
-  </div>
+            <% searchTerm = encodeURIComponent(swatch.company + ' ' + swatch.inkname) %>
+            <% vendor = findVendor(swatch.company).url %>
+            <div class="menu">
+              <span class="label">⋮</span>
+              <ul class="links">
+                <li class="own icon" title="I own this ink" onclick="ownInk('<%= swatch.id %>')">✔</li>
+                <li class="want icon" title="I want this ink" onclick="wantInk('<%= swatch.id %>')">❤</li>
+                <li class="item"><% if (vendor) { %><a target="_blank" href="<%= vendor %>">Visit the vendor website</a><% } %></li>
+                <li class="item"><a target="_blank" href="http://www.gouletpens.com/SearchResults.asp?Search=<%= searchTerm %>">Find this ink at Goulet Pens</a></li>
+                <li class="item"><a target="_blank" href="https://duckduckgo.com/?q=<%= searchTerm %>">Search for this ink online</a></li>
+              </ul>
+            </div>

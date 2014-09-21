@@ -14,24 +14,18 @@
     <main>
       <script src="/javascript/wantown.js"></script>
 
-      <script>
-      <% if (typeof email !== "undefined") { %>
+      <script><% if (typeof email !== "undefined") { %>
       schedule(function() {
         window.preloadedWOLists = true;
       });
       <% } else { %>
         window.preloadedWOLists = false;
-      <% } %>
-      </script>
+      <% } %></script>
 
       <div class="swatch pane">
-        <ul class="swatches">
-          <% if (typeof lists !== "undefined") { %>
-          <% include selections.html %>
-          <% } else { %>
-          <% include swatches.html %>
-          <% } %>
-      </ul>
+        <ul class="swatches"><% if (typeof lists !== "undefined") { %><% include selections.html %><% } else { %><% include swatches.html %><% } %>        </ul>
+      </div>
+
       <% include ../fragments/footer.html %>
     </main>
   </body>

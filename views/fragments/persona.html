@@ -1,29 +1,29 @@
 <div class="persona">
-  <input type="hidden"
-         class="persona-email"
-         name="persona-email"<% if (typeof email !== "undefined") { %>
-         value="<%= email %>" <% } %>>
-  <div class="login">
-    <button class="login-button">Login</button>
-    <a href="/whatyouget" class="explanation">Why would I log in?</a>
-  </div>
-  <div class="account">
-    <button>My account</button>
-    <ul class="hidden">
-      <li><a href="/myaccount">My details</a></li>
-      <li><a class="wishlist" href="/wishlist/<% if (typeof user !== "undefined") { if (!!user.alias) { %><%= user.alias %><% } else { %><%= user.id %><% }} %>">My wishlist</a></li>
-      <li><a class="owned" href="/owned/<% if (typeof user !== "undefined") { %><%= user.alias || user.id %><% } %>">My own inks</a></li>
-      <li><a class="selections" href="/selections/<% if (typeof user !== "undefined") { %><%= user.alias || user.id %><% } %>">My selections</a></li>
-    </ul>
-  </div>
-  <button class="logout-button">Logout</button>
-  <script src="https://login.persona.org/include.js"></script>
-</div>
+        <input type="hidden"
+               class="persona-email"
+               name="persona-email"<% if (typeof email !== "undefined") { %>
+               value="<%= email %>" <% } %>>
+        <div class="login">
+          <button class="login-button">Login</button>
+          <a href="/whatyouget" class="explanation">Why would I log in?</a>
+        </div>
+        <div class="account">
+          <button>My account</button>
+          <ul class="hidden">
+            <li><a href="/myaccount">My details</a></li>
+            <li><a class="wishlist" href="/wishlist/<% if (typeof user !== "undefined") { if (!!user.alias) { %><%= user.alias %><% } else { %><%= user.id %><% }} %>">My wishlist</a></li>
+            <li><a class="owned" href="/owned/<% if (typeof user !== "undefined") { %><%= user.alias || user.id %><% } %>">My own inks</a></li>
+            <li><a class="selections" href="/selections/<% if (typeof user !== "undefined") { %><%= user.alias || user.id %><% } %>">My selections</a></li>
+          </ul>
+        </div>
+        <button class="logout-button">Logout</button>
+        <script src="https://login.persona.org/include.js"></script>
+      </div>
 
-<script>(function() {
-  document.listenOnce("PersonaHelperReady", function() {
-    PersonaHelper.setupPersona("<% if (typeof email !== "undefined") { %><%= email %><% } %>");
-  });
-}());</script>
+      <script>(function() {
+        document.listenOnce("PersonaHelperReady", function() {
+          PersonaHelper.setupPersona("<% if (typeof email !== "undefined") { %><%= email %><% } %>");
+        });
+      }());</script>
 
-<script src="/javascript/persona.js" async></script>
+      <script src="/javascript/persona.js" async></script>

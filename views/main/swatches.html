@@ -1,25 +1,20 @@
-<% inkdata.swatches.forEach(function(swatch) {
-  if (typeof list !== 'undefined' && list.indexOf(swatch.id) === -1) { return }
-  if (typeof showUnverified !== "undefined" && !!showUnverified && swatch.unverified) { %>
-    <% include swatches/swatch.html %>
-  <% } %>
-  <% if ((typeof showUnverified === "undefined" || !showUnverified) && !swatch.unverified) { %>
-    <% include swatches/swatch.html %>
-  <% } %>
-<% }); %>
+          <% inkdata.swatches.forEach(function(swatch) {
+            if (typeof list !== 'undefined' && list.indexOf(swatch.id) === -1) { return } if (typeof showUnverified !== "undefined" && !!showUnverified && swatch.unverified) { %><% include swatches/swatch.html %><% } %><% if ((typeof showUnverified === "undefined" || !showUnverified) && !swatch.unverified) { %><% include swatches/swatch.html %><% } %>
+          <% }); %>
 
+          <script>
+          schedule(function() {
+            var inks = find("li.ink.card").map(function(li) {
+              return li.id.replace("swatch-",'');
+            });
 
-<script>
-schedule(function() {
-  <% inklist = inkdata.swatches.map(function(s){ return s.id; }).join('","') %>
-  var inks = ["<%- inklist %>"];
-  var owned = <% if (typeof email !== "undefined" && typeof owned !== "undefined") { %>["<%- owned.join('","') %>"]<% } else { %>false<% } %>;
-  var wishlist = <% if (typeof email !== "undefined" && typeof wishlist !== "undefined") { %>["<%- wishlist.join('","') %>"]<% } else { %>false<% } %>;
+            var owned = <% if (typeof email !== "undefined" && typeof owned !== "undefined" && owned.length > 0) { %>["<%- owned.join('","') %>"]<% } else { %>false<% } %>;
+            var wishlist = <% if (typeof email !== "undefined" && typeof wishlist !== "undefined" && wishlist.length > 0) { %>["<%- wishlist.join('","') %>"]<% } else { %>false<% } %>;
 
-  inks.forEach(function(inkid) {
-    activateWantOwn("swatch-"+inkid);
-    if(owned && owned.indexOf(inkid)>-1) { toggleOwnWant("swatch-"+inkid, ".own"); }
-    if(wishlist && wishlist.indexOf(inkid)>-1) { toggleOwnWant("swatch-"+inkid, ".want"); }
-  });
-});
-</script>
+            inks.forEach(function(inkid) {
+              activateWantOwn("swatch-"+inkid);
+              if(owned && owned.indexOf(inkid)>-1) { toggleOwnWant("swatch-"+inkid, ".own"); }
+              if(wishlist && wishlist.indexOf(inkid)>-1) { toggleOwnWant("swatch-"+inkid, ".want"); }
+            });
+          });
+          </script>

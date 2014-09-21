@@ -1,19 +1,19 @@
 <header>
-  <% include persona.html %>
-  <div class="mainheader">
-    <a class="logo" href="/"><img src="/images/inkart.png"></a>
-    <h1>A (small) encyclopedia of fountain pen inks</h1>
-    <h3>A repository housing —at the moment— <%= inkdata.getInkCount() %> inks
-      <span class="cuprum">
-        [<a href="/about">About</a>]
-        [<a href="/blog">Blog</a>]
-      </span>
-    </h3>
-  </div><div class="palette">
-    <h1>
-      <% if (typeof userid !== "undefined") { %><button class="save">[save selection]</button><% } %>
-      Quick selection
-      <button class="reset">[reset]</button>
-    </h1>
-  </div>
-</header>
+      <% include persona.html %>
+      <div class="mainheader">
+        <a class="logo" href="/"><img src="/images/inkart.png"></a>
+        <h1>A (small) encyclopedia of fountain pen inks</h1>
+        <h3>A repository housing —at the moment— <%= inkdata.getInkCount() %> inks
+          <span class="cuprum">
+            [<a href="/about">About</a>]
+            [<a href="/blog">Blog</a>]
+          </span>
+        </h3>
+      </div><div class="palette">
+        <h1>
+          <% if (typeof userid !== "undefined") { %><button class="save">[save selection]</button><% } %>
+          Quick selection
+          <button class="reset">[reset]</button>
+        </h1>
+      </div>
+    </header>
