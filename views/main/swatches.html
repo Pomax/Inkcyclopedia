@@ -7,3 +7,19 @@
     <% include swatches/swatch.html %>
   <% } %>
 <% }); %>
+
+
+<script>
+schedule(function() {
+  <% inklist = inkdata.swatches.map(function(s){ return s.id; }).join('","') %>
+  var inks = ["<%- inklist %>"];
+  var owned = <% if (typeof email !== "undefined" && typeof owned !== "undefined") { %>["<%- owned.join('","') %>"]<% } else { %>false<% } %>;
+  var wishlist = <% if (typeof email !== "undefined" && typeof wishlist !== "undefined") { %>["<%- wishlist.join('","') %>"]<% } else { %>false<% } %>;
+
+  inks.forEach(function(inkid) {
+    activateWantOwn("swatch-"+inkid);
+    if(owned && owned.indexOf(inkid)>-1) { toggleOwnWant("swatch-"+inkid, ".own"); }
+    if(wishlist && wishlist.indexOf(inkid)>-1) { toggleOwnWant("swatch-"+inkid, ".want"); }
+  });
+});
+</script>

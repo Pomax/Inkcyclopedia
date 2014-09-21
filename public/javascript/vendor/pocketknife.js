@@ -94,18 +94,14 @@
    * utterly useless thing to work with, compared to arrays.
    */
   var find = function(context, selector) {
-    var nodelist = context.querySelectorAll(selector),
-        elements = [];
+    var nodelist = context.querySelectorAll(selector);
     if (nodelist.length === 0) {
       return [];
     }
     if (nodelist.length === 1) {
       return nodelist[0];
     }
-    for(var i = 0, last = nodelist.length; i < last; i++) {
-      elements[i] = nodelist[i];
-    }
-    return elements;
+    return Array.prototype.slice.call(nodelist);
   };
 
   /**
@@ -446,7 +442,7 @@
     $.find = function(selector) {
       return find(this, selector);
     };
-    $.eventListeners = false;
+    $.eventListeners = new EventListeners($);
     $.__addAnEventListener = function(s,f,b) {
       this.addEventListener(s,f,b);
       if(!this.eventListeners) {

@@ -19,5 +19,11 @@
   <button class="logout-button">Logout</button>
   <script src="https://login.persona.org/include.js"></script>
 </div>
-<script src="/javascript/persona.js"></script>
-<script>PersonaHelper.setupPersona("<% if (typeof email !== "undefined") { %><%= email %><% } %>");</script>
+
+<script>(function() {
+  document.listenOnce("PersonaHelperReady", function() {
+    PersonaHelper.setupPersona("<% if (typeof email !== "undefined") { %><%= email %><% } %>");
+  });
+}());</script>
+
+<script src="/javascript/persona.js" async></script>

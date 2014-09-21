@@ -37,12 +37,9 @@
   </body>
 
   <scripts>
-    <script src="/javascript/imgloader.js"></script>
-    <%if(typeof nofilter === "undefined" || !nofilter) { %><script src="/javascript/mainfilter.js"></script><% } %>
-    <%if(typeof nofilter === "undefined" || !nofilter) { %><script src="/javascript/paletteloader.js"></script><% } %>
+    <script src="/javascript/imgloader.js" async></script>
+    <%if(typeof nofilter === "undefined" || !nofilter) { %><script src="/javascript/mainfilter.js"  async></script><% } %>
+    <%if(typeof nofilter === "undefined" || !nofilter) { %><script src="/javascript/paletteloader.js"  async></script><% } %>
   </scripts>
-
-
-
 
 </html>

@@ -18,9 +18,15 @@
   </div>
 
   <div class="column">
+    <div class="drag-and-drop hidden">Drop image here, or <button class="cancel">cancel</button></div>
+    <div class="img-filter hidden"></div>
     <div class="hue-filter">
       <!-- hue filtering is fun! It filters on the fly based on the color range you want to see swatches for -->
-      <label>filter by hue:</label>
+      <div class="column">
+        <label>filter by hue:</label>
+        <button class="inkmatch" title="Click to filter by color based on an image from your computer">Filter from image</button>
+      </div>
+
       <div class="ranger">
         <input type="range" min="0" max="360" step="1" value="0" class="start">
         <div class="shuttered">
@@ -30,8 +36,8 @@
         </div>
         <input type="range" min="0" max="360" step="1" value="360" class="end">
       </div>
-      <span class="hue-reset">(reset)</span>
     </div>
+    <span class="hue-reset">(reset)</span>
   </div>
 
   <div class="column">
@@ -46,12 +52,15 @@
   </div>
 
   <div class="column main">
-    <button class="inkmatch">Which ink is this?</button>
-    <script src="/javascript/inkmatch.js"></script>
     <a class="submission" href="/submit">Submit a sample</a>
   </div>
 
   <!-- hue filter style/script -->
   <link rel="stylesheet" href="/styles/ranger.css">
-  <script src="/javascript/ranger.js"></script>
+  <script src="/javascript/ranger.js" async></script>
+  <script src="/javascript/converter.js"></script>
+  <script src="/javascript/vendor/jpg.js"></script>
+  <script src="/javascript/vendor/rgbquant.js"></script>
+  <script src="/javascript/inkmatch.js"></script>
+  <script src="/javascript/draganddrop.js"></script>
 </section>

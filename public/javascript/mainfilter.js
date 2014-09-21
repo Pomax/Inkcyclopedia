@@ -69,7 +69,7 @@ schedule(function() {
 
   function filterHue(e) {
     var data = e.detail;
-    var offset = data.offset * tau/360;
+    var offset = (data.offset||0) * tau/360;
 
     hue_start = (data.start * tau/360);
     hue_end   = (data.end * tau/360);
@@ -167,10 +167,31 @@ schedule(function() {
 
   sortElementsBy({options: [{value:"hue"}], selectedIndex: 0});
 
+
+  function filterSaturation(s,e) {
+    allitems.forEach( function(c) {
+      var _c = parseFloat(c.get("data-saturation"));
+      if(_c < s || _c > e) {
+        c.classes().add("hide-hue");
+      }
+    });
+  }
+
+  function filterLightness(s,e) {
+    allitems.forEach( function(c) {
+      var _c = parseFloat(c.get("data-lightness"));
+      if(_c < s || _c > e) {
+        c.classes().add("hide-hue");
+      }
+    });
+  }
+
   window.InkFilter = {
     filterCompany: filterCompany,
     filterName: filterName,
     filterHue: filterHue,
+    filterSaturation: filterSaturation,
+    filterLightness: filterLightness,
     sortElementsBy: sortElementsBy
   }
 

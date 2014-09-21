@@ -69,3 +69,5 @@ window.PersonaHelper = {
     document.listen("persona-user-logout", loggedout);
   }
 };
+
+document.dispatchEvent(new CustomEvent("PersonaHelperReady"));

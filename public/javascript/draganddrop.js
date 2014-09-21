@@ -25,7 +25,7 @@
 
     function buildReader(idx, total) {
       var reader = new FileReader();
-      reader.listen("loadend", function (e) {
+      reader.addEventListener("loadend", function (e) {
         data = this.result;
         handleDroppedData(data, idx, total);
         next();
@@ -43,22 +43,23 @@
         last=holders.length,
         holder;
 
-    for(i=0; i<last; i++) {
-      holder = holders[i];
+    holders.forEach(function(holder, i) {
 
       var highlight = function (e) { holder.classes().add('hover'); return cancel(e); };
       var unhighlight = function (e) { holder.classes().remove('hover'); return cancel(e); };
 
-      holder.listen("dragenter", highlight);
+      holder.listen("dragenter", cancel);
       holder.listen("dragover", cancel);
-      holder.listen("dragleave", unhighlight);
-      holder.listen("dragexit", unhighlight);
+
+      holder.listen("dragleave", cancel);
+      holder.listen("dragexit", cancel);
 
       holder.listen("drop", function (e) {
+        cancel(e);
         readFileData(e);
-        return unhighlight(e);
+        return false;
       });
-    }
+    });
   }
 
   schedule(function() {

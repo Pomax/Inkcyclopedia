@@ -208,8 +208,6 @@ function processAndSubmit(postObject, total) {
       }
     };
     xhr.send(JSON.stringify({ sample: sample }));
-
-
   })
 }
 
