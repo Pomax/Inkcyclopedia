@@ -7,13 +7,11 @@ var handleDroppedData = (function() {
   var end = find("input[type=range].end");
 
   var filterHue = function(hsl, i) {
-    console.log("using " + JSON.stringify(hsl));
     i = i || 5;
     var h = hsl.h;
     start.value = 360 * h - i;
     if(start.value < 0) { start.value += tau; }
     end.value = 360 * h + i;
-    console.log(start.value, end.value);
     start.update();
     end.update();
     InkFilter.filterSaturation(hsl.s - 0.1, hsl.s + 0.1);
