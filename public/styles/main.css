@@ -4,7 +4,7 @@
 main {
   position: relative;
   height: calc(100% - 10.5em);
-  overflow: hidden;
+  overflow: auto;
   width: 100%;
   margin: 0;
   left: 0;
@@ -23,7 +23,6 @@ main div.pane {
   vertical-align:top;
 
   position: relative;
-  height: 100%;
   width: 100%;
   overflow: auto;
 }
