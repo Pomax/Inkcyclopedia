@@ -70,4 +70,5 @@ window.PersonaHelper = {
   }
 };
 
-document.dispatchEvent(new CustomEvent("PersonaHelperReady"));
+var evt = new CustomEvent("PersonaHelperReady");
+document.dispatchEvent(evt);

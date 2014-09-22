@@ -1,4 +1,17 @@
 <script src="/javascript/vendor/pocketknife.js"></script>
+<script>
+    try { new CustomEvent }
+    catch(e) {
+      function CustomEvent ( event, params ) {
+        params = params || { bubbles: false, cancelable: false, detail: undefined };
+        var evt = document.createEvent( 'CustomEvent' );
+        evt.initCustomEvent( event, params.bubbles, params.cancelable, params.detail );
+        return evt;
+       };
+      CustomEvent.prototype = window.Event.prototype;
+      window.CustomEvent = CustomEvent;
+    }
+    </script>
     <link rel="icon" type="image/png" href="/images/favicon.png">
     <link href='http://fonts.googleapis.com/css?family=Shadows+Into+Light+Two' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Cuprum' rel='stylesheet' type='text/css'>

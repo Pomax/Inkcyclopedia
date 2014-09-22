@@ -28,12 +28,13 @@
 
       <% include ../fragments/footer.html %>
     </main>
-  </body>
 
-  <scripts>
-    <script src="/javascript/imgloader.js" async></script>
-    <%if(typeof nofilter === "undefined" || !nofilter) { %><script src="/javascript/mainfilter.js"  async></script><% } %>
-    <%if(typeof nofilter === "undefined" || !nofilter) { %><script src="/javascript/paletteloader.js"  async></script><% } %>
-  </scripts>
+    <scripts>
+      <script src="/javascript/imgloader.js" async></script>
+      <%if(typeof nofilter === "undefined" || !nofilter) { %><script src="/javascript/mainfilter.js"  async></script><% } %>
+      <%if(typeof nofilter === "undefined" || !nofilter) { %><script src="/javascript/paletteloader.js"  async></script><% } %>
+    </scripts>
+
+  </body>
 
 </html>

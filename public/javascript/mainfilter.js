@@ -167,7 +167,6 @@ schedule(function() {
 
   sortElementsBy({options: [{value:"hue"}], selectedIndex: 0});
 
-
   function filterSaturation(s,e) {
     allitems.forEach( function(c) {
       var _c = parseFloat(c.get("data-saturation"));
