@@ -106,7 +106,7 @@ schedule(function() {
    */
   (function() {
     var m = find(".swatches");
-    var d = m.parent();
+    var d = find("main");
     var s = 15;
     var l = 25;
 
