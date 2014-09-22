@@ -1,3 +1,20 @@
+          <% fidelity = 1000 %>
+          <script>
+            function setupSwatch(id, props) {
+              var e = find("#swatch-"+id);
+              setTimeout(function() {
+                e.set("data-hue", props.h);
+                e.set("data-saturation", props.s);
+                e.set("data-lightness", props.l);
+                e.set("data-luma", props.y);
+                e.set("data-chrominance-u", props.u);
+                e.set("data-chrominance-v", props.v);
+                e.set("data-color", props.c);
+                e.set("style", "background: " + props.c);
+              },10);
+            }
+          </script>
+
           <% inkdata.swatches.forEach(function(swatch) {
             if (typeof list !== 'undefined' && list.indexOf(swatch.id) === -1) { return } if (typeof showUnverified !== "undefined" && !!showUnverified && swatch.unverified) { %><% include swatches/swatch.html %><% } %><% if ((typeof showUnverified === "undefined" || !showUnverified) && !swatch.unverified) { %><% include swatches/swatch.html %><% } %>
           <% }); %>

@@ -1,15 +1,5 @@
           <% var color = "rgb(" + swatch.r + "," + swatch.g + "," + swatch.b + ")" %>
-          <li class="ink card"
-              style="background: <%= color %>;"
-              data-hue="<%= swatch.H * 2 * Math.PI %>"
-              data-saturation="<%= swatch.S %>"
-              data-lightness="<%= swatch.L %>"
-              data-luma="<%= swatch.Y %>"
-              data-chrominance-u="<%= swatch.U %>"
-              data-chrominance-v="<%= swatch.V %>"
-              data-color="<%= color %>"
-              id="swatch-<%= swatch.id %>">
-
+          <li class="ink card" id="swatch-<%= swatch.id %>">
             <p class="company <%= swatch.company.replace(/\W/g,'-') %>"><%= swatch.company %></p>
             <p class="name <%= swatch.inkname.replace(/\W/g,'-') %>"><%= swatch.inkname %></p>
             <p class="colorpoint"><!--<%= color %>--></p><% include swatch-menu.html %>
@@ -20,3 +10,4 @@
                    title="view sample"><% }) %>
             </div>
           </li>
+          <script>setupSwatch("<%= swatch.id %>", { h: "<%= ((fidelity* swatch.H * 2 * Math.PI)|0)/fidelity %>", s: "<%= ((fidelity*swatch.S)|0)/fidelity %>", l: "<%= ((fidelity*swatch.L)|0)/fidelity %>", y: "<%= ((fidelity*swatch.Y)|0)/fidelity %>", u: "<%= ((fidelity*swatch.U)|0)/fidelity %>", v: "<%= ((fidelity*swatch.V)|0)/fidelity %>", c: "<%= color %>"})</script>
