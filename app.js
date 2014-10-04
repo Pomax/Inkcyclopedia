@@ -13,7 +13,10 @@ require("./lib/dbase")(function(err, models) {
   app.engine('html', require('ejs').renderFile);
 
   app.use(bodyParser.json({ limit: "100mb" }));
-  app.use(bodyParser.urlencoded({limit: '100mb'}));
+  app.use(bodyParser.urlencoded({
+    extended: true,
+    limit: '100mb'
+  }));
 
   app.use(express.static(__dirname + '/public'));
 
