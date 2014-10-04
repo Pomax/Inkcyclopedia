@@ -12,6 +12,24 @@ main .markdown {
   margin: auto;
 }
 
+main .markdown h1 {
+  border-bottom: 1px solid white;
+}
+
+main .markdown p {
+  width: 800px;
+  margin: auto;
+  text-align: justify;
+}
+
+main .markdown p + p {
+  margin-top: 1em;
+}
+
+main .markdown + .markdown {
+  margin-top: 5em;
+}
+
 main .markdown a {
   color: #FFF;
 }
