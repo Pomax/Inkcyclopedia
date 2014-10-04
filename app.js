@@ -11,7 +11,10 @@ require("./lib/dbase")(function(err, models) {
   app.set('views', __dirname + '/views');
   app.set('view engine', 'ejs');
   app.engine('html', require('ejs').renderFile);
+
   app.use(bodyParser.json({ limit: "100mb" }));
+  app.use(bodyParser.urlencoded({limit: '100mb'}));
+
   app.use(express.static(__dirname + '/public'));
 
   require("./lib/persona")(express, app, models);
