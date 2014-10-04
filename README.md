@@ -27,7 +27,7 @@ Don't be, I'll recover. If anything, my handwriting is pretty damn fancy with al
 
 However, if you're thinking of getting a fountain pen (and I won't lie, I have some $3 [Platinum Preppy](http://www.gouletpens.com/Black_Fine_Platinum_Preppy_Fountain_Pen_p/plat-ppq-200-01-f.htm) pens that work *just as well* for just writing as my $40 Shaeffer 100, so don't let the myth of "it's expensive" fool you: it really, *really* isn't) then finding an ink you like is going to be a stupid amount of work, if you don't just want "Parker Black" but something you actually like.
 
-So basically: I did this so you don't have to. 170 inks, probably more as time goes on, because this shouldn't be as horrible as it really is right now. Good luck finding a store with an open bottle of 200+ inks where you live.
+So basically: I did this so you don't have to. 170 inks initial inks, currently 286, probably more as time goes on, because this shouldn't be as horrible as it really is right now. Good luck finding a store with 200+ open bottles of inks to try, near where you live.
 
 So, what's the deal with this project/website?
 ----------------------------------------------

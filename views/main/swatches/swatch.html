@@ -1,6 +1,6 @@
           <% var color = "rgb(" + swatch.r + "," + swatch.g + "," + swatch.b + ")" %>
           <li class="ink card" id="swatch-<%= swatch.id %>">
-            <p class="company <%= swatch.company.replace(/\W/g,'-') %>"><%= swatch.company %></p>
+            <p class="company <%= swatch.company.replace(/\W/g,'-') %>"><%= swatch.company %><% if (swatch.inkline) { %> <%= swatch.inkline %><%}%></p>
             <p class="name <%= swatch.inkname.replace(/\W/g,'-') %>"><%= swatch.inkname %></p>
             <p class="colorpoint"><!--<%= color %>--></p><% include swatch-menu.html %>
             <div class="crop"><% swatch.images.split(",").forEach(function(imgid, idx) { if(idx>0) return; %>
