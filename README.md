@@ -27,16 +27,14 @@ Don't be, I'll recover. If anything, my handwriting is pretty damn fancy with al
 
 However, if you're thinking of getting a fountain pen (and I won't lie, I have some $3 [Platinum Preppy](http://www.gouletpens.com/Black_Fine_Platinum_Preppy_Fountain_Pen_p/plat-ppq-200-01-f.htm) pens that work *just as well* for just writing as my $40 Shaeffer 100, so don't let the myth of "it's expensive" fool you: it really, *really* isn't) then finding an ink you like is going to be a stupid amount of work, if you don't just want "Parker Black" but something you actually like.
 
-So basically: I did this so you don't have to. 170 inks initial inks, currently 286, probably more as time goes on, because this shouldn't be as horrible as it really is right now. Good luck finding a store with 200+ open bottles of inks to try, near where you live.
+So basically: I did this so you don't have to. 170 inks initial inks, currently 356, more as time goes on, because this shouldn't be as horrible as it really is right now. Good luck finding a store with 200+ open bottles of inks to try, near where you live.
 
 So, what's the deal with this project/website?
 ----------------------------------------------
 
-I'm still developing the Inkcyclopedia at the moment, so I'll first be going through my 170 inks and getting their images to look like they do "in real life". I have calibrated monitors (because photography) so it's mostly a matter of sitting down with the samples cut up into individual colours and matching the pixels to what I see on the paper on my desk.
+I'm still developing the Inkcyclopedia at the moment, an am still adding inks, as well as trying to find a good way to get the digitized sheets to look like they do "in real life". I have calibrated monitors (because photography), but getting writing to look properly accurate is extremely tricky, so there's a lot of tool calibration involved, and the kind of leveling that a tool like Lightroom offers are actually fairly poor for real life color matching.
 
-Once that's done, I'll open up the floor to the rest of the world - because submitting a sample is stupidly simple. The Inkcyclopedia comes with a dedicate "submit a sample" page where all you have to do is drag your sample into the browser, and some cool JavaScript does color abstraction and the like, giving you what it thinks is the color of your sample, as well as some additional colours that it found that you can pick instead if it got the most important one wrong. You then just say which company's ink it is, and hit submit!
-
-That's in fact exactly how I'm using it right now because I'm not going to hand-craft JSON objects and image data URIs, so I can confirm it works... and hopefully soon, for you.
+The Inkcyclopedia comes with a dedicate "submit a sample" page where all you have to do is drag your sample into the browser, and some cool JavaScript does color abstraction and the like, giving you what it thinks is the color of your sample, as well as some additional colours that it found that you can pick instead if it got the most important one wrong. You then just say which company's ink it is, and hit submit! That's in fact exactly how I'm using it right now because I'm not going to hand-craft JSON objects and image data URIs, so I can confirm that the code works and lets you add inks to the inkcyclopedia.
 
 License wise, this code is locked down. I know I usually release things in the public domain or as MIT, but I like this thing, I have spent money on it, and I'd like to maybe eventually turn it into a regular website instead of a side project. If I don't, the code will fall into the public domain. Until then: all rights reserved and (c) 2014 Pomax.
 
