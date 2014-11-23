@@ -6,7 +6,7 @@
                 <li class="own icon" title="I own this ink" onclick="ownInk('<%= swatch.id %>')">✔</li>
                 <li class="want icon" title="I want this ink" onclick="wantInk('<%= swatch.id %>')">❤</li>
                 <li class="item"><% if (vendor) { %><a target="_blank" href="<%= vendor %>">Visit the vendor website</a><% } %></li>
-                <li class="item"><a target="_blank" href="http://www.gouletpens.com/SearchResults.asp?Search=<%= searchTerm %>">Find this ink at Goulet Pens</a></li>
+                <li class="item"><a target="_blank" href="http://www.gouletpens.com/search?query=<%= searchTerm %>">Find this ink at Goulet Pens</a></li>
                 <li class="item"><a target="_blank" href="https://duckduckgo.com/?q=<%= searchTerm %>">Search for this ink online</a></li>
               </ul>
             </div>
